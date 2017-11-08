@@ -9,9 +9,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Router>
-          <Route to='/' component={Home} />
-        </Router>
+        <div className="container">
+          <Router>
+            <Route to='/' component={Home} />
+          </Router>
+        </div>
       </div>
     );
   }

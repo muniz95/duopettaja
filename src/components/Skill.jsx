@@ -10,8 +10,10 @@ export default function Skill({name, id}) {
         <div>
             <div
                 onClick={() => click(id)}
-                className="col-xs-3 col-md-4 col-sm-6 col-xs-12 skill">
-                {name}
+                className="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                <div className="skill">
+                    {name}
+                </div>
             </div>
         </div>
     );
