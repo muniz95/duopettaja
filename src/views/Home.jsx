@@ -8,16 +8,16 @@ export default class Home extends Component {
                 <p>
                     Home
                 </p>
-                <Skill name='0' id='Id: 0' active />
-                <Skill name='1' id='Id: 1' />
-                <Skill name='2' id='Id: 2' />
-                <Skill name='3' id='Id: 3' />
-                <Skill name='4' id='Id: 4' />
-                <Skill name='5' id='Id: 5' />
-                <Skill name='6' id='Id: 6' />
-                <Skill name='7' id='Id: 7' />
-                <Skill name='8' id='Id: 8' />
-                <Skill name='9' id='Id: 9' />
+                <Skill name='Basics 1' id='1' active />
+                <Skill name='Dates' id='2' />
+                <Skill name='Work' id='3' />
+                <Skill name='V. Infin' id='4' />
+                <Skill name='Adessive case' id='5' />
+                <Skill name='Ablative case' id='6' />
+                <Skill name='Allative case' id='7' />
+                <Skill name='Adverbs' id='8' />
+                <Skill name='Places' id='9' />
+                <Skill name='Abstract' id='10' />
             </div>
         );
     }

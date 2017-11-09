@@ -11,9 +11,14 @@ export default function Skill({name, id, active}) {
             <div
                 onClick={() => { if (active) click(id)} }
                 className="col-lg-3 col-md-3 col-sm-4 col-xs-4">
-                <div className={active ? 'skill skill-active' : 'skill skill-inactive'}>
-                    {name}
+                <div className={
+                    active
+                    ? 'skill skill-active center-block'
+                    : 'skill skill-inactive center-block'
+                }>
+                    &nbsp;
                 </div>
+                {name}
             </div>
         </div>
     );
