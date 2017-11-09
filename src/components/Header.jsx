@@ -8,7 +8,7 @@ export default class Header extends Component {
             <Navbar collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a>Duolingo</a>
+                        <a>Duopettaja</a>
                     </Navbar.Brand>
                     <Navbar.Toggle/>
                 </Navbar.Header>
