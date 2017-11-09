@@ -8,7 +8,7 @@ export default class Home extends Component {
                 <p>
                     Home
                 </p>
-                <Skill name='0' id='Id: 0' />
+                <Skill name='0' id='Id: 0' active />
                 <Skill name='1' id='Id: 1' />
                 <Skill name='2' id='Id: 2' />
                 <Skill name='3' id='Id: 3' />

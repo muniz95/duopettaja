@@ -1,5 +1,4 @@
 .skill {
-    background: rgb(255, 196, 0);
     /* margin: auto;
     border-radius: 50%; */
     width: 30px;
@@ -9,6 +8,14 @@
     font-size: 12px;
     line-height: 1.428571429;
     border-radius: 15px;
+}
+
+.skill-active {
+    background: rgb(255, 196, 0);
+}
+
+.skill-inactive {
+    background: rgb(126, 125, 121);
 }
 
 .skill-border {
