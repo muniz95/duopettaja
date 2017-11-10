@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import '../styles/Header.css';
 
@@ -14,7 +15,12 @@ export default class Header extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem eventKey={1}>Home</NavItem>
+                        <LinkContainer to={'/'}>
+                            <NavItem eventKey={1}>Home</NavItem>
+                        </LinkContainer>
+                        <LinkContainer to={'/skill'}>
+                            <NavItem eventKey={2}>Skill</NavItem>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

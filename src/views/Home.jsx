@@ -1,23 +1,40 @@
 import React, { Component } from 'react';
-import Skill from '../components/Skill';
+import SkillBadge from '../components/SkillBadge';
 
 export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            skills: []
+        }
+    }
+    
+    componentDidMount() {
+        this.setState({
+            skills: [
+                { id: 1, name: 'Basics 1', active: true },
+                { id: 2, name: 'Dates', active: true },
+                { id: 3, name: 'Work', active: false },
+                { id: 4, name: 'V. Infin', active: false },
+                { id: 5, name: 'Adessive case', active: false },
+                { id: 6, name: 'Ablative case', active: false },
+                { id: 7, name: 'Allative case', active: false },
+                { id: 8, name: 'Adverbs', active: false },
+                { id: 9, name: 'Places', active: false },
+                { id: 10, name: 'Abstract', active: false },
+            ]
+        });
+    }
+    
     render() {
         return (
-            <div>
-                <p>
+            <div className="row">
+                <p className="text-left">
                     Home
                 </p>
-                <Skill name='Basics 1' id='1' active />
-                <Skill name='Dates' id='2' />
-                <Skill name='Work' id='3' />
-                <Skill name='V. Infin' id='4' />
-                <Skill name='Adessive case' id='5' />
-                <Skill name='Ablative case' id='6' />
-                <Skill name='Allative case' id='7' />
-                <Skill name='Adverbs' id='8' />
-                <Skill name='Places' id='9' />
-                <Skill name='Abstract' id='10' />
+                { this.state.skills.map(skill => 
+                    <SkillBadge name={skill.name} id={skill.id} active={skill.active} />
+                ) }
             </div>
         );
     }
