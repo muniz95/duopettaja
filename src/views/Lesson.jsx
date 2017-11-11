@@ -1,26 +1,95 @@
 import React, { Component } from 'react';
 import ProgressBar from '../components/ProgressBar';
+import CompoundQuestion from '../components/CompoundQuestion';
+import GuessQuestion from '../components/GuessQuestion';
 
 export default class Lesson extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      progress: 0
+      progress: 0,
+      currentQuestion: 0,
+      questions: []
     };
-    this.increaseProgress = this.increaseProgress.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
+  }
+  
+  componentWillMount() {
+    this.setState({
+      questions: [
+        {
+          category: 'guess',
+          expression: 'Minä',
+          options: [
+            { text: 'I', correct: true },
+            { text: 'You', correct: false },
+            { text: 'We', correct: false },
+            { text: 'Me', correct: false }
+          ]
+        },
+        {
+          category: 'compound',
+          expression: 'Minä olen mies',
+          options: [
+            { text: 'I', correct: true },
+            { text: 'apple', correct: false },
+            { text: 'go', correct: false },
+            { text: 'am', correct: true },
+            { text: 'a', correct: true },
+            { text: 'an', correct: false },
+            { text: 'man', correct: true }
+          ]
+        },
+        {
+          category: 'guess',
+          expression: 'Minä',
+          options: [
+            { text: 'I', correct: true },
+            { text: 'You', correct: false },
+            { text: 'We', correct: false },
+            { text: 'Me', correct: false }
+          ]
+        }
+      ]
+    });    
   }
   
   render() {
+    let question;
+    console.log(this.state);
+
+    switch (this.state.questions[this.state.currentQuestion].category) {
+      case 'guess':
+        question = <GuessQuestion
+          question={this.state.questions[this.state.currentQuestion].expression}
+          options={this.state.questions[this.state.currentQuestion].options}
+        />
+        break;
+      case 'compound':
+        question = <CompoundQuestion
+          question={this.state.questions[this.state.currentQuestion].expression}
+          options={this.state.questions[this.state.currentQuestion].options}
+        />
+        break;
+    
+      default:
+        break;
+    };
+
     return (
       <div>
         <ProgressBar progress={this.state.progress} />
         <h2>Lesson</h2>
-        <button className="btn btn-default" onClick={this.increaseProgress}>Make progress</button>
+        {question}
+        <button className="btn btn-default" onClick={this.nextQuestion}>Make progress</button>
       </div>
     );
   }
   
-  increaseProgress() {
-    this.setState({progress: this.state.progress + 1});
+  nextQuestion() {
+    this.setState({
+      progress: this.state.progress + 1,
+      currentQuestion: this.state.currentQuestion + 1
+    });
   }
 }

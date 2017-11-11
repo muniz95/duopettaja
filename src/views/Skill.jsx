@@ -8,7 +8,7 @@ export default class Skill extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({
       lessons: [
         { words: ['Minä', 'Sinä', 'Hän'], completed: true },
