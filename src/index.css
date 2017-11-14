@@ -3,3 +3,9 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.btn-primary {
+    background-image: none;
+    background-color: #1caff6;
+    border-color: #1caff6;
+}
