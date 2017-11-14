@@ -21,6 +21,9 @@ export default class Header extends Component {
                         <LinkContainer to={'/skill'}>
                             <NavItem eventKey={2}>Skill</NavItem>
                         </LinkContainer>
+                        <LinkContainer to={'/lesson'}>
+                            <NavItem eventKey={3}>Lesson</NavItem>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
