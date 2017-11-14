@@ -18,6 +18,7 @@ export default class Lesson extends Component {
     this.setState({
       questions: [
         {
+          id: 1,
           category: 'guess',
           expression: 'Minä',
           options: [
@@ -28,6 +29,7 @@ export default class Lesson extends Component {
           ]
         },
         {
+          id: 2,
           category: 'compound',
           expression: 'Minä olen mies',
           options: [
@@ -41,6 +43,7 @@ export default class Lesson extends Component {
           ]
         },
         {
+          id: 3,
           category: 'guess',
           expression: 'Minä',
           options: [

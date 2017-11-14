@@ -33,7 +33,7 @@ export default class Home extends Component {
                     Home
                 </p>
                 { this.state.skills.map(skill => 
-                    <SkillBadge name={skill.name} id={skill.id} active={skill.active} />
+                    <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
                 ) }
             </div>
         );

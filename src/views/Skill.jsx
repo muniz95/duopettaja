@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
+import '../styles/Skill.css';
 
 export default class Skill extends Component {
   constructor(props) {
@@ -34,7 +36,9 @@ export default class Skill extends Component {
                     <span>{lesson.words.join(', ')}</span>
                   </p>
                   <p>
-                    <button className="btn btn-primary">REDO</button>
+                    <LinkContainer to={'/lesson'}>
+                      <button className="btn btn-primary">REDO</button>
+                    </LinkContainer>
                   </p>
                 </div>
               </div>

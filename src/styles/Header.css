@@ -1,3 +1,5 @@
-nav {
+.navbar.navbar-default {
+  background-image: none;
   background-color: #20a8e9;
+  border-color: #20a8e9;
 }
