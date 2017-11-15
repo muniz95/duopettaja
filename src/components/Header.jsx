@@ -8,21 +8,20 @@ export default class Header extends Component {
         return (
             <Navbar collapseOnSelect>
                 <Navbar.Header>
-                    <Navbar.Brand>
-                        <a>Duopettaja</a>
-                    </Navbar.Brand>
+                        <Navbar.Brand>
+                            <LinkContainer to={'/'}>
+                                <a>Duopettaja</a>
+                            </LinkContainer>
+                        </Navbar.Brand>
                     <Navbar.Toggle/>
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <LinkContainer to={'/'}>
-                            <NavItem eventKey={1}>Home</NavItem>
-                        </LinkContainer>
                         <LinkContainer to={'/skill'}>
-                            <NavItem eventKey={2}>Skill</NavItem>
+                            <NavItem eventKey={1}>Skill</NavItem>
                         </LinkContainer>
                         <LinkContainer to={'/lesson'}>
-                            <NavItem eventKey={3}>Lesson</NavItem>
+                            <NavItem eventKey={2}>Lesson</NavItem>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>

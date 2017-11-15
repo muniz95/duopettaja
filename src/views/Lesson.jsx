@@ -9,9 +9,12 @@ export default class Lesson extends Component {
     this.state = {
       progress: 0,
       currentQuestion: 0,
-      questions: []
+      questions: [],
+      answers: []
     };
+
     this.nextQuestion = this.nextQuestion.bind(this);
+    this.getAnswer = this.getAnswer.bind(this);
   }
   
   componentWillMount() {
@@ -22,10 +25,10 @@ export default class Lesson extends Component {
           category: 'guess',
           expression: 'Minä',
           options: [
-            { text: 'I', correct: true },
-            { text: 'You', correct: false },
-            { text: 'We', correct: false },
-            { text: 'Me', correct: false }
+            { id: 1, text: 'I', correct: true },
+            { id: 2, text: 'You', correct: false },
+            { id: 3, text: 'We', correct: false },
+            { id: 4, text: 'Me', correct: false }
           ]
         },
         {
@@ -33,13 +36,13 @@ export default class Lesson extends Component {
           category: 'compound',
           expression: 'Minä olen mies',
           options: [
-            { text: 'I', correct: true },
-            { text: 'apple', correct: false },
-            { text: 'go', correct: false },
-            { text: 'am', correct: true },
-            { text: 'a', correct: true },
-            { text: 'an', correct: false },
-            { text: 'man', correct: true }
+            { id: 1, text: 'I', correct: true },
+            { id: 2, text: 'apple', correct: false },
+            { id: 3, text: 'go', correct: false },
+            { id: 4, text: 'am', correct: true },
+            { id: 5, text: 'a', correct: true },
+            { id: 6, text: 'an', correct: false },
+            { id: 7, text: 'man', correct: true }
           ]
         },
         {
@@ -47,31 +50,38 @@ export default class Lesson extends Component {
           category: 'guess',
           expression: 'Minä',
           options: [
-            { text: 'I', correct: true },
-            { text: 'You', correct: false },
-            { text: 'We', correct: false },
-            { text: 'Me', correct: false }
+            { id: 1, text: 'I', correct: true },
+            { id: 2, text: 'You', correct: false },
+            { id: 3, text: 'We', correct: false },
+            { id: 4, text: 'Me', correct: false }
           ]
         }
       ]
     });    
   }
+
+  getAnswer(answer) {
+    const { currentQuestion, answers } = this.state;
+    answers[currentQuestion] = answer;
+    this.setState(answers);
+  }
   
   render() {
     let question;
-    console.log(this.state);
 
     switch (this.state.questions[this.state.currentQuestion].category) {
       case 'guess':
         question = <GuessQuestion
           question={this.state.questions[this.state.currentQuestion].expression}
           options={this.state.questions[this.state.currentQuestion].options}
+          onChange={this.getAnswer}
         />
         break;
       case 'compound':
         question = <CompoundQuestion
           question={this.state.questions[this.state.currentQuestion].expression}
           options={this.state.questions[this.state.currentQuestion].options}
+          onChange={this.getAnswer}
         />
         break;
     
@@ -90,9 +100,16 @@ export default class Lesson extends Component {
   }
   
   nextQuestion() {
-    this.setState({
-      progress: this.state.progress + 1,
-      currentQuestion: this.state.currentQuestion + 1
-    });
+    const { currentQuestion, questions } = this.state;
+    const nextStep = currentQuestion + 1;
+    if (nextStep < questions.length ) {
+      this.setState({
+        progress: this.state.progress + 1,
+        currentQuestion: this.state.currentQuestion + 1
+      });
+    } else {
+      alert('Done');
+      console.log(this.state.answers);
+    }
   }
 }
