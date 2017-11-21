@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import ProgressBar from '../components/ProgressBar';
 import CompoundQuestion from '../components/CompoundQuestion';
 import GuessQuestion from '../components/GuessQuestion';
+import { reachGoal } from '../actions';
+import { connect } from 'react-redux';
 
-export default class Lesson extends Component {
+class Lesson extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -110,6 +112,16 @@ export default class Lesson extends Component {
     } else {
       alert('Done');
       console.log(this.state.answers);
+      this.props.reachGoal();
     }
   }
 }
+
+function mapStateToProps(state) {
+  console.log('THE state', state);
+  return {
+    reducer: state
+  }
+}
+
+export default connect(mapStateToProps, { reachGoal })(Lesson);

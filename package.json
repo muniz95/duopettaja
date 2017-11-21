@@ -7,10 +7,12 @@
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.16"
+    "react-scripts": "1.0.16",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",

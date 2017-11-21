@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import '../styles/Header.css';
 
-export default class Header extends Component {
+class Header extends Component {
     render() {
         return (
             <Navbar collapseOnSelect>
@@ -23,9 +24,20 @@ export default class Header extends Component {
                         <LinkContainer to={'/lesson'}>
                             <NavItem eventKey={2}>Lesson</NavItem>
                         </LinkContainer>
+                        <NavItem eventKey={2}>Goal: {this.props.goal}</NavItem>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
         );
     }
 }
+
+function mapStateToProps(state) {
+  console.log('header state', state);
+  const { goal } = state;
+  return {
+    goal
+  }
+}
+
+export default connect(mapStateToProps, null)(Header);
