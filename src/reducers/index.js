@@ -1,21 +1,15 @@
-import { UPDATE_STREAK, REACH_GOAL } from '../constants';
+import { REACH_GOAL } from '../constants';
+import { combineReducers } from 'redux';
 
-const initialState = {
-  goal: 'not finished'
-};
-
-const reducer = (state = [], action) => {
+const goal = (state = 'not finished', action) => {
   switch (action.type) {
-    case UPDATE_STREAK:
-      console.log(action);
-      return action;
     case REACH_GOAL:
-      return {
-        goal: action.payload
-      }
+      return 'you have reached your daily goal!';
     default:
-      return initialState;
+      return state;
   }
 }
 
-export default reducer;
+export default combineReducers({
+  goal
+});

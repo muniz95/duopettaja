@@ -31,7 +31,8 @@ class Lesson extends Component {
             { id: 2, text: 'You', correct: false },
             { id: 3, text: 'We', correct: false },
             { id: 4, text: 'Me', correct: false }
-          ]
+          ],
+          weight: 33
         },
         {
           id: 2,
@@ -45,7 +46,8 @@ class Lesson extends Component {
             { id: 5, text: 'a', correct: true },
             { id: 6, text: 'an', correct: false },
             { id: 7, text: 'man', correct: true }
-          ]
+          ],
+          weight: 33
         },
         {
           id: 3,
@@ -56,7 +58,8 @@ class Lesson extends Component {
             { id: 2, text: 'You', correct: false },
             { id: 3, text: 'We', correct: false },
             { id: 4, text: 'Me', correct: false }
-          ]
+          ],
+          weight: 34
         }
       ]
     });    
@@ -102,26 +105,30 @@ class Lesson extends Component {
   }
   
   nextQuestion() {
-    const { currentQuestion, questions } = this.state;
+    const { currentQuestion, questions, answers } = this.state;
     const nextStep = currentQuestion + 1;
+    const progress = answers[currentQuestion].correct 
+    ? questions[currentQuestion].weight
+    : -(questions[currentQuestion].weight)
+    console.log('answers', answers);
+    this.setState({
+      progress: this.state.progress + progress
+    });
     if (nextStep < questions.length ) {
       this.setState({
-        progress: this.state.progress + 1,
         currentQuestion: this.state.currentQuestion + 1
       });
     } else {
       alert('Done');
-      console.log(this.state.answers);
-      this.props.reachGoal();
+      this.props.dispatchReachGoal();
     }
   }
 }
 
-function mapStateToProps(state) {
-  console.log('THE state', state);
-  return {
-    reducer: state
+const mapDispatchToProps = (dispatch) => ({
+  dispatchReachGoal: () => {
+    dispatch(reachGoal())
   }
-}
+})
 
-export default connect(mapStateToProps, { reachGoal })(Lesson);
+export default connect(null, mapDispatchToProps)(Lesson);

@@ -33,7 +33,6 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('header state', state);
   const { goal } = state;
   return {
     goal
