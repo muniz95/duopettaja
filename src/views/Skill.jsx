@@ -13,8 +13,8 @@ export default class Skill extends Component {
   componentWillMount() {
     this.setState({
       lessons: [
-        { words: ['Minä', 'Sinä', 'Hän'], completed: true },
-        { words: ['Me', 'Te', 'He'], completed: false }
+        { id: 1, words: ['Minä', 'Sinä', 'Hän'], completed: true },
+        { id: 2, words: ['Me', 'Te', 'He'], completed: false }
       ]
     })
   }
@@ -27,7 +27,7 @@ export default class Skill extends Component {
         </div>
           <div className="row">
             { this.state.lessons.map((lesson, index) =>
-              <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+              <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={lesson.id}>
                 <div className="well">
                   <p>
                     <b>Lesson { index + 1 } of {this.state.lessons.length}</b>
