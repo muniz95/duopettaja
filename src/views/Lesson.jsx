@@ -4,6 +4,7 @@ import CompoundQuestion from '../components/CompoundQuestion';
 import GuessQuestion from '../components/GuessQuestion';
 import { reachGoal } from '../actions';
 import { connect } from 'react-redux';
+import '../styles/Lesson.css';
 
 class Lesson extends Component {
   constructor(props) {
@@ -12,7 +13,9 @@ class Lesson extends Component {
       progress: 0,
       currentQuestionIndex: 0,
       questions: [],
-      answers: []
+      answers: [],
+      correct: false,
+      visibleAnswerBox: false
     };
 
     this.nextQuestion = this.nextQuestion.bind(this);
@@ -99,7 +102,18 @@ class Lesson extends Component {
         <ProgressBar progress={this.state.progress} />
         <h2>Lesson</h2>
         {question}
-        <button className="btn btn-default" onClick={this.nextQuestion}>Make progress</button>
+        <button className="btn btn-default" onClick={this.nextQuestion}>Check</button>
+        { this.state.visibleAnswerBox 
+        ?
+          <div className="row">
+            <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 success-box">
+              <span>Correct!</span>
+              <button>Next</button>
+            </div>
+          </div>
+        :
+          null
+        }
       </div>
     );
   }
@@ -111,6 +125,10 @@ class Lesson extends Component {
     const currentAnswer = answers[currentQuestionIndex]
     let progress
     if (currentQuestion.category === 'guess') {
+      this.setState({ 
+        correct: true,
+        visibleAnswerBox: true
+      })
       progress = currentAnswer.correct 
       ? questions[currentQuestionIndex].weight
       : -(questions[currentQuestionIndex].weight)
@@ -118,12 +136,24 @@ class Lesson extends Component {
       // Check if there is any incorrect word
       const hasWrongWord = currentAnswer.map(x => x.correct).includes(false)
       if (hasWrongWord) {
+        this.setState({ 
+          correct: false,
+          visibleAnswerBox: true
+        })
         progress = 0
       } else {
         // Check if the words are in the correct order
         if (this.orderedAnswers(currentAnswer.map(x => x.order))) {
+          this.setState({ 
+            correct: true,
+            visibleAnswerBox: true
+          })
           progress = currentQuestion.weight
         } else {
+          this.setState({ 
+            correct: false,
+            visibleAnswerBox: true
+          })
           progress = 0
         }
       }
