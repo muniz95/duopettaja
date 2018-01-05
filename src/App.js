@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './views/Home';
-import Skill from './views/Skill';
-import Lesson from './views/Lesson';
-import './App.css';
-import Header from './components/Header';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Home from './views/Home'
+import Skill from './views/Skill'
+import Lesson from './views/Lesson'
+import './App.css'
+import Header from './components/Header'
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <Router>
         <div className="App">
@@ -21,8 +21,8 @@ class App extends Component {
           </div>
         </div>
       </Router>
-    );
+    )
   }
 }
 
-export default App;
+export default App

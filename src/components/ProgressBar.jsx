@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-export default function ProgressBar({progress}) {
+export default function ProgressBar ({progress}) {
   return (
     <div>
       {progress}%
     </div>
-  );
+  )
 }
