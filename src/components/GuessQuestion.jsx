@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../styles/GuessQuestion.css'
 
 export default class GuessQuestion extends Component {
   constructor (props) {
@@ -18,7 +19,13 @@ export default class GuessQuestion extends Component {
   }
 
   getAnswer (option) {
+    this.cleanSelectedAnswers()
+    option.selected = true
     this.props.onChange(option)
+  }
+
+  cleanSelectedAnswers() {
+    this.props.options.forEach(option => option.selected = false)
   }
 
   render () {
@@ -31,7 +38,7 @@ export default class GuessQuestion extends Component {
         <div className="row">
           {options.map(option =>
             <div key={option.id} className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <div className="well well-sm" onClick={() => this.getAnswer(option)}>
+              <div className={"well well-sm" + (option.selected ? ' selected' : '')} onClick={() => this.getAnswer(option)}>
                 {option.text}
               </div>
             </div>

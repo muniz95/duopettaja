@@ -30,10 +30,10 @@ class Lesson extends Component {
           category: 'guess',
           expression: 'Minä',
           options: [
-            { id: 1, text: 'I', correct: true },
-            { id: 2, text: 'You', correct: false },
-            { id: 3, text: 'We', correct: false },
-            { id: 4, text: 'Me', correct: false }
+            { id: 1, text: 'I', correct: true, selected: false },
+            { id: 2, text: 'You', correct: false, selected: false },
+            { id: 3, text: 'We', correct: false, selected: false },
+            { id: 4, text: 'Me', correct: false, selected: false }
           ],
           weight: 33
         },
