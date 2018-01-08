@@ -143,6 +143,7 @@ class Lesson extends Component {
       progress = currentAnswer.correct 
       ? questions[currentQuestionIndex].weight
       : -(questions[currentQuestionIndex].weight)
+      answers[currentQuestionIndex].correct = currentAnswer.correct
     } else {
       // Check if there is any incorrect word
       const hasWrongWord = currentAnswer.map(x => x.correct).includes(false)
@@ -187,8 +188,13 @@ class Lesson extends Component {
         disabledCheckButton: false
       });
     } else {
-      alert('Done');
       this.props.dispatchReachGoal();
+      this.props.history.push({
+        pathname: 'lesson/finished',
+        state: {
+          answers: this.state.answers
+        }
+      });
     }
   }
 
