@@ -15,7 +15,8 @@ class Lesson extends Component {
       questions: [],
       answers: [],
       correct: false,
-      visibleAnswerBox: false
+      visibleAnswerBox: false,
+      disabledCheckButton: false
     };
 
     this.nextQuestion = this.nextQuestion.bind(this);
@@ -103,13 +104,18 @@ class Lesson extends Component {
         <ProgressBar progress={this.state.progress} />
         <h2>Lesson</h2>
         {question}
-        <button className="btn btn-default" onClick={this.checkAnswer}>Check</button>
+        <button
+          disabled={this.state.disabledCheckButton}
+          className="btn btn-default"
+          onClick={this.checkAnswer}>
+          Check
+        </button>
         { this.state.visibleAnswerBox 
         ?
           <div className="row">
             <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 success-box">
               <span className="pull-left">Correct!</span>
-              <button 
+              <button
                 className="btn btn-primary pull-right"
                 onClick={this.nextQuestion}>
                 Next
@@ -131,7 +137,8 @@ class Lesson extends Component {
     if (currentQuestion.category === 'guess') {
       this.setState({ 
         correct: true,
-        visibleAnswerBox: true
+        visibleAnswerBox: true,
+        disabledCheckButton: true
       })
       progress = currentAnswer.correct 
       ? questions[currentQuestionIndex].weight
@@ -142,7 +149,8 @@ class Lesson extends Component {
       if (hasWrongWord) {
         this.setState({ 
           correct: false,
-          visibleAnswerBox: true
+          visibleAnswerBox: true,
+          disabledCheckButton: true
         })
         progress = 0
       } else {
@@ -150,14 +158,16 @@ class Lesson extends Component {
         if (this.orderedAnswers(currentAnswer.map(x => x.order))) {
           this.setState({ 
             correct: true,
-            visibleAnswerBox: true
+            visibleAnswerBox: true,
+            disabledCheckButton: true
           })
           progress = currentQuestion.weight
         } else {
-          this.setState({ 
+          this.setState({
             correct: false,
-            visibleAnswerBox: true
-          })
+            visibleAnswerBox: true,
+            disabledCheckButton: true
+          });
           progress = 0
         }
       }
@@ -173,7 +183,8 @@ class Lesson extends Component {
     if (nextStep < questions.length ) {
       this.setState({
         currentQuestionIndex: this.state.currentQuestionIndex + 1,
-        visibleAnswerBox: false
+        visibleAnswerBox: false,
+        disabledCheckButton: false
       });
     } else {
       alert('Done');
