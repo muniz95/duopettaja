@@ -6,7 +6,7 @@
 .progress span {
   position: absolute;
   display: flex;
-  width: 89%;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }

@@ -19,6 +19,7 @@ class Lesson extends Component {
     };
 
     this.nextQuestion = this.nextQuestion.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this);
     this.getAnswer = this.getAnswer.bind(this);
   }
   
@@ -102,13 +103,17 @@ class Lesson extends Component {
         <ProgressBar progress={this.state.progress} />
         <h2>Lesson</h2>
         {question}
-        <button className="btn btn-default" onClick={this.nextQuestion}>Check</button>
+        <button className="btn btn-default" onClick={this.checkAnswer}>Check</button>
         { this.state.visibleAnswerBox 
         ?
           <div className="row">
             <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 success-box">
-              <span>Correct!</span>
-              <button>Next</button>
+              <span className="pull-left">Correct!</span>
+              <button 
+                className="btn btn-primary pull-right"
+                onClick={this.nextQuestion}>
+                Next
+              </button>
             </div>
           </div>
         :
@@ -118,9 +123,8 @@ class Lesson extends Component {
     );
   }
   
-  nextQuestion() {
+  checkAnswer() {
     const { currentQuestionIndex, questions, answers } = this.state;
-    const nextStep = currentQuestionIndex + 1;
     const currentQuestion = questions[currentQuestionIndex]
     const currentAnswer = answers[currentQuestionIndex]
     let progress
@@ -161,9 +165,15 @@ class Lesson extends Component {
     this.setState({
       progress: this.state.progress + progress
     });
+  }
+  
+  nextQuestion() {
+    const { currentQuestionIndex, questions } = this.state;
+    const nextStep = currentQuestionIndex + 1;
     if (nextStep < questions.length ) {
       this.setState({
-        currentQuestionIndex: this.state.currentQuestionIndex + 1
+        currentQuestionIndex: this.state.currentQuestionIndex + 1,
+        visibleAnswerBox: false
       });
     } else {
       alert('Done');
