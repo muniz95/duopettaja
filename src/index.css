@@ -9,3 +9,9 @@ body {
     background-color: #1caff6;
     border-color: #1caff6;
 }
+
+.btn-success {
+    background-image: none;
+    background-color: #7eb530;
+    border-color: #7eb530;
+}

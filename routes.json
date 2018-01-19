@@ -1,0 +1,4 @@
+{
+  "/api/*": "/$1",
+  "/expenses/:account_id": "/expenses?account_id=:account_id"
+}

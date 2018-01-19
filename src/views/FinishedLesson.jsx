@@ -7,7 +7,7 @@ export default class FinishedLesson extends Component {
     
     console.log(props)
     this.state = {
-      answers: props.location.state.answers
+      questions: props.location.state.questions
     }
   }
   
@@ -15,8 +15,8 @@ export default class FinishedLesson extends Component {
     return (
       <div>
         <h2>Finished :)</h2>
-        <div>{this.state.answers.filter(a => a.correct).length} correct answers</div>
-        <div>{this.state.answers.filter(a => !a.correct).length} wrong answers</div>
+        <div>{this.state.questions.filter(a => a.correct).length} correct questions</div>
+        <div>{this.state.questions.filter(a => !a.correct).length} wrong questions</div>
         <LinkContainer to={'/'}>
           <a>Home</a>
         </LinkContainer>
