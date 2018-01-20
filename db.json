@@ -1,19 +1,72 @@
 {
-  "posts": [
+  "skills": [
+    { "id": 1, "name": "Basics 1", "active": true },
+    { "id": 2, "name": "Dates", "active": true },
+    { "id": 3, "name": "Work", "active": false },
+    { "id": 4, "name": "V. Infin", "active": false },
+    { "id": 5, "name": "Adessive case", "active": false },
+    { "id": 6, "name": "Ablative case", "active": false },
+    { "id": 7, "name": "Allative case", "active": false },
+    { "id": 8, "name": "Adverbs", "active": false },
+    { "id": 9, "name": "Places", "active": false },
+    { "id": 10, "name": "Abstract", "active": false }
+  ],
+  "lessons": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "words": ["Minä", "Sinä", "Hän"],
+      "completed": true,
+      "skill_id": 1
+    },
+    { 
+      "id": 2,
+      "words": ["Me", "Te", "He"],
+      "completed": false,
+      "skill_id": 1
     }
   ],
-  "comments": [
+  "questions": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "category": "guess",
+      "expression": "Minä",
+      "options": [
+        { "id": 1, "text": "I", "correct": true, "selected": false },
+        { "id": 2, "text": "You", "correct": false, "selected": false },
+        { "id": 3, "text": "We", "correct": false, "selected": false },
+        { "id": 4, "text": "Me", "correct": false, "selected": false }
+      ],
+      "weight": 33,
+      "lesson_id": 1
+    },
+    {
+      "id": 2,
+      "category": "compound",
+      "expression": "Minä olen mies",
+      "options": [
+        { "id": 1, "text": "I", "correct": true, "order": 1 },
+        { "id": 2, "text": "apple", "correct": false, "order": 0 },
+        { "id": 3, "text": "go", "correct": false, "order": 0 },
+        { "id": 4, "text": "am", "correct": true, "order": 2 },
+        { "id": 5, "text": "a", "correct": true, "order": 3 },
+        { "id": 6, "text": "an", "correct": false, "order": 0 },
+        { "id": 7, "text": "man", "correct": true, "order": 4 }
+      ],
+      "weight": 33,
+      "lesson_id": 1
+    },
+    {
+      "id": 3,
+      "category": "guess",
+      "expression": "Minä",
+      "options": [
+        { "id": 1, "text": "I", "correct": true },
+        { "id": 2, "text": "You", "correct": false },
+        { "id": 3, "text": "We", "correct": false },
+        { "id": 4, "text": "Me", "correct": false }
+      ],
+      "weight": 34,
+      "lesson_id": 1
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
