@@ -7,15 +7,16 @@ export default class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      skills: []
+      skills: [],
+      errorMessage: ''
     }
   }
 
   componentDidMount () {
     http
-      .get('http://localhost:8081/skills')
-      .then(response => this.setState({skills: response.data}))
-      .catch(console.error)
+      .get("http://localhost:8081/skills")
+      .then(response => this.setState({ skills: response.data }))
+      .catch(error => this.setState({ errorMessage: 'An error occured. Refresh the page.' }));
     // this.setState({
     //   skills: [
     //     { id: 1, name: 'Basics 1', active: true },
@@ -38,6 +39,7 @@ export default class Home extends Component {
         <p className="text-left">
           Home
         </p>
+        <h2>{this.state.errorMessage}</h2>
         { this.state.skills.map((skill, id) =>
           <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={id}>
             <SkillBadge {...skill} />

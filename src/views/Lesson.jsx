@@ -4,6 +4,7 @@ import CompoundQuestion from '../components/CompoundQuestion';
 import GuessQuestion from '../components/GuessQuestion';
 import { reachGoal } from '../actions';
 import { connect } from 'react-redux';
+import http from '../utils/http'
 import '../styles/Lesson.css';
 
 class Lesson extends Component {
@@ -12,7 +13,7 @@ class Lesson extends Component {
     this.state = {
       progress: 0,
       currentQuestionIndex: 0,
-      questions: props.location.state.questions,
+      questions: [],
       answers: [],
       correct: false,
       visibleAnswerBox: false,
@@ -25,71 +26,82 @@ class Lesson extends Component {
     this.getAnswer = this.getAnswer.bind(this);
   }
   
-  componentWillMount(props) {
-    const { questions } = this.state
-    if (!questions) {
-      alert('sem props')
-      this.props.history.goBack();
-    }
+  componentDidMount(props) {
+    const { id } = this.props.match.params
+    http
+      .get(`http://localhost:8081/lessons/${id}/questions`)
+      .then(response => {
+        console.log(response.data)
+        this.setState({questions: response.data})
+      })
   }
-
-  getAnswer(answer) {
-    const { currentQuestionIndex, answers } = this.state;
-    answers[currentQuestionIndex] = answer;
-    this.setState(answers);
-  }
-  
-  render() {
-    let question;
-
-    switch (this.state.questions[this.state.currentQuestionIndex].category) {
-      case 'guess':
-        question = <GuessQuestion
-          question={this.state.questions[this.state.currentQuestionIndex].expression}
-          options={this.state.questions[this.state.currentQuestionIndex].options}
-          onChange={this.getAnswer}
-        />
-        break;
-      case 'compound':
-        question = <CompoundQuestion
-          question={this.state.questions[this.state.currentQuestionIndex].expression}
-          options={this.state.questions[this.state.currentQuestionIndex].options}
-          onChange={this.getAnswer}
-        />
-        break;
     
-      default:
-        break;
-    };
+    getAnswer(answer) {
+      const { currentQuestionIndex, answers } = this.state;
+      answers[currentQuestionIndex] = answer;
+      this.setState(answers);
+  }
+    
+  render() {
+    if (this.state.questions.length) {
+      let question;
 
-    return (
-      <div>
-        <ProgressBar progress={this.state.progress} />
-        <h2>Lesson</h2>
-        {question}
-        <button
-          disabled={this.state.disabledCheckButton}
-          className="btn btn-default"
-          onClick={this.checkAnswer}>
-          Check
-        </button>
-        { this.state.visibleAnswerBox 
-        ?
-          <div className="row">
-            <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 success-box">
-              <span className="pull-left">Correct!</span>
-              <button
-                className="btn btn-primary pull-right"
-                onClick={this.nextQuestion}>
-                Next
-              </button>
+      switch (this.state.questions[this.state.currentQuestionIndex].category) {
+        case 'guess':
+          question = <GuessQuestion
+            question={this.state.questions[this.state.currentQuestionIndex].expression}
+            options={this.state.questions[this.state.currentQuestionIndex].question_options}
+            onChange={this.getAnswer}
+          />
+          break;
+        case 'compound':
+          question = <CompoundQuestion
+            question={this.state.questions[this.state.currentQuestionIndex].expression}
+            options={this.state.questions[this.state.currentQuestionIndex].question_options}
+            onChange={this.getAnswer}
+          />
+          break;
+      
+        default:
+          break;
+      };
+
+      return (
+        <div>
+          <ProgressBar progress={this.state.progress} />
+          <h2>Lesson</h2>
+          {question}
+          <button
+            disabled={this.state.disabledCheckButton}
+            className="btn btn-default"
+            onClick={this.checkAnswer}>
+            Check
+          </button>
+          { this.state.visibleAnswerBox 
+          ?
+            <div className="row">
+              <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 success-box">
+                <span className="pull-left">Correct!</span>
+                <button
+                  className="btn btn-primary pull-right"
+                  onClick={this.nextQuestion}>
+                  Next
+                </button>
+              </div>
             </div>
-          </div>
-        :
-          null
-        }
-      </div>
-    );
+          :
+            null
+          }
+        </div>
+      );
+    } else {
+      // this.props.history.goBack();
+      return (
+        <div>
+          Carregando...
+        </div>
+      )
+    }
   }
   
   checkAnswer() {
@@ -155,7 +167,7 @@ class Lesson extends Component {
     } else {
       this.props.dispatchReachGoal();
       this.props.history.push({
-        pathname: 'lesson/finished',
+        pathname: '/lesson/finished',
         state: {
           questions: this.state.questions
         }

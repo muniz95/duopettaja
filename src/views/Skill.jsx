@@ -14,7 +14,7 @@ export default class Skill extends Component {
   
   goToLesson(lesson) {
     this.props.history.push({
-      pathname: '/lesson',
+      pathname: `/lesson/${lesson.id}`,
       state: {
         questions: lesson.questions
       }

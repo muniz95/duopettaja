@@ -1,72 +1,411 @@
 {
-  "skills": [
-    { "id": 1, "name": "Basics 1", "active": true },
-    { "id": 2, "name": "Dates", "active": true },
-    { "id": 3, "name": "Work", "active": false },
-    { "id": 4, "name": "V. Infin", "active": false },
-    { "id": 5, "name": "Adessive case", "active": false },
-    { "id": 6, "name": "Ablative case", "active": false },
-    { "id": 7, "name": "Allative case", "active": false },
-    { "id": 8, "name": "Adverbs", "active": false },
-    { "id": 9, "name": "Places", "active": false },
-    { "id": 10, "name": "Abstract", "active": false }
-  ],
-  "lessons": [
-    {
-      "id": 1,
-      "words": ["Minä", "Sinä", "Hän"],
-      "completed": true,
-      "skill_id": 1
-    },
-    { 
-      "id": 2,
-      "words": ["Me", "Te", "He"],
-      "completed": false,
-      "skill_id": 1
-    }
-  ],
-  "questions": [
-    {
-      "id": 1,
-      "category": "guess",
-      "expression": "Minä",
-      "options": [
-        { "id": 1, "text": "I", "correct": true, "selected": false },
-        { "id": 2, "text": "You", "correct": false, "selected": false },
-        { "id": 3, "text": "We", "correct": false, "selected": false },
-        { "id": 4, "text": "Me", "correct": false, "selected": false }
-      ],
-      "weight": 33,
-      "lesson_id": 1
-    },
-    {
-      "id": 2,
-      "category": "compound",
-      "expression": "Minä olen mies",
-      "options": [
-        { "id": 1, "text": "I", "correct": true, "order": 1 },
-        { "id": 2, "text": "apple", "correct": false, "order": 0 },
-        { "id": 3, "text": "go", "correct": false, "order": 0 },
-        { "id": 4, "text": "am", "correct": true, "order": 2 },
-        { "id": 5, "text": "a", "correct": true, "order": 3 },
-        { "id": 6, "text": "an", "correct": false, "order": 0 },
-        { "id": 7, "text": "man", "correct": true, "order": 4 }
-      ],
-      "weight": 33,
-      "lesson_id": 1
-    },
-    {
-      "id": 3,
-      "category": "guess",
-      "expression": "Minä",
-      "options": [
-        { "id": 1, "text": "I", "correct": true },
-        { "id": 2, "text": "You", "correct": false },
-        { "id": 3, "text": "We", "correct": false },
-        { "id": 4, "text": "Me", "correct": false }
-      ],
-      "weight": 34,
-      "lesson_id": 1
-    }
-  ]
+  "lessons": [{
+    "id": 1,
+    "completed": true,
+    "words": "Minä*Sinä*Hän",
+    "skill_id": 1,
+    "created_at": "2018-01-20T03:34:06.388Z",
+    "updated_at": "2018-01-20T03:34:06.388Z"
+  }, {
+    "id": 2,
+    "completed": false,
+    "words": "Me*Te*He",
+    "skill_id": 1,
+    "created_at": "2018-01-20T03:34:06.399Z",
+    "updated_at": "2018-01-20T03:34:06.399Z"
+  }],
+  "levels": [{
+    "id": 1,
+    "alias": null,
+    "score": 0,
+    "number": 1,
+    "created_at": "2018-01-20T03:34:06.640Z",
+    "updated_at": "2018-01-20T03:34:06.640Z"
+  }, {
+    "id": 2,
+    "alias": null,
+    "score": 60,
+    "number": 2,
+    "created_at": "2018-01-20T03:34:06.653Z",
+    "updated_at": "2018-01-20T03:34:06.653Z"
+  }, {
+    "id": 3,
+    "alias": null,
+    "score": 120,
+    "number": 3,
+    "created_at": "2018-01-20T03:34:06.664Z",
+    "updated_at": "2018-01-20T03:34:06.664Z"
+  }, {
+    "id": 4,
+    "alias": null,
+    "score": 200,
+    "number": 4,
+    "created_at": "2018-01-20T03:34:06.675Z",
+    "updated_at": "2018-01-20T03:34:06.675Z"
+  }, {
+    "id": 5,
+    "alias": null,
+    "score": 300,
+    "number": 5,
+    "created_at": "2018-01-20T03:34:06.686Z",
+    "updated_at": "2018-01-20T03:34:06.686Z"
+  }, {
+    "id": 6,
+    "alias": null,
+    "score": 450,
+    "number": 6,
+    "created_at": "2018-01-20T03:34:06.697Z",
+    "updated_at": "2018-01-20T03:34:06.697Z"
+  }, {
+    "id": 7,
+    "alias": null,
+    "score": 750,
+    "number": 7,
+    "created_at": "2018-01-20T03:34:06.708Z",
+    "updated_at": "2018-01-20T03:34:06.708Z"
+  }, {
+    "id": 8,
+    "alias": null,
+    "score": 1125,
+    "number": 8,
+    "created_at": "2018-01-20T03:34:06.719Z",
+    "updated_at": "2018-01-20T03:34:06.719Z"
+  }, {
+    "id": 9,
+    "alias": null,
+    "score": 1650,
+    "number": 9,
+    "created_at": "2018-01-20T03:34:06.730Z",
+    "updated_at": "2018-01-20T03:34:06.730Z"
+  }, {
+    "id": 10,
+    "alias": null,
+    "score": 2250,
+    "number": 10,
+    "created_at": "2018-01-20T03:34:06.741Z",
+    "updated_at": "2018-01-20T03:34:06.741Z"
+  }, {
+    "id": 11,
+    "alias": null,
+    "score": 3000,
+    "number": 11,
+    "created_at": "2018-01-20T03:34:06.753Z",
+    "updated_at": "2018-01-20T03:34:06.753Z"
+  }, {
+    "id": 12,
+    "alias": null,
+    "score": 3900,
+    "number": 12,
+    "created_at": "2018-01-20T03:34:06.764Z",
+    "updated_at": "2018-01-20T03:34:06.764Z"
+  }, {
+    "id": 13,
+    "alias": null,
+    "score": 4900,
+    "number": 13,
+    "created_at": "2018-01-20T03:34:06.774Z",
+    "updated_at": "2018-01-20T03:34:06.774Z"
+  }, {
+    "id": 14,
+    "alias": null,
+    "score": 6000,
+    "number": 14,
+    "created_at": "2018-01-20T03:34:06.786Z",
+    "updated_at": "2018-01-20T03:34:06.786Z"
+  }, {
+    "id": 15,
+    "alias": null,
+    "score": 7500,
+    "number": 15,
+    "created_at": "2018-01-20T03:34:06.797Z",
+    "updated_at": "2018-01-20T03:34:06.797Z"
+  }, {
+    "id": 16,
+    "alias": null,
+    "score": 9000,
+    "number": 16,
+    "created_at": "2018-01-20T03:34:06.808Z",
+    "updated_at": "2018-01-20T03:34:06.808Z"
+  }, {
+    "id": 17,
+    "alias": null,
+    "score": 10500,
+    "number": 17,
+    "created_at": "2018-01-20T03:34:06.819Z",
+    "updated_at": "2018-01-20T03:34:06.819Z"
+  }, {
+    "id": 18,
+    "alias": null,
+    "score": 12000,
+    "number": 18,
+    "created_at": "2018-01-20T03:34:06.830Z",
+    "updated_at": "2018-01-20T03:34:06.830Z"
+  }, {
+    "id": 19,
+    "alias": null,
+    "score": 13500,
+    "number": 19,
+    "created_at": "2018-01-20T03:34:06.841Z",
+    "updated_at": "2018-01-20T03:34:06.841Z"
+  }, {
+    "id": 20,
+    "alias": null,
+    "score": 15000,
+    "number": 20,
+    "created_at": "2018-01-20T03:34:06.852Z",
+    "updated_at": "2018-01-20T03:34:06.852Z"
+  }, {
+    "id": 21,
+    "alias": null,
+    "score": 17000,
+    "number": 21,
+    "created_at": "2018-01-20T03:34:06.863Z",
+    "updated_at": "2018-01-20T03:34:06.863Z"
+  }, {
+    "id": 22,
+    "alias": null,
+    "score": 19000,
+    "number": 22,
+    "created_at": "2018-01-20T03:34:06.874Z",
+    "updated_at": "2018-01-20T03:34:06.874Z"
+  }, {
+    "id": 23,
+    "alias": null,
+    "score": 22500,
+    "number": 23,
+    "created_at": "2018-01-20T03:34:06.885Z",
+    "updated_at": "2018-01-20T03:34:06.885Z"
+  }, {
+    "id": 24,
+    "alias": null,
+    "score": 26000,
+    "number": 24,
+    "created_at": "2018-01-20T03:34:06.896Z",
+    "updated_at": "2018-01-20T03:34:06.896Z"
+  }, {
+    "id": 25,
+    "alias": null,
+    "score": 30000,
+    "number": 25,
+    "created_at": "2018-01-20T03:34:06.907Z",
+    "updated_at": "2018-01-20T03:34:06.907Z"
+  }],
+  "question_options": [{
+    "id": 1,
+    "category": "guess",
+    "expression": "Minä",
+    "audio": "",
+    "weight": 33,
+    "lesson_id": 1,
+    "created_at": "2018-01-20T03:34:06.422Z",
+    "updated_at": "2018-01-20T03:34:06.422Z"
+  }, {
+    "id": 2,
+    "category": "compound",
+    "expression": "Minä olen mies",
+    "audio": "",
+    "weight": 33,
+    "lesson_id": 1,
+    "created_at": "2018-01-20T03:34:06.433Z",
+    "updated_at": "2018-01-20T03:34:06.433Z"
+  }, {
+    "id": 3,
+    "category": "guess",
+    "expression": "Minä",
+    "audio": "",
+    "weight": 34,
+    "lesson_id": 1,
+    "created_at": "2018-01-20T03:34:06.444Z",
+    "updated_at": "2018-01-20T03:34:06.444Z"
+  }],
+  "questions": [{
+    "id": 1,
+    "text": "I",
+    "correct": true,
+    "order": 0,
+    "question_id": 1,
+    "created_at": "2018-01-20T03:34:06.466Z",
+    "updated_at": "2018-01-20T03:34:06.466Z"
+  }, {
+    "id": 2,
+    "text": "You",
+    "correct": false,
+    "order": 0,
+    "question_id": 1,
+    "created_at": "2018-01-20T03:34:06.477Z",
+    "updated_at": "2018-01-20T03:34:06.477Z"
+  }, {
+    "id": 3,
+    "text": "We",
+    "correct": false,
+    "order": 0,
+    "question_id": 1,
+    "created_at": "2018-01-20T03:34:06.488Z",
+    "updated_at": "2018-01-20T03:34:06.488Z"
+  }, {
+    "id": 4,
+    "text": "Me",
+    "correct": false,
+    "order": 0,
+    "question_id": 1,
+    "created_at": "2018-01-20T03:34:06.499Z",
+    "updated_at": "2018-01-20T03:34:06.499Z"
+  }, {
+    "id": 5,
+    "text": "I",
+    "correct": true,
+    "order": 1,
+    "question_id": 2,
+    "created_at": "2018-01-20T03:34:06.510Z",
+    "updated_at": "2018-01-20T03:34:06.510Z"
+  }, {
+    "id": 6,
+    "text": "apple",
+    "correct": false,
+    "order": 0,
+    "question_id": 2,
+    "created_at": "2018-01-20T03:34:06.521Z",
+    "updated_at": "2018-01-20T03:34:06.521Z"
+  }, {
+    "id": 7,
+    "text": "go",
+    "correct": false,
+    "order": 0,
+    "question_id": 2,
+    "created_at": "2018-01-20T03:34:06.533Z",
+    "updated_at": "2018-01-20T03:34:06.533Z"
+  }, {
+    "id": 8,
+    "text": "am",
+    "correct": true,
+    "order": 2,
+    "question_id": 2,
+    "created_at": "2018-01-20T03:34:06.543Z",
+    "updated_at": "2018-01-20T03:34:06.543Z"
+  }, {
+    "id": 9,
+    "text": "a",
+    "correct": true,
+    "order": 3,
+    "question_id": 2,
+    "created_at": "2018-01-20T03:34:06.554Z",
+    "updated_at": "2018-01-20T03:34:06.554Z"
+  }, {
+    "id": 10,
+    "text": "an",
+    "correct": false,
+    "order": 0,
+    "question_id": 2,
+    "created_at": "2018-01-20T03:34:06.566Z",
+    "updated_at": "2018-01-20T03:34:06.566Z"
+  }, {
+    "id": 11,
+    "text": "man",
+    "correct": true,
+    "order": 4,
+    "question_id": 2,
+    "created_at": "2018-01-20T03:34:06.577Z",
+    "updated_at": "2018-01-20T03:34:06.577Z"
+  }, {
+    "id": 12,
+    "text": "I",
+    "correct": true,
+    "order": null,
+    "question_id": 3,
+    "created_at": "2018-01-20T03:34:06.588Z",
+    "updated_at": "2018-01-20T03:34:06.588Z"
+  }, {
+    "id": 13,
+    "text": "You",
+    "correct": false,
+    "order": null,
+    "question_id": 3,
+    "created_at": "2018-01-20T03:34:06.599Z",
+    "updated_at": "2018-01-20T03:34:06.599Z"
+  }, {
+    "id": 14,
+    "text": "We",
+    "correct": false,
+    "order": null,
+    "question_id": 3,
+    "created_at": "2018-01-20T03:34:06.610Z",
+    "updated_at": "2018-01-20T03:34:06.610Z"
+  }, {
+    "id": 15,
+    "text": "Me",
+    "correct": false,
+    "order": null,
+    "question_id": 3,
+    "created_at": "2018-01-20T03:34:06.621Z",
+    "updated_at": "2018-01-20T03:34:06.621Z"
+  }],
+  "skills": [{
+    "id": 1,
+    "name": "Basics 1",
+    "active": true,
+    "created_at": "2018-01-20T03:34:06.252Z",
+    "updated_at": "2018-01-20T03:34:06.252Z"
+  }, {
+    "id": 2,
+    "name": "Dates",
+    "active": true,
+    "created_at": "2018-01-20T03:34:06.265Z",
+    "updated_at": "2018-01-20T03:34:06.265Z"
+  }, {
+    "id": 3,
+    "name": "Work",
+    "active": false,
+    "created_at": "2018-01-20T03:34:06.276Z",
+    "updated_at": "2018-01-20T03:34:06.276Z"
+  }, {
+    "id": 4,
+    "name": "V. Infin",
+    "active": false,
+    "created_at": "2018-01-20T03:34:06.287Z",
+    "updated_at": "2018-01-20T03:34:06.287Z"
+  }, {
+    "id": 5,
+    "name": "Adessive case",
+    "active": false,
+    "created_at": "2018-01-20T03:34:06.298Z",
+    "updated_at": "2018-01-20T03:34:06.298Z"
+  }, {
+    "id": 6,
+    "name": "Ablative case",
+    "active": false,
+    "created_at": "2018-01-20T03:34:06.310Z",
+    "updated_at": "2018-01-20T03:34:06.310Z"
+  }, {
+    "id": 7,
+    "name": "Allative case",
+    "active": false,
+    "created_at": "2018-01-20T03:34:06.320Z",
+    "updated_at": "2018-01-20T03:34:06.320Z"
+  }, {
+    "id": 8,
+    "name": "Adverbs",
+    "active": false,
+    "created_at": "2018-01-20T03:34:06.332Z",
+    "updated_at": "2018-01-20T03:34:06.332Z"
+  }, {
+    "id": 9,
+    "name": "Places",
+    "active": false,
+    "created_at": "2018-01-20T03:34:06.343Z",
+    "updated_at": "2018-01-20T03:34:06.343Z"
+  }, {
+    "id": 10,
+    "name": "Abstract",
+    "active": false,
+    "created_at": "2018-01-20T03:34:06.354Z",
+    "updated_at": "2018-01-20T03:34:06.354Z"
+  }],
+  "users": [{
+    "id": 1,
+    "name": "Admin",
+    "email": "admin@duopettaja.com",
+    "password": "admin123",
+    "created_at": "2018-01-20T03:34:06.237Z",
+    "updated_at": "2018-01-20T03:34:06.237Z"
+  }]
 }
