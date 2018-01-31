@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import dotenv from 'dotenv'
 import http from '../utils/http'
 import SkillBadge from '../components/SkillBadge'
 import '../styles/Home.css'
+
+dotenv.config()
 
 export default class Home extends Component {
   constructor (props) {
@@ -14,9 +17,12 @@ export default class Home extends Component {
 
   componentDidMount () {
     http
-      .get("http://localhost:8081/skills")
+      .get(`${process.env.REACT_APP_API}/skills`)
       .then(response => this.setState({ skills: response.data }))
-      .catch(error => this.setState({ errorMessage: 'An error occured. Refresh the page.' }));
+      .catch(error => {
+        console.log(error)
+        this.setState({ errorMessage: 'An error occured. Refresh the page.' })
+      });
     // this.setState({
     //   skills: [
     //     { id: 1, name: 'Basics 1', active: true },

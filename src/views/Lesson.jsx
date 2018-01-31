@@ -29,7 +29,7 @@ class Lesson extends Component {
   componentDidMount(props) {
     const { id } = this.props.match.params
     http
-      .get(`http://localhost:8081/lessons/${id}/questions`)
+      .get(`${process.env.REACT_APP_API}/lessons/${id}/questions`)
       .then(response => {
         console.log(response.data)
         this.setState({questions: response.data})

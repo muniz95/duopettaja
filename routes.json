@@ -1,4 +1,4 @@
 {
   "/api/*": "/$1",
-  "/expenses/:account_id": "/expenses?account_id=:account_id"
+  "/lessons/:lesson_id/questions": "/questions?lesson_id=:lesson_id"
 }

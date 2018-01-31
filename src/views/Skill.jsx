@@ -24,7 +24,7 @@ export default class Skill extends Component {
   componentWillMount() {
     const {id} = this.props.match.params
     http
-      .get(`http://localhost:8081/skills/${id}/lessons`)
+      .get(`${process.env.REACT_APP_API}/skills/${id}/lessons`)
       .then(response => this.setState({lessons: response.data}))
       .catch(console.error)
     // this.setState({
