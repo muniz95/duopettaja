@@ -18,12 +18,14 @@ class Header extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
+            {/*
             <LinkContainer to={'/skill'}>
               <NavItem eventKey={1}>Skill</NavItem>
             </LinkContainer>
             <LinkContainer to={'/lesson'}>
               <NavItem eventKey={2}>Lesson</NavItem>
             </LinkContainer>
+            */}
             <NavItem eventKey={2}>Goal: {this.props.goal}</NavItem>
           </Nav>
         </Navbar.Collapse>

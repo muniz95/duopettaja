@@ -197,6 +197,41 @@
     "audio": "",
     "weight": 33,
     "lesson_id": 1,
+    "options": [
+      {
+        "id": 1,
+        "text": "I",
+        "correct": true,
+        "order": 0,
+        "question_id": 1,
+        "created_at": "2018-01-20T03:34:06.466Z",
+        "updated_at": "2018-01-20T03:34:06.466Z"
+      }, {
+        "id": 2,
+        "text": "You",
+        "correct": false,
+        "order": 0,
+        "question_id": 1,
+        "created_at": "2018-01-20T03:34:06.477Z",
+        "updated_at": "2018-01-20T03:34:06.477Z"
+      }, {
+        "id": 3,
+        "text": "We",
+        "correct": false,
+        "order": 0,
+        "question_id": 1,
+        "created_at": "2018-01-20T03:34:06.488Z",
+        "updated_at": "2018-01-20T03:34:06.488Z"
+      }, {
+        "id": 4,
+        "text": "Me",
+        "correct": false,
+        "order": 0,
+        "question_id": 1,
+        "created_at": "2018-01-20T03:34:06.499Z",
+        "updated_at": "2018-01-20T03:34:06.499Z"
+      }
+    ],
     "created_at": "2018-01-20T03:34:06.422Z",
     "updated_at": "2018-01-20T03:34:06.422Z"
   }, {
@@ -206,6 +241,65 @@
     "audio": "",
     "weight": 33,
     "lesson_id": 1,
+    "options": [
+      {
+        "id": 5,
+        "text": "I",
+        "correct": true,
+        "order": 1,
+        "question_id": 2,
+        "created_at": "2018-01-20T03:34:06.510Z",
+        "updated_at": "2018-01-20T03:34:06.510Z"
+      }, {
+        "id": 6,
+        "text": "apple",
+        "correct": false,
+        "order": 0,
+        "question_id": 2,
+        "created_at": "2018-01-20T03:34:06.521Z",
+        "updated_at": "2018-01-20T03:34:06.521Z"
+      }, {
+        "id": 7,
+        "text": "go",
+        "correct": false,
+        "order": 0,
+        "question_id": 2,
+        "created_at": "2018-01-20T03:34:06.533Z",
+        "updated_at": "2018-01-20T03:34:06.533Z"
+      }, {
+        "id": 8,
+        "text": "am",
+        "correct": true,
+        "order": 2,
+        "question_id": 2,
+        "created_at": "2018-01-20T03:34:06.543Z",
+        "updated_at": "2018-01-20T03:34:06.543Z"
+      }, {
+        "id": 9,
+        "text": "a",
+        "correct": true,
+        "order": 3,
+        "question_id": 2,
+        "created_at": "2018-01-20T03:34:06.554Z",
+        "updated_at": "2018-01-20T03:34:06.554Z"
+      }, {
+        "id": 10,
+        "text": "an",
+        "correct": false,
+        "order": 0,
+        "question_id": 2,
+        "created_at": "2018-01-20T03:34:06.566Z",
+        "updated_at": "2018-01-20T03:34:06.566Z"
+      }, {
+        "id": 11,
+        "text": "man",
+        "correct": true,
+        "order": 4,
+        "question_id": 2,
+        "created_at": "2018-01-20T03:34:06.577Z",
+        "updated_at": "2018-01-20T03:34:06.577Z"
+      }
+    ],
     "created_at": "2018-01-20T03:34:06.433Z",
     "updated_at": "2018-01-20T03:34:06.433Z"
   }, {
@@ -215,191 +309,83 @@
     "audio": "",
     "weight": 34,
     "lesson_id": 1,
+    "options": [
+      {
+        "id": 12,
+        "text": "I",
+        "correct": true,
+        "order": null,
+        "question_id": 3,
+        "created_at": "2018-01-20T03:34:06.588Z",
+        "updated_at": "2018-01-20T03:34:06.588Z"
+      }, {
+        "id": 13,
+        "text": "You",
+        "correct": false,
+        "order": null,
+        "question_id": 3,
+        "created_at": "2018-01-20T03:34:06.599Z",
+        "updated_at": "2018-01-20T03:34:06.599Z"
+      }, {
+        "id": 14,
+        "text": "We",
+        "correct": false,
+        "order": null,
+        "question_id": 3,
+        "created_at": "2018-01-20T03:34:06.610Z",
+        "updated_at": "2018-01-20T03:34:06.610Z"
+      }, {
+        "id": 15,
+        "text": "Me",
+        "correct": false,
+        "order": null,
+        "question_id": 3,
+        "created_at": "2018-01-20T03:34:06.621Z",
+        "updated_at": "2018-01-20T03:34:06.621Z"
+      }
+    ],
     "created_at": "2018-01-20T03:34:06.444Z",
     "updated_at": "2018-01-20T03:34:06.444Z"
   }],
-  "question_options": [{
-    "id": 1,
-    "text": "I",
-    "correct": true,
-    "order": 0,
-    "question_id": 1,
-    "created_at": "2018-01-20T03:34:06.466Z",
-    "updated_at": "2018-01-20T03:34:06.466Z"
-  }, {
-    "id": 2,
-    "text": "You",
-    "correct": false,
-    "order": 0,
-    "question_id": 1,
-    "created_at": "2018-01-20T03:34:06.477Z",
-    "updated_at": "2018-01-20T03:34:06.477Z"
-  }, {
-    "id": 3,
-    "text": "We",
-    "correct": false,
-    "order": 0,
-    "question_id": 1,
-    "created_at": "2018-01-20T03:34:06.488Z",
-    "updated_at": "2018-01-20T03:34:06.488Z"
-  }, {
-    "id": 4,
-    "text": "Me",
-    "correct": false,
-    "order": 0,
-    "question_id": 1,
-    "created_at": "2018-01-20T03:34:06.499Z",
-    "updated_at": "2018-01-20T03:34:06.499Z"
-  }, {
-    "id": 5,
-    "text": "I",
-    "correct": true,
-    "order": 1,
-    "question_id": 2,
-    "created_at": "2018-01-20T03:34:06.510Z",
-    "updated_at": "2018-01-20T03:34:06.510Z"
-  }, {
-    "id": 6,
-    "text": "apple",
-    "correct": false,
-    "order": 0,
-    "question_id": 2,
-    "created_at": "2018-01-20T03:34:06.521Z",
-    "updated_at": "2018-01-20T03:34:06.521Z"
-  }, {
-    "id": 7,
-    "text": "go",
-    "correct": false,
-    "order": 0,
-    "question_id": 2,
-    "created_at": "2018-01-20T03:34:06.533Z",
-    "updated_at": "2018-01-20T03:34:06.533Z"
-  }, {
-    "id": 8,
-    "text": "am",
-    "correct": true,
-    "order": 2,
-    "question_id": 2,
-    "created_at": "2018-01-20T03:34:06.543Z",
-    "updated_at": "2018-01-20T03:34:06.543Z"
-  }, {
-    "id": 9,
-    "text": "a",
-    "correct": true,
-    "order": 3,
-    "question_id": 2,
-    "created_at": "2018-01-20T03:34:06.554Z",
-    "updated_at": "2018-01-20T03:34:06.554Z"
-  }, {
-    "id": 10,
-    "text": "an",
-    "correct": false,
-    "order": 0,
-    "question_id": 2,
-    "created_at": "2018-01-20T03:34:06.566Z",
-    "updated_at": "2018-01-20T03:34:06.566Z"
-  }, {
-    "id": 11,
-    "text": "man",
-    "correct": true,
-    "order": 4,
-    "question_id": 2,
-    "created_at": "2018-01-20T03:34:06.577Z",
-    "updated_at": "2018-01-20T03:34:06.577Z"
-  }, {
-    "id": 12,
-    "text": "I",
-    "correct": true,
-    "order": null,
-    "question_id": 3,
-    "created_at": "2018-01-20T03:34:06.588Z",
-    "updated_at": "2018-01-20T03:34:06.588Z"
-  }, {
-    "id": 13,
-    "text": "You",
-    "correct": false,
-    "order": null,
-    "question_id": 3,
-    "created_at": "2018-01-20T03:34:06.599Z",
-    "updated_at": "2018-01-20T03:34:06.599Z"
-  }, {
-    "id": 14,
-    "text": "We",
-    "correct": false,
-    "order": null,
-    "question_id": 3,
-    "created_at": "2018-01-20T03:34:06.610Z",
-    "updated_at": "2018-01-20T03:34:06.610Z"
-  }, {
-    "id": 15,
-    "text": "Me",
-    "correct": false,
-    "order": null,
-    "question_id": 3,
-    "created_at": "2018-01-20T03:34:06.621Z",
-    "updated_at": "2018-01-20T03:34:06.621Z"
-  }],
-  "skills": [{
-    "id": 1,
-    "name": "Basics 1",
-    "active": true,
-    "created_at": "2018-01-20T03:34:06.252Z",
-    "updated_at": "2018-01-20T03:34:06.252Z"
-  }, {
-    "id": 2,
-    "name": "Dates",
-    "active": true,
-    "created_at": "2018-01-20T03:34:06.265Z",
-    "updated_at": "2018-01-20T03:34:06.265Z"
-  }, {
-    "id": 3,
-    "name": "Work",
-    "active": false,
-    "created_at": "2018-01-20T03:34:06.276Z",
-    "updated_at": "2018-01-20T03:34:06.276Z"
-  }, {
-    "id": 4,
-    "name": "V. Infin",
-    "active": false,
-    "created_at": "2018-01-20T03:34:06.287Z",
-    "updated_at": "2018-01-20T03:34:06.287Z"
-  }, {
-    "id": 5,
-    "name": "Adessive case",
-    "active": false,
-    "created_at": "2018-01-20T03:34:06.298Z",
-    "updated_at": "2018-01-20T03:34:06.298Z"
-  }, {
-    "id": 6,
-    "name": "Ablative case",
-    "active": false,
-    "created_at": "2018-01-20T03:34:06.310Z",
-    "updated_at": "2018-01-20T03:34:06.310Z"
-  }, {
-    "id": 7,
-    "name": "Allative case",
-    "active": false,
-    "created_at": "2018-01-20T03:34:06.320Z",
-    "updated_at": "2018-01-20T03:34:06.320Z"
-  }, {
-    "id": 8,
-    "name": "Adverbs",
-    "active": false,
-    "created_at": "2018-01-20T03:34:06.332Z",
-    "updated_at": "2018-01-20T03:34:06.332Z"
-  }, {
-    "id": 9,
-    "name": "Places",
-    "active": false,
-    "created_at": "2018-01-20T03:34:06.343Z",
-    "updated_at": "2018-01-20T03:34:06.343Z"
-  }, {
-    "id": 10,
-    "name": "Abstract",
-    "active": false,
-    "created_at": "2018-01-20T03:34:06.354Z",
-    "updated_at": "2018-01-20T03:34:06.354Z"
-  }],
+  "skills": [
+    {"id": 1,"name": "Basics 1","active": true,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 2,"name": "Dates","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 3,"name": "Work","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 4,"name": "Verb infinitive","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 5,"name": "Adessive case","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 6,"name": "Ablative case","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 7,"name": "Allative case","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 8,"name": "Adverbs","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 9,"name": "Places","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 10,"name": "Essive case","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 11,"name": "Translative case","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 12,"name": "Instructive case","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 13,"name": "Abessive case","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 14,"name": "Commitative case","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 15,"name": "Objects","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 16,"name": "Clothes","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 17,"name": "Adjectives","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 18,"name": "Negations","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 19,"name": "Conjunctions","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 20,"name": "Pronouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 21,"name": "Prepositions","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 22,"name": "Verb past","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 23,"name": "Travel","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 24,"name": "Pronouns 2","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 25,"name": "Abstract","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 26,"name": "Verb imperative","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 27,"name": "Indefinite pronouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 28,"name": "Reflexive pronouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 29,"name": "Demonstrative pronouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 30,"name": "Relative pronouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 31,"name": "Personal pronouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 32,"name": "Interrogative pronouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 33,"name": "Irregular pronouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 34,"name": "Morphemes (prefix, suffix, etc)","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 35,"name": "Nouns","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 36,"name": "Postpositions","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"},
+    {"id": 37,"name": "Colors","active": false,"created_at": "2018-01-20T03:34:06.354Z","updated_at": "2018-01-20T03:34:06.354Z"}
+  ],
   "users": [{
     "id": 1,
     "name": "Admin",
