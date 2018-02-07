@@ -8,8 +8,8 @@ export default function ProgressBar ({progress = 0}) {
         <div className="progress-bar bg-duopettaja" role="progressbar" style={{width: `${progress}%`}}
           aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
         </div>
-        <span>{progress}%</span>
       </div>
+      <span>{progress}%</span>
     </div>
   )
 }

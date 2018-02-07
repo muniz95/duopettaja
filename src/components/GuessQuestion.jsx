@@ -16,10 +16,15 @@ export default class GuessQuestion extends Component {
   componentDidMount () {
     const { question, options } = this.props
     this.setState({question, options})
+    this.cleanSelectedAnswers()
+    console.log('montado')
+  }
+  
+  componentWillUnmount() {
+    console.log('desmontado')
   }
 
   getAnswer (option) {
-    this.cleanSelectedAnswers()
     option.selected = true
     this.props.onChange(option)
   }

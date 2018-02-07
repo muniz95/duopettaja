@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProgressBar from '../components/ProgressBar';
 import CompoundQuestion from '../components/CompoundQuestion';
 import GuessQuestion from '../components/GuessQuestion';
+import Loading from '../components/Loading';
 import { reachGoal } from '../actions';
 import { connect } from 'react-redux';
 import http from '../utils/http'
@@ -98,7 +99,7 @@ class Lesson extends Component {
       // this.props.history.goBack();
       return (
         <div>
-          Carregando...
+          <Loading />
         </div>
       )
     }

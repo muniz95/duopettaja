@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import dotenv from 'dotenv'
 import http from '../utils/http'
 import SkillBadge from '../components/SkillBadge'
+import Loading from '../components/Loading'
 import '../styles/Home.css'
 
 dotenv.config()
@@ -11,36 +12,26 @@ export default class Home extends Component {
     super(props)
     this.state = {
       skills: [],
-      errorMessage: ''
+      errorMessage: '',
+      loading: true
     }
   }
 
   componentDidMount () {
     http
       .get(`${process.env.REACT_APP_API}/skills`)
-      .then(response => this.setState({ skills: response.data }))
+      .then(response => this.setState({ skills: response.data, loading: false }))
       .catch(error => {
         console.log(error)
-        this.setState({ errorMessage: 'An error occured. Refresh the page.' })
+        this.setState({ errorMessage: 'An error occured. Refresh the page.', loading: false })
       });
-    // this.setState({
-    //   skills: [
-    //     { id: 1, name: 'Basics 1', active: true },
-    //     { id: 2, name: 'Dates', active: true },
-    //     { id: 3, name: 'Work', active: false },
-    //     { id: 4, name: 'V. Infin', active: false },
-    //     { id: 5, name: 'Adessive case', active: false },
-    //     { id: 6, name: 'Ablative case', active: false },
-    //     { id: 7, name: 'Allative case', active: false },
-    //     { id: 8, name: 'Adverbs', active: false },
-    //     { id: 9, name: 'Places', active: false },
-    //     { id: 10, name: 'Abstract', active: false }
-    //   ]
-    // })
   }
 
   render () {
-    return (
+    const content = this.state.loading
+    ?
+      <Loading />
+    :
       <div className="row">
         <p className="text-left">
           Home
@@ -53,6 +44,6 @@ export default class Home extends Component {
           // <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
         ) }
       </div>
-    )
+    return content
   }
 }

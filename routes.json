@@ -1,4 +1,5 @@
 {
   "/api/*": "/$1",
+  "/skills/:skill_id/lessons": "/lessons?skill_id=:skill_id",
   "/lessons/:lesson_id/questions": "/questions?lesson_id=:lesson_id"
 }
