@@ -1,29 +1,34 @@
-import React, { Component } from 'react';
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+import React, { Component } from 'react'
+/* eslint-enable no-unused-vars */
+import PropTypes from 'prop-types'
 import http from '../utils/http'
 import Loading from '../components/Loading'
-import '../styles/Skill.css';
+import '../styles/Skill.css'
 
-export default class Skill extends Component {
-  constructor(props) {
-    super(props);
+class Skill extends Component {
+  constructor (props) {
+    super(props)
     this.state = {
       lessons: [],
       loading: true
     }
-    
+
     this.goToLesson = this.goToLesson.bind(this)
   }
-  
-  goToLesson(lesson) {
+
+  goToLesson (lesson) {
     this.props.history.push({
       pathname: `/lesson/${lesson.id}`,
       state: {
         questions: lesson.questions
       }
-    });
+    })
   }
 
-  componentWillMount() {
+  componentWillMount () {
     const {id} = this.props.match.params
     http
       .get(`${process.env.REACT_APP_API}/skills/${id}/lessons`)
@@ -31,12 +36,10 @@ export default class Skill extends Component {
       .catch(console.error)
   }
 
-  render() {
+  render () {
     const content = this.state.loading
-    ?
-      <Loading />
-    :
-     this.state.lessons.map((lesson, index, array) =>
+      ? <Loading />
+      : this.state.lessons.map((lesson, index, array) =>
         <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={lesson.id}>
           <div className="well">
             <p>
@@ -46,11 +49,9 @@ export default class Skill extends Component {
               <span>{lesson.words.split('*').join(', ')}</span>
             </p>
             <p>
-              { lesson.completed 
-              ?
-                <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
-              :
-                <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
+              { lesson.completed
+                ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
+                : <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
               }
             </p>
           </div>
@@ -61,10 +62,17 @@ export default class Skill extends Component {
         <div className="row">
           <h2>Skill page</h2>
         </div>
-          <div className="row">
-            { content }
-          </div>
+        <div className="row">
+          { content }
         </div>
+      </div>
     )
   }
 }
+
+Skill.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.object
+}
+
+export default Skill

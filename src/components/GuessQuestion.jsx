@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
+/* eslint-enable no-unused-vars */
+import PropTypes from 'prop-types'
 import '../styles/GuessQuestion.css'
 
-export default class GuessQuestion extends Component {
+class GuessQuestion extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -17,11 +20,6 @@ export default class GuessQuestion extends Component {
     const { question, options } = this.props
     this.setState({question, options})
     this.cleanSelectedAnswers()
-    console.log('montado')
-  }
-  
-  componentWillUnmount() {
-    console.log('desmontado')
   }
 
   getAnswer (option) {
@@ -29,8 +27,10 @@ export default class GuessQuestion extends Component {
     this.props.onChange(option)
   }
 
-  cleanSelectedAnswers() {
-    this.props.options.forEach(option => option.selected = false)
+  cleanSelectedAnswers () {
+    this.props.options.forEach(option => {
+      option.selected = false
+    })
   }
 
   render () {
@@ -43,7 +43,7 @@ export default class GuessQuestion extends Component {
         <div className="row">
           {options.map(option =>
             <div key={option.id} className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <div className={"well well-sm" + (option.selected ? ' selected' : '')} onClick={() => this.getAnswer(option)}>
+              <div className={'well well-sm' + (option.selected ? ' selected' : '')} onClick={() => this.getAnswer(option)}>
                 {option.text}
               </div>
             </div>
@@ -53,3 +53,11 @@ export default class GuessQuestion extends Component {
     )
   }
 }
+
+GuessQuestion.propTypes = {
+  options: PropTypes.object,
+  question: PropTypes.object,
+  onChange: PropTypes.function
+}
+
+export default GuessQuestion

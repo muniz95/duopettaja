@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
+/* eslint-enable no-unused-vars */
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './views/Home'
 import Skill from './views/Skill'

@@ -1,4 +1,8 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
+/* eslint-enable no-unused-vars */
 import dotenv from 'dotenv'
 import http from '../utils/http'
 import SkillBadge from '../components/SkillBadge'
@@ -24,15 +28,13 @@ export default class Home extends Component {
       .catch(error => {
         console.log(error)
         this.setState({ errorMessage: 'An error occured. Refresh the page.', loading: false })
-      });
+      })
   }
 
   render () {
     const content = this.state.loading
-    ?
-      <Loading />
-    :
-      <div className="row">
+      ? <Loading />
+      : <div className="row">
         <p className="text-left">
           Home
         </p>

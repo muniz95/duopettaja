@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
+/* eslint-enable no-unused-vars */
+import PropTypes from 'prop-types'
 import '../styles/CompoundQuestion.css'
 
-export default class CompoundQuestion extends Component {
+class CompoundQuestion extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -67,3 +70,11 @@ export default class CompoundQuestion extends Component {
     )
   }
 }
+
+CompoundQuestion.propTypes = {
+  options: PropTypes.object,
+  question: PropTypes.object,
+  onChange: PropTypes.function
+}
+
+export default CompoundQuestion

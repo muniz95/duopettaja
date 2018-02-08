@@ -1,17 +1,19 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
+/* eslint-enable no-unused-vars */
+import PropTypes from 'prop-types'
 import { LinkContainer } from 'react-router-bootstrap'
 
-export default class FinishedLesson extends Component {
-  constructor(props) {
+class FinishedLesson extends Component {
+  constructor (props) {
     super(props)
-    
-    console.log(props)
+
     this.state = {
       questions: props.location.state.questions
     }
   }
-  
-  render() {
+
+  render () {
     return (
       <div>
         <h2>Finished :)</h2>
@@ -24,3 +26,9 @@ export default class FinishedLesson extends Component {
     )
   }
 }
+
+FinishedLesson.propTypes = {
+  location: PropTypes.object
+}
+
+export default FinishedLesson

@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
-import ProgressBar from '../components/ProgressBar';
-import CompoundQuestion from '../components/CompoundQuestion';
-import GuessQuestion from '../components/GuessQuestion';
-import Loading from '../components/Loading';
-import { reachGoal } from '../actions';
-import { connect } from 'react-redux';
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-no-undef */
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import CompoundQuestion from '../components/CompoundQuestion'
+import GuessQuestion from '../components/GuessQuestion'
+import Loading from '../components/Loading'
+import { reachGoal } from '../actions'
+import { connect } from 'react-redux'
 import http from '../utils/http'
-import '../styles/Lesson.css';
+import '../styles/Lesson.css'
 
 class Lesson extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       progress: 0,
       currentQuestionIndex: 0,
@@ -19,15 +23,15 @@ class Lesson extends Component {
       correct: false,
       visibleAnswerBox: false,
       disabledCheckButton: false
-    };
+    }
     console.log('recebido de Skills: ', props)
 
-    this.nextQuestion = this.nextQuestion.bind(this);
-    this.checkAnswer = this.checkAnswer.bind(this);
-    this.getAnswer = this.getAnswer.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this)
+    this.checkAnswer = this.checkAnswer.bind(this)
+    this.getAnswer = this.getAnswer.bind(this)
   }
-  
-  componentDidMount(props) {
+
+  componentDidMount (props) {
     const { id } = this.props.match.params
     http
       .get(`${process.env.REACT_APP_API}/lessons/${id}/questions`)
@@ -36,16 +40,16 @@ class Lesson extends Component {
         this.setState({questions: response.data})
       })
   }
-    
-    getAnswer(answer) {
-      const { currentQuestionIndex, answers } = this.state;
-      answers[currentQuestionIndex] = answer;
-      this.setState(answers);
+
+  getAnswer (answer) {
+    const { currentQuestionIndex, answers } = this.state
+    answers[currentQuestionIndex] = answer
+    this.setState(answers)
   }
-    
-  render() {
+
+  render () {
     if (this.state.questions.length) {
-      let question;
+      let question
 
       switch (this.state.questions[this.state.currentQuestionIndex].category) {
         case 'guess':
@@ -54,18 +58,30 @@ class Lesson extends Component {
             options={this.state.questions[this.state.currentQuestionIndex].options}
             onChange={this.getAnswer}
           />
-          break;
+          break
         case 'compound':
           question = <CompoundQuestion
             question={this.state.questions[this.state.currentQuestionIndex].expression}
             options={this.state.questions[this.state.currentQuestionIndex].options}
             onChange={this.getAnswer}
           />
-          break;
-      
+          break
         default:
-          break;
-      };
+          break
+      }
+
+      const btnNextQuestion = this.state.visibleAnswerBox
+        ? <div className="row">
+          <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 success-box">
+            <span className="pull-left">Correct!</span>
+            <button
+              className="btn btn-primary pull-right"
+              onClick={this.nextQuestion}>
+              Next
+            </button>
+          </div>
+        </div>
+        : null
 
       return (
         <div>
@@ -78,25 +94,11 @@ class Lesson extends Component {
             onClick={this.checkAnswer}>
             Check
           </button>
-          { this.state.visibleAnswerBox 
-          ?
-            <div className="row">
-              <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 success-box">
-                <span className="pull-left">Correct!</span>
-                <button
-                  className="btn btn-primary pull-right"
-                  onClick={this.nextQuestion}>
-                  Next
-                </button>
-              </div>
-            </div>
-          :
-            null
-          }
+          {btnNextQuestion}
         </div>
-      );
+      )
     } else {
-      // this.props.history.goBack();
+      // this.props.history.goBack()
       return (
         <div>
           <Loading />
@@ -104,27 +106,25 @@ class Lesson extends Component {
       )
     }
   }
-  
-  checkAnswer() {
-    const { currentQuestionIndex, questions, answers } = this.state;
+
+  checkAnswer () {
+    const { currentQuestionIndex, questions, answers } = this.state
     const currentQuestion = questions[currentQuestionIndex]
     const currentAnswer = answers[currentQuestionIndex]
     let progress
     if (currentQuestion.category === 'guess') {
-      this.setState({ 
+      this.setState({
         correct: true,
         visibleAnswerBox: true,
         disabledCheckButton: true
       })
-      progress = currentAnswer.correct 
-      ? questions[currentQuestionIndex].weight
-      : -(questions[currentQuestionIndex].weight)
+      progress = currentAnswer.correct ? questions[currentQuestionIndex].weight : -(questions[currentQuestionIndex].weight)
       questions[currentQuestionIndex].correct = currentAnswer.correct
     } else {
       // Check if there is any incorrect word
       const hasWrongWord = currentAnswer.map(x => x.correct).includes(false)
       if (hasWrongWord) {
-        this.setState({ 
+        this.setState({
           correct: false,
           visibleAnswerBox: true,
           disabledCheckButton: true
@@ -133,7 +133,7 @@ class Lesson extends Component {
       } else {
         // Check if the words are in the correct order
         if (this.orderedAnswers(currentAnswer.map(x => x.order))) {
-          this.setState({ 
+          this.setState({
             correct: true,
             visibleAnswerBox: true,
             disabledCheckButton: true
@@ -145,7 +145,7 @@ class Lesson extends Component {
             correct: false,
             visibleAnswerBox: true,
             disabledCheckButton: true
-          });
+          })
           progress = 0
           questions[currentQuestionIndex].correct = false
         }
@@ -153,61 +153,66 @@ class Lesson extends Component {
     }
     this.setState({
       progress: this.state.progress + progress
-    });
+    })
   }
-  
-  nextQuestion() {
-    const { currentQuestionIndex, questions } = this.state;
-    const nextStep = currentQuestionIndex + 1;
-    if (nextStep < questions.length ) {
+
+  nextQuestion () {
+    const { currentQuestionIndex, questions } = this.state
+    const nextStep = currentQuestionIndex + 1
+    if (nextStep < questions.length) {
       this.setState({
         currentQuestionIndex: this.state.currentQuestionIndex + 1,
         visibleAnswerBox: false,
         disabledCheckButton: false
-      });
+      })
     } else {
-      this.props.dispatchReachGoal();
+      this.props.dispatchReachGoal()
       this.props.history.push({
         pathname: '/lesson/finished',
         state: {
           questions: this.state.questions
         }
-      });
+      })
     }
   }
 
-  orderedAnswers(a, b) {
-    let m = 0;
-    let current_num;
-    let next_num;
-    let result = a;
-    let test;
+  orderedAnswers (a, b) {
+    let m = 0
+    let currentNum
+    let nextNum
+    let result = a
+    let test
     if (a !== undefined) {
       if (a.constructor === Array) {
-        result = true;
+        result = true
         while (m < a.length) {
-          current_num = a[m];
-          next_num = a[m + 1];
-          if (typeof current_num === "number" && typeof next_num === "number") {
+          currentNum = a[m]
+          nextNum = a[m + 1]
+          if (typeof currentNum === 'number' && typeof nextNum === 'number') {
             if (b === 1) {
-              test = current_num <= next_num;
+              test = currentNum <= nextNum
             } else {
-              test = current_num >= next_num; 
+              test = currentNum >= nextNum
             }
             if (test) {
-              
-              result = false;
-              break;
+              result = false
+              break
             }
           }
-          m += 1;
+          m += 1
         }
       }
     }
-    return result;
+    return result
   }
 }
 
+Lesson.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.object,
+  dispatchReachGoal: PropTypes.function,
+  onChange: PropTypes.function
+}
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchReachGoal: () => {
@@ -215,4 +220,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(null, mapDispatchToProps)(Lesson);
+export default connect(null, mapDispatchToProps)(Lesson)
