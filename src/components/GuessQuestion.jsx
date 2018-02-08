@@ -19,16 +19,13 @@ class GuessQuestion extends Component {
   }
 
   componentWillMount () {
-    // this.cleanSelectedAnswers()
     const { question, options } = this.props
     this.setState({question, options})
-    console.log('mounted')
   }
   
   componentWillReceiveProps (props) {
     const { question, options } = props
     this.setState({question, options})
-    console.log('tem q atualizar')
   }
 
   getAnswer (option) {
@@ -40,7 +37,6 @@ class GuessQuestion extends Component {
   cleanSelectedAnswers () {
     this.props.options.forEach(option => {
       option.selected = false
-      console.log(option)
     })
   }
 
