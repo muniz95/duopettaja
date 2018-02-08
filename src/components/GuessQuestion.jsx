@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
 /* eslint-enable no-unused-vars */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
 import PropTypes from 'prop-types'
 import '../styles/GuessQuestion.css'
 
@@ -16,13 +18,21 @@ class GuessQuestion extends Component {
     this.getAnswer = this.getAnswer.bind(this)
   }
 
-  componentDidMount () {
+  componentWillMount () {
+    // this.cleanSelectedAnswers()
     const { question, options } = this.props
     this.setState({question, options})
-    this.cleanSelectedAnswers()
+    console.log('mounted')
+  }
+  
+  componentWillReceiveProps (props) {
+    const { question, options } = props
+    this.setState({question, options})
+    console.log('tem q atualizar')
   }
 
   getAnswer (option) {
+    this.cleanSelectedAnswers()
     option.selected = true
     this.props.onChange(option)
   }
@@ -30,6 +40,7 @@ class GuessQuestion extends Component {
   cleanSelectedAnswers () {
     this.props.options.forEach(option => {
       option.selected = false
+      console.log(option)
     })
   }
 
@@ -55,9 +66,9 @@ class GuessQuestion extends Component {
 }
 
 GuessQuestion.propTypes = {
-  options: PropTypes.object,
-  question: PropTypes.object,
-  onChange: PropTypes.function
+  options: PropTypes.array,
+  question: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 export default GuessQuestion

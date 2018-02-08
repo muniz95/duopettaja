@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import CompoundQuestion from '../components/CompoundQuestion'
 import GuessQuestion from '../components/GuessQuestion'
 import Loading from '../components/Loading'
+import ProgressBar from '../components/ProgressBar'
 import { reachGoal } from '../actions'
 import { connect } from 'react-redux'
 import http from '../utils/http'
@@ -118,7 +119,9 @@ class Lesson extends Component {
         visibleAnswerBox: true,
         disabledCheckButton: true
       })
-      progress = currentAnswer.correct ? questions[currentQuestionIndex].weight : -(questions[currentQuestionIndex].weight)
+      progress = (currentAnswer && currentAnswer.correct)
+        ? questions[currentQuestionIndex].weight
+        : -(questions[currentQuestionIndex].weight)
       questions[currentQuestionIndex].correct = currentAnswer.correct
     } else {
       // Check if there is any incorrect word
@@ -207,17 +210,16 @@ class Lesson extends Component {
   }
 }
 
-Lesson.propTypes = {
-  history: PropTypes.object,
-  match: PropTypes.object,
-  dispatchReachGoal: PropTypes.function,
-  onChange: PropTypes.function
-}
-
 const mapDispatchToProps = (dispatch) => ({
   dispatchReachGoal: () => {
     dispatch(reachGoal())
   }
 })
+
+Lesson.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.object,
+  dispatchReachGoal: PropTypes.func
+}
 
 export default connect(null, mapDispatchToProps)(Lesson)

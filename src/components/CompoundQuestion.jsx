@@ -72,9 +72,9 @@ class CompoundQuestion extends Component {
 }
 
 CompoundQuestion.propTypes = {
-  options: PropTypes.object,
-  question: PropTypes.object,
-  onChange: PropTypes.function
+  options: PropTypes.array,
+  question: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 export default CompoundQuestion
