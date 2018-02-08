@@ -11,12 +11,12 @@ const SkillBadge = ({ name, id, active }) => {
   const badge = active
     ? <LinkContainer to={active ? `/skill/${id}` : ''}>
       <div className={`skill center-block skill-${active ? 'active' : 'inactive'}`}>
-        &nbsp
+        &nbsp;
       </div>
     </LinkContainer>
     : <div>
       <div className={`skill center-block skill-${active ? 'active' : 'inactive'}`}>
-        &nbsp
+        &nbsp;
       </div>
     </div>
 
@@ -33,7 +33,7 @@ const SkillBadge = ({ name, id, active }) => {
 SkillBadge.propTypes = {
   name: PropTypes.string,
   id: PropTypes.number,
-  active: PropTypes.boolean
+  active: PropTypes.bool
 }
 
 export default SkillBadge
