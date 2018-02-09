@@ -170,7 +170,8 @@ class Lesson extends Component {
       this.props.history.push({
         pathname: '/lesson/finished',
         state: {
-          questions: this.state.questions
+          questions: this.state.questions,
+          lessonId: this.props.match.params.id
         }
       })
     }
