@@ -53,14 +53,14 @@ class Lesson extends Component {
         case 'guess':
           question = <GuessQuestion
             question={this.state.questions[this.state.currentQuestionIndex].expression}
-            options={this.state.questions[this.state.currentQuestionIndex].options}
+            options={this.state.questions[this.state.currentQuestionIndex].question_options}
             onChange={this.getAnswer}
           />
           break
         case 'compound':
           question = <CompoundQuestion
             question={this.state.questions[this.state.currentQuestionIndex].expression}
-            options={this.state.questions[this.state.currentQuestionIndex].options}
+            options={this.state.questions[this.state.currentQuestionIndex].question_options}
             onChange={this.getAnswer}
           />
           break
