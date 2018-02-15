@@ -19,7 +19,7 @@ class FinishedLesson extends Component {
   componentDidMount () {
     const data = { completed: true }
     http
-      .put(`${process.env.REACT_APP_API}/lessons/${this.state.lessonId}`, data)
+      .put(`${process.env.REACT_APP_API}/lessons/${this.state.lessonId}/complete`, data)
       .then(console.log)
   }
 

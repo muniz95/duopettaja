@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-no-undef */
 import React, { Component } from 'react'
