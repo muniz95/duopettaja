@@ -40,7 +40,7 @@ export default class Home extends Component {
         </p>
         <h2>{this.state.errorMessage}</h2>
         { this.state.skills.map((skill, id) =>
-          <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={id}>
+          <div className="col-lg-3 col-md-3 col-sm-4 col-xs-4" key={id}>
             <SkillBadge {...skill} />
           </div>
           // <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
