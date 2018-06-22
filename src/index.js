@@ -8,7 +8,7 @@ import 'font-awesome/css/font-awesome.css'
 import './index.css'
 import App from './App'
 import { Provider } from 'react-redux'
-import { store } from './store'
+import { store } from './redux/store'
 import registerServiceWorker from './registerServiceWorker'
 
 /* eslint-disable no-undef */
