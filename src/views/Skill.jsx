@@ -46,12 +46,14 @@ class Skill extends Component {
               <b>Lesson { ++index } of {array.length}</b>
             </p>
             <p>
-              <span>{lesson.words.split('*').join(', ')}</span>
+              <span>{lesson.words.join(', ')}</span>
             </p>
             <p>
               { lesson.completed
                 ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
-                : <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
+                : lesson.available 
+                  ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
+                  : <button className="btn btn-default" disabled >Start</button>
               }
             </p>
           </div>

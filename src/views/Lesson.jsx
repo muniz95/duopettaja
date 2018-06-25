@@ -167,6 +167,7 @@ class Lesson extends Component {
         disabledCheckButton: false
       })
     } else {
+      http.post(`${process.env.REACT_APP_API}/lessons/${id}`, {});
       this.props.dispatchReachGoal()
       this.props.history.push({
         pathname: '/lesson/finished',
