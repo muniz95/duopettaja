@@ -19,3 +19,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# This file is meant to be generated with a NPM script
+db.json
