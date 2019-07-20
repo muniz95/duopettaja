@@ -18,12 +18,12 @@ class GuessQuestion extends Component {
     this.getAnswer = this.getAnswer.bind(this)
   }
 
-  componentWillMount () {
+  UNSAFE_componentWillMount () {
     const { question, options } = this.props
     this.setState({question, options})
   }
   
-  componentWillReceiveProps (props) {
+  UNSAFE_componentWillReceiveProps (props) {
     const { question, options } = props
     this.setState({question, options})
   }

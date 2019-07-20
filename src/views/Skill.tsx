@@ -28,7 +28,7 @@ class Skill extends Component {
     })
   }
 
-  componentWillMount () {
+  UNSAFE_componentWillMount () {
     const {id} = this.props.match.params
     http
       .get(`${process.env.REACT_APP_API}/skills/${id}/lessons`)
