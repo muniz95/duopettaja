@@ -1,8 +1,8 @@
-import { REACH_GOAL } from '../constants'
+import { REACH_GOAL } from "../constants";
 
 export const reachGoal = () => {
   const action = {
     type: REACH_GOAL
-  }
-  return action
-}
+  };
+  return action;
+};

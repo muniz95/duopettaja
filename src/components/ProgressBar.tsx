@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import '../styles/ProgressBar.css'
+import React from "react";
+import PropTypes from "prop-types";
+import "../styles/ProgressBar.css";
 
 const ProgressBar = ({progress = 0}) => {
   return (
@@ -12,11 +12,11 @@ const ProgressBar = ({progress = 0}) => {
       </div>
       <span>{progress}%</span>
     </div>
-  )
-}
+  );
+};
 
 ProgressBar.propTypes = {
   progress: PropTypes.number
-}
+};
 
-export default ProgressBar
+export default ProgressBar;

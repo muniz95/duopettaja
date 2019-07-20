@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react'
+import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
-import { LinkContainer } from 'react-router-bootstrap'
-import PropTypes from 'prop-types'
-import { Navbar, Nav, NavItem } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import '../styles/Header.css'
+import { LinkContainer } from "react-router-bootstrap";
+import PropTypes from "prop-types";
+import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { connect } from "react-redux";
+import "../styles/Header.css";
 
 class Header extends Component {
   render () {
@@ -13,7 +13,7 @@ class Header extends Component {
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <LinkContainer to={'/'}>
+            <LinkContainer to={"/"}>
               <a>Duopettaja</a>
             </LinkContainer>
           </Navbar.Brand>
@@ -33,19 +33,19 @@ class Header extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    )
+    );
   }
 }
 
 Header.propTypes = {
   goal: PropTypes.string
-}
+};
 
 function mapStateToProps (state) {
-  const { goal } = state
+  const { goal } = state;
   return {
     goal
-  }
+  };
 }
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(mapStateToProps, null)(Header);

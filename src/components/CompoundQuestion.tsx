@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
-import PropTypes from "prop-types";
 import "../styles/CompoundQuestion.css";
 import Word from "../models/Word";
 

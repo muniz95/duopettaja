@@ -1,22 +1,22 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react'
+import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
-import PropTypes from 'prop-types'
-import http from '../utils/http'
-import Loading from '../components/Loading'
-import '../styles/Skill.css'
+import PropTypes from "prop-types";
+import http from "../utils/http";
+import Loading from "../components/Loading";
+import "../styles/Skill.css";
 
 class Skill extends Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       lessons: [],
       loading: true
-    }
+    };
 
-    this.goToLesson = this.goToLesson.bind(this)
+    this.goToLesson = this.goToLesson.bind(this);
   }
 
   goToLesson (lesson) {
@@ -25,15 +25,15 @@ class Skill extends Component {
       state: {
         questions: lesson.questions
       }
-    })
+    });
   }
 
   UNSAFE_componentWillMount () {
-    const {id} = this.props.match.params
+    const {id} = this.props.match.params;
     http
       .get(`${process.env.REACT_APP_API}/skills/${id}/lessons`)
       .then(response => this.setState({lessons: response.data, loading: false}))
-      .catch(console.error)
+      .catch(console.error);
   }
 
   render () {
@@ -46,19 +46,19 @@ class Skill extends Component {
               <b>Lesson { ++index } of {array.length}</b>
             </p>
             <p>
-              <span>{lesson.words.join(', ')}</span>
+              <span>{lesson.words.join(", ")}</span>
             </p>
             <p>
               { lesson.completed
                 ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
-                : lesson.available 
+                : lesson.available
                   ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
                   : <button className="btn btn-default" disabled >Start</button>
               }
             </p>
           </div>
         </div>
-      )
+      );
     return (
       <div>
         <div className="row">
@@ -68,13 +68,13 @@ class Skill extends Component {
           { content }
         </div>
       </div>
-    )
+    );
   }
 }
 
 Skill.propTypes = {
   history: PropTypes.object,
   match: PropTypes.object
-}
+};
 
-export default Skill
+export default Skill;
