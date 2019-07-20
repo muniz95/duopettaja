@@ -1,64 +1,66 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react'
+import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
-import PropTypes from 'prop-types'
-import '../styles/CompoundQuestion.css'
+import PropTypes from "prop-types";
+import "../styles/CompoundQuestion.css";
+import Word from "../models/Word";
 
 interface IProps {
   question: String;
-  options: String[];
-  selectedWords: String[];
+  options: Word[];
+  selectedWords: Word[];
+  onChange: Function;
 }
 
 interface IState {
   question: String;
-  selectedWords: String[];
-  availableWords: String[];
+  selectedWords: Word[];
+  availableWords: Word[];
 }
 
 class CompoundQuestion extends Component<IProps, IState> {
   constructor (props: IProps) {
-    super(props)
+    super(props);
     this.state = {
-      question: '',
+      question: "",
       selectedWords: [],
       availableWords: []
-    }
+    };
 
-    this.selectWord = this.selectWord.bind(this)
-    this.deselectWord = this.deselectWord.bind(this)
-    this.getAnswer = this.getAnswer.bind(this)
+    this.selectWord = this.selectWord.bind(this);
+    this.deselectWord = this.deselectWord.bind(this);
+    this.getAnswer = this.getAnswer.bind(this);
   }
 
   componentDidMount () {
     this.setState({
       question: this.props.question,
       availableWords: this.props.options
-    })
+    });
   }
 
-  selectWord (option: String) {
-    const selectedWords = [...this.state.selectedWords, option]
+  selectWord (option: Word) {
+    const selectedWords = [...this.state.selectedWords, option];
     this.setState({
       selectedWords,
       availableWords: this.state.availableWords.filter(el => el.id !== option.id)
-    })
-    this.getAnswer(selectedWords)
+    });
+    this.getAnswer(selectedWords);
   }
 
-  deselectWord (option) {
+  deselectWord (option: Word) {
     this.setState({
       availableWords: [...this.state.availableWords, option],
       selectedWords: this.state.selectedWords.filter(el => el.id !== option.id)
-    })
+    });
   }
 
-  getAnswer (selectedWords) {
-    this.props.onChange(selectedWords)
+  getAnswer (selectedWords: Word[]) {
+    this.props.onChange(selectedWords);
   }
 
   render () {
-    const { question, selectedWords, availableWords } = this.state
+    const { question, selectedWords, availableWords } = this.state;
     return (
       <div>
         <div className="row">
@@ -79,14 +81,8 @@ class CompoundQuestion extends Component<IProps, IState> {
           )}
         </div>
       </div>
-    )
+    );
   }
 }
 
-CompoundQuestion.propTypes = {
-  options: PropTypes.array,
-  question: PropTypes.string,
-  onChange: PropTypes.func
-}
-
-export default CompoundQuestion
+export default CompoundQuestion;
