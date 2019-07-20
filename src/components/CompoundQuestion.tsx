@@ -4,8 +4,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import '../styles/CompoundQuestion.css'
 
-class CompoundQuestion extends Component {
-  constructor (props) {
+interface IProps {
+  question: String;
+  options: String[];
+  selectedWords: String[];
+}
+
+interface IState {
+  question: String;
+  selectedWords: String[];
+  availableWords: String[];
+}
+
+class CompoundQuestion extends Component<IProps, IState> {
+  constructor (props: IProps) {
     super(props)
     this.state = {
       question: '',
@@ -25,7 +37,7 @@ class CompoundQuestion extends Component {
     })
   }
 
-  selectWord (option) {
+  selectWord (option: String) {
     const selectedWords = [...this.state.selectedWords, option]
     this.setState({
       selectedWords,
