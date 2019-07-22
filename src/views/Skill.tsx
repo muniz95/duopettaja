@@ -55,7 +55,7 @@ class Skill extends Component<IProps, IState> {
               <b>Lesson { ++index } of {array.length}</b>
             </p>
             <p>
-              <span>{lesson.words.join(", ")}</span>
+              <span>{lesson.words}</span>
             </p>
             <p>
               { lesson.completed

@@ -55,8 +55,17 @@ class Lesson extends Component<IProps, IState> {
   }
 
   getAnswer (answer: Answer): void {
-    const { currentQuestionIndex, answers } = this.state;
-    answers[currentQuestionIndex] = answer;
+    const { questions, currentQuestionIndex, answers } = this.state;
+    if (questions[currentQuestionIndex].category === "compound") {
+      let currentAnswer: Answer = answers[currentQuestionIndex];
+      if (currentAnswer === undefined) {
+        currentAnswer = new Answer();
+      }
+      currentAnswer.options.push(answer);
+      answers[currentQuestionIndex] = currentAnswer;
+    } else {
+      answers[currentQuestionIndex] = answer;
+    }
     this.setState({answers});
   }
 

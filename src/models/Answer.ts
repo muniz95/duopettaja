@@ -7,6 +7,10 @@ class Answer {
     public selected!: boolean;
     public text!: string;
     public options!: Answer[];
+
+    constructor() {
+        this.options = [];
+    }
 }
 
 export default Answer;
