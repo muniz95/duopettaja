@@ -21,7 +21,7 @@ class Header extends Component<IProps, IState> {
         <header>
           <Navbar.Brand>
             <LinkContainer to={"/"}>
-              <button>Duopettaja</button>
+              <button className="link-main">Duopettaja</button>
             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle/>

@@ -49,7 +49,7 @@ class Skill extends Component<IProps, IState> {
     const content: JSX.Element | JSX.Element[] = this.state.loading
       ? <Loading />
       : this.state.lessons.map((lesson, index, array) =>
-        <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={lesson.id}>
+        <div className="skill-card" key={lesson.id}>
           <div className="well">
             <p>
               <b>Lesson { ++index } of {array.length}</b>

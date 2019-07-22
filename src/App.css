@@ -22,6 +22,17 @@
   font-size: large;
 }
 
+.container {
+  padding-top: 20px;
+}
+
+.skills {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -12,9 +12,7 @@ import Skill from "../models/Skill";
 
 dotenv.config();
 
-interface IProps {
-  
-}
+interface IProps {}
 
 interface IState {
   skills: Skill[];
@@ -32,7 +30,7 @@ export default class Home extends Component<IProps, IState> {
     };
   }
 
-  componentDidMount () {
+  componentDidMount (): void {
     http
       .get(`${process.env.REACT_APP_API}/skills`)
       .then(response => this.setState({ skills: response.data, loading: false }))
@@ -42,20 +40,24 @@ export default class Home extends Component<IProps, IState> {
       });
   }
 
-  render () {
-    const content = this.state.loading
+  render (): JSX.Element {
+    const content: JSX.Element = this.state.loading
       ? <Loading />
       : <div className="row">
         <p className="text-left">
           Home
         </p>
-        <h2>{this.state.errorMessage}</h2>
-        { this.state.skills.map((skill, id) =>
-          <div className="col-lg-3 col-md-3 col-sm-4 col-xs-4" key={id}>
-            <SkillBadge {...skill} />
-          </div>
-          // <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
-        ) }
+        <p>
+          <h2>{this.state.errorMessage}</h2>
+        </p>
+        <div className="skills">
+          { this.state.skills.map((skill, id) =>
+            <div className="skill-card" key={id}>
+              <SkillBadge {...skill} />
+            </div>
+            // <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
+          ) }
+        </div>
       </div>;
     return content;
   }
