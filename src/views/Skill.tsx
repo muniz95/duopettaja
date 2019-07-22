@@ -3,13 +3,22 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
-import PropTypes from "prop-types";
 import http from "../utils/http";
 import Loading from "../components/Loading";
 import "../styles/Skill.css";
 
-class Skill extends Component {
-  constructor (props) {
+interface IProps {
+  history: any;
+  match: any;
+}
+
+interface IState {
+  lessons: any[];
+  loading: boolean;
+}
+
+class Skill extends Component<IProps, IState> {
+  constructor (props: IProps) {
     super(props);
     this.state = {
       lessons: [],
@@ -19,7 +28,7 @@ class Skill extends Component {
     this.goToLesson = this.goToLesson.bind(this);
   }
 
-  goToLesson (lesson) {
+  goToLesson (lesson: any): void {
     this.props.history.push({
       pathname: `/lesson/${lesson.id}`,
       state: {
@@ -28,7 +37,7 @@ class Skill extends Component {
     });
   }
 
-  UNSAFE_componentWillMount () {
+  componentWillMount (): void {
     const {id} = this.props.match.params;
     http
       .get(`${process.env.REACT_APP_API}/skills/${id}/lessons`)
@@ -36,8 +45,8 @@ class Skill extends Component {
       .catch(console.error);
   }
 
-  render () {
-    const content = this.state.loading
+  render (): JSX.Element {
+    const content: JSX.Element | JSX.Element[] = this.state.loading
       ? <Loading />
       : this.state.lessons.map((lesson, index, array) =>
         <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={lesson.id}>
@@ -71,10 +80,5 @@ class Skill extends Component {
     );
   }
 }
-
-Skill.propTypes = {
-  history: PropTypes.object,
-  match: PropTypes.object
-};
 
 export default Skill;

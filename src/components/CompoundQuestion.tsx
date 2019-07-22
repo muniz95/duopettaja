@@ -30,15 +30,15 @@ class CompoundQuestion extends Component<IProps, IState> {
     this.getAnswer = this.getAnswer.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount (): void {
     this.setState({
       question: this.props.question,
       availableWords: this.props.options
     });
   }
 
-  selectWord (option: Word) {
-    const selectedWords = [...this.state.selectedWords, option];
+  selectWord (option: Word): void {
+    const selectedWords: Word[] = [...this.state.selectedWords, option];
     this.setState({
       selectedWords,
       availableWords: this.state.availableWords.filter(el => el.id !== option.id)
@@ -46,18 +46,18 @@ class CompoundQuestion extends Component<IProps, IState> {
     this.getAnswer(selectedWords);
   }
 
-  deselectWord (option: Word) {
+  deselectWord (option: Word): void {
     this.setState({
       availableWords: [...this.state.availableWords, option],
       selectedWords: this.state.selectedWords.filter(el => el.id !== option.id)
     });
   }
 
-  getAnswer (selectedWords: Word[]) {
+  getAnswer (selectedWords: Word[]): void {
     this.props.onChange(selectedWords);
   }
 
-  render () {
+  render (): JSX.Element {
     const { question, selectedWords, availableWords } = this.state;
     return (
       <div>

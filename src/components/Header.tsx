@@ -2,13 +2,12 @@
 import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
 import { LinkContainer } from "react-router-bootstrap";
-import PropTypes from "prop-types";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { connect } from "react-redux";
 import "../styles/Header.css";
 
 interface IProps {
-  goal: string;
+  goal?: string;
 }
 
 interface IState {
@@ -16,13 +15,13 @@ interface IState {
 }
 
 class Header extends Component<IProps, IState> {
-  render () {
+  render (): JSX.Element {
     return (
       <Navbar collapseOnSelect>
         <header>
           <Navbar.Brand>
             <LinkContainer to={"/"}>
-              <a>Duopettaja</a>
+              <button>Duopettaja</button>
             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle/>
@@ -45,7 +44,7 @@ class Header extends Component<IProps, IState> {
   }
 }
 
-function mapStateToProps (state: IState) {
+function mapStateToProps (state: IState): any {
   const { goal } = state;
   return {
     goal
