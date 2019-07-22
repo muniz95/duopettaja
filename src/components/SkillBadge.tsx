@@ -7,7 +7,13 @@ import PropTypes from "prop-types";
 import { LinkContainer } from "react-router-bootstrap";
 import "../styles/SkillBadge.css";
 
-const SkillBadge = ({ name, id, active }) => {
+interface IProps {
+  name: string;
+  id: number;
+  active: boolean;
+}
+
+const SkillBadge = ({ name, id, active }: IProps) => {
   const badge = active
     ? <LinkContainer to={active ? `/skill/${id}` : ""}>
       <div className={`skill center-block skill-${active ? "active" : "inactive"}`}>

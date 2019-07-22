@@ -12,9 +12,24 @@ import { reachGoal } from "../redux/actions";
 import { connect } from "react-redux";
 import http from "../utils/http";
 import "../styles/Lesson.css";
+import Word from "../models/Word";
 
-class Lesson extends Component {
-  constructor (props) {
+interface IProps {
+  match: any;
+}
+
+interface IState {
+  progress: number,
+  currentQuestionIndex: number,
+  questions: Word[],
+  answers: Word[],
+  correct: boolean,
+  visibleAnswerBox: boolean,
+  disabledCheckButton: boolean
+}
+
+class Lesson extends Component<IProps, IState> {
+  constructor (props: IProps) {
     super(props);
     this.state = {
       progress: 0,
@@ -31,7 +46,7 @@ class Lesson extends Component {
     this.getAnswer = this.getAnswer.bind(this);
   }
 
-  componentDidMount (props) {
+  componentDidMount () {
     const { id } = this.props.match.params;
     http
       .get(`${process.env.REACT_APP_API}/lessons/${id}/questions`)
@@ -40,10 +55,10 @@ class Lesson extends Component {
       });
   }
 
-  getAnswer (answer) {
+  getAnswer (answer: Word) {
     const { currentQuestionIndex, answers } = this.state;
     answers[currentQuestionIndex] = answer;
-    this.setState(answers);
+    this.setState({answers});
   }
 
   render () {

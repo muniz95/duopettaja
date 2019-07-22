@@ -3,15 +3,27 @@ import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-import PropTypes from "prop-types";
 import "../styles/GuessQuestion.css";
+import Word from "../models/Word";
 
-class GuessQuestion extends Component {
-  constructor (props) {
+interface IProps {
+  options: Word[];
+  question: string;
+  onChange: Function;
+}
+
+interface IState {
+  answer: Word;
+  question: string;
+  options: Word[];
+}
+
+class GuessQuestion extends Component<IProps, IState> {
+  constructor (props: IProps) {
     super(props);
     this.state = {
-      answer: {},
-      question: [],
+      answer: new Word(),
+      question: '',
       options: []
     };
 
@@ -23,12 +35,12 @@ class GuessQuestion extends Component {
     this.setState({question, options});
   }
 
-  UNSAFE_componentWillReceiveProps (props) {
+  UNSAFE_componentWillReceiveProps (props: IProps) {
     const { question, options } = props;
     this.setState({question, options});
   }
 
-  getAnswer (option) {
+  getAnswer (option: Word) {
     this.cleanSelectedAnswers();
     option.selected = true;
     this.props.onChange(option);
@@ -60,11 +72,5 @@ class GuessQuestion extends Component {
     );
   }
 }
-
-GuessQuestion.propTypes = {
-  options: PropTypes.array,
-  question: PropTypes.string,
-  onChange: PropTypes.func
-};
 
 export default GuessQuestion;

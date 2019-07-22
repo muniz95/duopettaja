@@ -8,11 +8,22 @@ import http from "../utils/http";
 import SkillBadge from "../components/SkillBadge";
 import Loading from "../components/Loading";
 import "../styles/Home.css";
+import Skill from "../models/Skill";
 
 dotenv.config();
 
-export default class Home extends Component {
-  constructor (props) {
+interface IProps {
+  
+}
+
+interface IState {
+  skills: Skill[];
+  errorMessage: string;
+  loading: boolean;
+}
+
+export default class Home extends Component<IProps, IState> {
+  constructor (props: IProps) {
     super(props);
     this.state = {
       skills: [],

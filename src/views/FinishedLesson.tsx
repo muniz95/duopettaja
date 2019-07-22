@@ -1,14 +1,20 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-/* eslint-enable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable no-undef */
-import PropTypes from "prop-types";
 import { LinkContainer } from "react-router-bootstrap";
 import http from "../utils/http";
+import Word from "../models/Word";
 
-class FinishedLesson extends Component {
-  constructor (props) {
+interface IProps {
+  location: any,
+}
+
+interface IState {
+  questions: Word[];
+  lessonId: number;
+}
+
+class FinishedLesson extends Component<IProps, IState> {
+  constructor (props: IProps) {
     super(props);
 
     const { questions, lessonId } = props.location.state;
@@ -36,9 +42,5 @@ class FinishedLesson extends Component {
     );
   }
 }
-
-FinishedLesson.propTypes = {
-  location: PropTypes.object
-};
 
 export default FinishedLesson;

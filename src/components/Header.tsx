@@ -7,18 +7,26 @@ import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { connect } from "react-redux";
 import "../styles/Header.css";
 
-class Header extends Component {
+interface IProps {
+  goal: string;
+}
+
+interface IState {
+  goal: string;
+}
+
+class Header extends Component<IProps, IState> {
   render () {
     return (
       <Navbar collapseOnSelect>
-        <Navbar.Header>
+        <header>
           <Navbar.Brand>
             <LinkContainer to={"/"}>
               <a>Duopettaja</a>
             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle/>
-        </Navbar.Header>
+        </header>
         <Navbar.Collapse>
           <Nav>
             {/*
@@ -29,7 +37,7 @@ class Header extends Component {
               <NavItem eventKey={2}>Lesson</NavItem>
             </LinkContainer>
             */}
-            <NavItem eventKey={2}>Goal: {this.props.goal}</NavItem>
+            <NavItem key={2}>Goal: {this.props.goal}</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -37,11 +45,7 @@ class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  goal: PropTypes.string
-};
-
-function mapStateToProps (state) {
+function mapStateToProps (state: IState) {
   const { goal } = state;
   return {
     goal

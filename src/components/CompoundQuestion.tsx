@@ -7,7 +7,6 @@ import Word from "../models/Word";
 interface IProps {
   question: String;
   options: Word[];
-  selectedWords: Word[];
   onChange: Function;
 }
 
