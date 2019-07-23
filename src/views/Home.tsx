@@ -42,23 +42,23 @@ export default class Home extends Component<IProps, IState> {
 
   render (): JSX.Element {
     const content: JSX.Element = this.state.loading
-      ? <Loading />
-      : <div className="row">
-        <p className="text-left">
-          Home
-        </p>
-        <p>
-          <h2>{this.state.errorMessage}</h2>
-        </p>
-        <div className="skills">
-          { this.state.skills.map((skill, id) =>
-            <div className="skill-card" key={id}>
-              <SkillBadge {...skill} />
-            </div>
-            // <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
-          ) }
+      ? <div className="row">
+          <Loading />
         </div>
-      </div>;
+      : <div className="row">
+          <p className="text-left">
+            Home
+          </p>
+          <h2>{this.state.errorMessage}</h2>
+          <div className="skills">
+            { this.state.skills.map((skill, id) =>
+              <div className="skill-card" key={id}>
+                <SkillBadge {...skill} />
+              </div>
+              // <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
+            ) }
+          </div>
+        </div>;
     return content;
   }
 }
