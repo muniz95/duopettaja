@@ -51,12 +51,7 @@ export default class Home extends Component<IProps, IState> {
           </p>
           <h2>{this.state.errorMessage}</h2>
           <div className="skills">
-            { this.state.skills.map((skill, id) =>
-              <div className="skill-card" key={id}>
-                <SkillBadge {...skill} />
-              </div>
-              // <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
-            ) }
+            { this.state.skills.map((skill) => <SkillBadge {...skill} key={skill.id} />) }
           </div>
         </div>;
     return content;
