@@ -5,7 +5,7 @@ import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
 import dotenv from "dotenv";
 import http from "../utils/http";
-import SkillBadge from "../components/SkillBadge";
+import SkillCard from "../components/SkillCard";
 import Loading from "../components/Loading";
 import "../styles/Home.css";
 import Skill from "../models/Skill";
@@ -51,7 +51,7 @@ export default class Home extends Component<IProps, IState> {
           </p>
           <h2>{this.state.errorMessage}</h2>
           <div className="skills">
-            { this.state.skills.map((skill) => <SkillBadge {...skill} key={skill.id} />) }
+            { this.state.skills.map((skill) => <SkillCard {...skill} key={skill.id} />) }
           </div>
         </div>;
     return content;
