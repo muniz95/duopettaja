@@ -10,10 +10,11 @@ interface IProps {
 }
 
 const SkillCardBody: StyledComponent<"div", any, {}, never> = sc.div`
-  height: 90%;
+  height: 80%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  flex-flow: row;
   width: 90%;
   border-style: solid;
 `;
@@ -21,7 +22,7 @@ const SkillCardBody: StyledComponent<"div", any, {}, never> = sc.div`
 const SkillCardContainer: StyledComponent<"div", any, {}, never> = sc.div`
   height: 150px;
   @media (max-width: 767px) {
-    width: 50%;
+    width: 100%;
   }
   @media (min-width: 768px) and (max-width: 1023px) {
     width: 33%;
@@ -31,17 +32,29 @@ const SkillCardContainer: StyledComponent<"div", any, {}, never> = sc.div`
   }
 `;
 
+const SkillCardHealthBar = sc.div`
+  background-color: blue;
+  width: 20%;
+  height: 100%
+`;
+
+const SkillCardLabel = sc.div`
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const SkillCard = ({ name, id, active }: IProps): JSX.Element => {
   const body: JSX.Element =
     <SkillCardContainer>
       <SkillCardBody>
-        {name}
+        <SkillCardHealthBar />
+        <SkillCardLabel>
+          {name}
+        </SkillCardLabel>
       </SkillCardBody>
     </SkillCardContainer>;
-  const badge: JSX.Element =
-    <div className={`skill skill-${active ? "active" : "inactive"}`}>
-      &nbsp;
-    </div>;
 
   return (
     <LinkContainer to={active ? `/skill/${id}` : "#"}>
