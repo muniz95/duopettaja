@@ -1,15 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-/* eslint-enable no-unused-vars */
-import ReactDOM from "react-dom";
 // import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap/dist/css/bootstrap-theme.css";
 import "font-awesome/css/font-awesome.css";
-import "./index.css";
-import App from "./App";
+import React from "react";
+/* eslint-enable no-unused-vars */
+import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import App from "./App";
+import "./index.css";
 import { store } from "./redux/store";
 import * as serviceWorker from "./serviceWorker";
+
+if (process.env.NODE_ENV !== "production") {
+  // tslint:disable-next-line: no-var-requires
+  const whyDidYouRender = require("@welldone-software/why-did-you-render");
+  whyDidYouRender(React);
+}
 
 /* eslint-disable no-undef */
 ReactDOM.render(

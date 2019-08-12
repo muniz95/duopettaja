@@ -1,18 +1,16 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-import React, { Component } from "react";
 /* eslint-enable no-unused-vars */
 import dotenv from "dotenv";
-import http from "../utils/http";
-import SkillCard from "../components/SkillCard";
+import React, { Component } from "react";
 import Loading from "../components/Loading";
-import "../styles/Home.css";
+import SkillCard from "../components/SkillCard";
 import Skill from "../models/Skill";
+import "../styles/Home.css";
+import http from "../utils/http";
 
 dotenv.config();
-
-interface IProps {}
 
 interface IState {
   skills: Skill[];
@@ -20,27 +18,28 @@ interface IState {
   loading: boolean;
 }
 
-export default class Home extends Component<IProps, IState> {
-  constructor (props: IProps) {
+export default class Home extends Component<{}, IState> {
+  public whyDidYouRender = true;
+
+  constructor(props: {}) {
     super(props);
     this.state = {
-      skills: [],
       errorMessage: "",
-      loading: true
+      loading: true,
+      skills: [],
     };
   }
 
-  componentDidMount (): void {
+  public componentDidMount(): void {
     http
       .get(`${process.env.REACT_APP_API}/skills`)
-      .then(response => this.setState({ skills: response.data, loading: false }))
-      .catch(error => {
-        console.log(error);
-        this.setState({ errorMessage: "An error occured. Refresh the page.", loading: false });
+      .then((response) => this.setState({ skills: response.data, loading: false }))
+      .catch((error) => {
+        this.setState({ errorMessage: `An error occured: ${error}. Refresh the page.`, loading: false });
       });
   }
 
-  render (): JSX.Element {
+  public render(): JSX.Element {
     const content: JSX.Element = this.state.loading
       ? <div className="row">
           <Loading />

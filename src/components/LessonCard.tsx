@@ -1,7 +1,7 @@
 import React from "react";
+import { LinkContainer } from "react-router-bootstrap";
 import styled, { StyledComponent } from "styled-components";
 import Lesson from "../models/Lesson";
-import { LinkContainer } from "react-router-bootstrap";
 
 interface IProps {
   lesson: Lesson;
@@ -68,5 +68,7 @@ const LessonCard: React.FC<IProps> = ({ lesson, current, total }: IProps) => {
     </LinkContainer>
   );
 };
+
+(LessonCard as any).whyDidYouRender = true;
 
 export default LessonCard;

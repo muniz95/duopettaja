@@ -67,4 +67,6 @@ const SkillCard: React.FC<IProps> = ({ name, id, active }: IProps): JSX.Element 
   );
 };
 
+(SkillCard as any).whyDidYouRender = true;
+
 export default SkillCard;
