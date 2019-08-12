@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import http from "../utils/http";
 import Loading from "../components/Loading";
 import "../styles/Skill.css";
+import LessonCard from "../components/LessonCard";
 
 interface IProps {
   history: any;
@@ -48,26 +49,29 @@ class Skill extends Component<IProps, IState> {
   render (): JSX.Element {
     const content: JSX.Element | JSX.Element[] = this.state.loading
       ? <Loading />
-      : this.state.lessons.map((lesson, index, array) =>
-        <div className="skill-card" key={lesson.id}>
-          <div className="well">
-            <p>
-              <b>Lesson { ++index } of {array.length}</b>
-            </p>
-            <p>
-              <span>{lesson.words}</span>
-            </p>
-            <p>
-              { lesson.completed
-                ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
-                : lesson.available
-                  ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
-                  : <button className="btn btn-default" disabled >Start</button>
-              }
-            </p>
-          </div>
-        </div>
-      );
+      : <div className="skills">
+          { this.state.lessons.map((lesson, index, array) =>
+            <LessonCard key={lesson.id} lesson={lesson} current={++index} total={array.length} />) }
+        </div>;
+        // <div className="skill-card" key={lesson.id}>
+        //   <div className="well">
+        //     <p>
+        //       <b>Lesson { ++index } of {array.length}</b>
+        //     </p>
+        //     <p>
+        //       <span>{lesson.words}</span>
+        //     </p>
+        //     <p>
+        //       { lesson.completed
+        //         ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
+        //         : lesson.available
+        //           ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
+        //           : <button className="btn btn-default" disabled >Start</button>
+        //       }
+        //     </p>
+        //   </div>
+        // </div>
+        // );
     return (
       <div>
         <div className="row">

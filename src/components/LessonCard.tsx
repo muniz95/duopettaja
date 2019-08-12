@@ -1,12 +1,12 @@
 import React from "react";
-import { LinkContainer } from "react-router-bootstrap";
 import styled, { StyledComponent } from "styled-components";
-import "../styles/SkillBadge.css";
+import Lesson from "../models/Lesson";
+import { LinkContainer } from "react-router-bootstrap";
 
 interface IProps {
-  name: string;
-  id: number;
-  active: boolean;
+  lesson: Lesson;
+  current: number;
+  total: number;
 }
 
 const SkillCardBody: StyledComponent<"div", any, {}, never> = styled.div`
@@ -36,6 +36,10 @@ const SkillCardHealthBar: StyledComponent<"div", any, {}, never> = styled.div`
   background-color: blue;
   width: 20%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 `;
 
 const SkillCardLabel: StyledComponent<"div", any, {}, never> = styled.div`
@@ -45,22 +49,24 @@ const SkillCardLabel: StyledComponent<"div", any, {}, never> = styled.div`
   justify-content: center;
 `;
 
-const SkillCard: React.FC<IProps> = ({ name, id, active }: IProps): JSX.Element => {
+const LessonCard: React.FC<IProps> = ({ lesson, current, total }: IProps) => {
   const body: JSX.Element =
     <SkillCardContainer>
       <SkillCardBody>
-        <SkillCardHealthBar />
+        <SkillCardHealthBar>
+          {current}/{total}
+        </SkillCardHealthBar>
         <SkillCardLabel>
-          {name}
+          {lesson.words.join(", ")}
         </SkillCardLabel>
       </SkillCardBody>
     </SkillCardContainer>;
 
   return (
-    <LinkContainer to={active ? `/skill/${id}` : "#"}>
+    <LinkContainer to={lesson.available ? `/skill/${lesson.id}` : "#"}>
       {body}
     </LinkContainer>
   );
 };
 
-export default SkillCard;
+export default LessonCard;
