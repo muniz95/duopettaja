@@ -7,6 +7,7 @@ import http from "../utils/http";
 import Loading from "../components/Loading";
 import "../styles/Skill.css";
 import LessonCard from "../components/LessonCard";
+import Lesson from "../models/Lesson";
 
 interface IProps {
   history: any;
@@ -14,7 +15,7 @@ interface IProps {
 }
 
 interface IState {
-  lessons: any[];
+  lessons: Lesson[];
   loading: boolean;
 }
 
