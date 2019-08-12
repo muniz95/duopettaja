@@ -9,6 +9,10 @@ interface IProps {
   active: boolean;
 }
 
+interface IHealthBarProps {
+  active: boolean;
+}
+
 const SkillCardBody: StyledComponent<"div", any, {}, never> = styled.div`
   height: 80%;
   display: flex;
@@ -32,8 +36,8 @@ const SkillCardContainer: StyledComponent<"div", any, {}, never> = styled.div`
   }
 `;
 
-const SkillCardHealthBar: StyledComponent<"div", any, {}, never> = styled.div`
-  background-color: blue;
+const SkillCardHealthBar: StyledComponent<"div", any, IHealthBarProps, never> = styled.div`
+  background-color: ${(props: IHealthBarProps) => props.active ? "blue" : "gray"};
   width: 20%;
   height: 100%;
 `;
@@ -49,7 +53,7 @@ const SkillCard: React.FC<IProps> = ({ name, id, active }: IProps): JSX.Element 
   const body: JSX.Element =
     <SkillCardContainer>
       <SkillCardBody>
-        <SkillCardHealthBar />
+        <SkillCardHealthBar active={active} />
         <SkillCardLabel>
           {name}
         </SkillCardLabel>
