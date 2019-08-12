@@ -9,7 +9,7 @@ interface IProps {
   total: number;
 }
 
-const SkillCardBody: StyledComponent<"div", any, {}, never> = styled.div`
+const SkillCardBody: StyledComponent<"div", any, {}> = styled.div`
   height: 80%;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@ const SkillCardBody: StyledComponent<"div", any, {}, never> = styled.div`
   border-style: solid;
 `;
 
-const SkillCardContainer: StyledComponent<"div", any, {}, never> = styled.div`
+const SkillCardContainer: StyledComponent<"div", any, {}> = styled.div`
   height: 150px;
   @media (max-width: 767px) {
     width: 100%;
@@ -32,7 +32,7 @@ const SkillCardContainer: StyledComponent<"div", any, {}, never> = styled.div`
   }
 `;
 
-const SkillCardHealthBar: StyledComponent<"div", any, {}, never> = styled.div`
+const SkillCardHealthBar: StyledComponent<"div", any, {}> = styled.div`
   background-color: blue;
   width: 20%;
   height: 100%;
@@ -42,7 +42,7 @@ const SkillCardHealthBar: StyledComponent<"div", any, {}, never> = styled.div`
   color: white;
 `;
 
-const SkillCardLabel: StyledComponent<"div", any, {}, never> = styled.div`
+const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
   width: 80%;
   display: flex;
   align-items: center;

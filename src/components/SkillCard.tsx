@@ -13,7 +13,7 @@ interface IHealthBarProps {
   active: boolean;
 }
 
-const SkillCardBody: StyledComponent<"div", any, {}, never> = styled.div`
+const SkillCardBody: StyledComponent<"div", any, {}> = styled.div`
   height: 80%;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ const SkillCardBody: StyledComponent<"div", any, {}, never> = styled.div`
   border-style: solid;
 `;
 
-const SkillCardContainer: StyledComponent<"div", any, {}, never> = styled.div`
+const SkillCardContainer: StyledComponent<"div", any, {}> = styled.div`
   height: 150px;
   @media (max-width: 767px) {
     width: 100%;
@@ -36,13 +36,13 @@ const SkillCardContainer: StyledComponent<"div", any, {}, never> = styled.div`
   }
 `;
 
-const SkillCardHealthBar: StyledComponent<"div", any, IHealthBarProps, never> = styled.div`
+const SkillCardHealthBar: StyledComponent<"div", any, IHealthBarProps> = styled.div`
   background-color: ${(props: IHealthBarProps) => props.active ? "blue" : "gray"};
   width: 20%;
   height: 100%;
 `;
 
-const SkillCardLabel: StyledComponent<"div", any, {}, never> = styled.div`
+const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
   width: 80%;
   display: flex;
   align-items: center;
