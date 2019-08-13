@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import CompoundQuestion from "../components/CompoundQuestion";
@@ -26,7 +26,7 @@ interface IState {
   disabledCheckButton: boolean;
 }
 
-class Lesson extends Component<IProps, IState> {
+class Lesson extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {

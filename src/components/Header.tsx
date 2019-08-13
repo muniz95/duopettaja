@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 import "../styles/Header.css";
 
 interface IProps {
@@ -18,9 +18,9 @@ class Header extends Component<IProps, IState> {
       <nav>
         <header>
           <span>
-            <LinkContainer to={"/"}>
+            <Link to={"/"}>
               <button className="link-main">Duopettaja</button>
-            </LinkContainer>
+            </Link>
           </span>
         </header>
         <div>

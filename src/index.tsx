@@ -1,9 +1,5 @@
-/* eslint-disable no-unused-vars */
-// import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap/dist/css/bootstrap-theme.css";
 import "font-awesome/css/font-awesome.css";
 import React from "react";
-/* eslint-enable no-unused-vars */
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import App from "./App";
