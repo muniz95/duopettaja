@@ -1,9 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-/* eslint-enable no-unused-vars */
-import { LinkContainer } from "react-router-bootstrap";
-// import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { connect } from "react-redux";
+import { LinkContainer } from "react-router-bootstrap";
 import "../styles/Header.css";
 
 interface IProps {
@@ -15,7 +13,7 @@ interface IState {
 }
 
 class Header extends Component<IProps, IState> {
-  render (): JSX.Element {
+  public render(): JSX.Element {
     return (
       <nav>
         <header>
@@ -27,7 +25,7 @@ class Header extends Component<IProps, IState> {
         </header>
         <div>
           <div>
-            <span key={2}>Goal: {this.props.goal}</span>
+            <span>Goal: {this.props.goal}</span>
           </div>
         </div>
       </nav>
@@ -35,10 +33,10 @@ class Header extends Component<IProps, IState> {
   }
 }
 
-function mapStateToProps (state: IState): any {
+function mapStateToProps(state: IState): any {
   const { goal } = state;
   return {
-    goal
+    goal,
   };
 }
 

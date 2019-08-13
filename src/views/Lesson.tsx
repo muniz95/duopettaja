@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { RouteComponentProps } from "react-router";
 import CompoundQuestion from "../components/CompoundQuestion";
 import GuessQuestion from "../components/GuessQuestion";
 import Loading from "../components/Loading";
@@ -11,10 +12,8 @@ import { reachGoal } from "../redux/actions";
 import "../styles/Lesson.css";
 import http from "../utils/http";
 
-interface IProps {
-  match: any;
-  history: any;
-  dispatchReachGoal: Function;
+interface IProps extends RouteComponentProps<any> {
+  dispatchReachGoal: () => void;
 }
 
 interface IState {
@@ -235,10 +234,8 @@ class Lesson extends Component<IProps, IState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Function) => ({
-  dispatchReachGoal: () => {
-    dispatch(reachGoal());
-  },
-});
+const mapDispatchToProps = {
+  dispatchReachGoal: reachGoal,
+};
 
 export default connect(null, mapDispatchToProps)(Lesson);
