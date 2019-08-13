@@ -1,5 +1,4 @@
 import React from "react";
-import { LinkContainer } from "react-router-bootstrap";
 import styled, { StyledComponent } from "styled-components";
 import Lesson from "../models/Lesson";
 
@@ -7,6 +6,7 @@ interface IProps {
   lesson: Lesson;
   current: number;
   total: number;
+  children: JSX.Element;
 }
 
 const SkillCardBody: StyledComponent<"div", any, {}> = styled.div`
@@ -49,7 +49,7 @@ const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
   justify-content: center;
 `;
 
-const LessonCard: React.FC<IProps> = ({ lesson, current, total }: IProps) => {
+const LessonCard: React.FC<IProps> = ({ lesson, current, total, children }: IProps) => {
   const body: JSX.Element =
     <SkillCardContainer>
       <SkillCardBody>
@@ -59,14 +59,11 @@ const LessonCard: React.FC<IProps> = ({ lesson, current, total }: IProps) => {
         <SkillCardLabel>
           {lesson.words.join(", ")}
         </SkillCardLabel>
+        {children}
       </SkillCardBody>
     </SkillCardContainer>;
 
-  return (
-    <LinkContainer to={lesson.available ? `/skill/${lesson.id}` : "#"}>
-      {body}
-    </LinkContainer>
-  );
+  return body;
 };
 
 (LessonCard as any).whyDidYouRender = true;

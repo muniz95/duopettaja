@@ -1,14 +1,12 @@
 import React, { Component } from "react";
+import { RouteComponentProps } from "react-router";
 import LessonCard from "../components/LessonCard";
 import Loading from "../components/Loading";
 import Lesson from "../models/Lesson";
 import "../styles/Skill.css";
 import http from "../utils/http";
 
-interface IProps {
-  history: any;
-  match: any;
-}
+interface IProps extends RouteComponentProps<never> {}
 
 interface IState {
   lessons: Lesson[];
@@ -26,7 +24,7 @@ class Skill extends Component<IProps, IState> {
     this.goToLesson = this.goToLesson.bind(this);
   }
 
-  public goToLesson(lesson: any): void {
+  public goToLesson(lesson: Lesson): void {
     this.props.history.push({
       pathname: `/lesson/${lesson.id}`,
       state: {
@@ -45,31 +43,21 @@ class Skill extends Component<IProps, IState> {
   }
 
   public render(): JSX.Element {
+    const button = (lesson: Lesson) => lesson.completed
+      ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
+      : lesson.available
+        ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
+        : <button className="btn btn-default" disabled >Start</button>;
+
     const content: JSX.Element | JSX.Element[] = this.state.loading
       ? <Loading />
       : <div className="skills">
-          { this.state.lessons.map((lesson, index, array) =>
-            <LessonCard key={lesson.id} lesson={lesson} current={++index} total={array.length} />) }
+          { this.state.lessons.map((lesson: Lesson, index: number, array: Lesson[]) =>
+            <LessonCard key={lesson.id} lesson={lesson} current={++index} total={array.length}>
+              {button(lesson)}
+            </LessonCard>,
+          )}
         </div>;
-        // <div className="skill-card" key={lesson.id}>
-        //   <div className="well">
-        //     <p>
-        //       <b>Lesson { ++index } of {array.length}</b>
-        //     </p>
-        //     <p>
-        //       <span>{lesson.words}</span>
-        //     </p>
-        //     <p>
-        //       { lesson.completed
-        //         ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
-        //         : lesson.available
-        //           ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
-        //           : <button className="btn btn-default" disabled >Start</button>
-        //       }
-        //     </p>
-        //   </div>
-        // </div>
-        // );
     return (
       <div>
         <div className="row">

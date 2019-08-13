@@ -2,6 +2,7 @@ class Lesson {
   public id?: number;
   public completed?: boolean;
   public words: string[];
+  public questions: string[];
   public skillId?: number;
   public order?: number;
   public available?: true;
@@ -10,6 +11,7 @@ class Lesson {
 
   constructor() {
     this.words = [];
+    this.questions = [];
   }
 }
 
