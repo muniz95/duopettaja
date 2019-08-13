@@ -1,5 +1,5 @@
 import React from "react";
-import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 import styled, { StyledComponent } from "styled-components";
 import "../styles/SkillBadge.css";
 
@@ -49,21 +49,30 @@ const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
   justify-content: center;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+`;
+
+
 const SkillCard: React.FC<IProps> = ({ name, id, active }: IProps): JSX.Element => {
   const body: JSX.Element =
     <SkillCardContainer>
-      <SkillCardBody>
-        <SkillCardHealthBar active={active} />
-        <SkillCardLabel>
-          {name}
-        </SkillCardLabel>
-      </SkillCardBody>
+      <StyledLink to={active ? `/skill/${id}` : "#"}>
+        <SkillCardBody>
+          <SkillCardHealthBar active={active} />
+          <SkillCardLabel>
+            {name}
+          </SkillCardLabel>
+        </SkillCardBody>
+      </StyledLink>
     </SkillCardContainer>;
 
   return (
-    <LinkContainer to={active ? `/skill/${id}` : "#"}>
-      {body}
-    </LinkContainer>
+    body
   );
 };
 
