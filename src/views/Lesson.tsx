@@ -146,7 +146,7 @@ class Lesson extends React.Component<IProps, IState> {
       questions[currentQuestionIndex].correct = currentAnswer.correct;
     } else {
       // check if there is any incorrect word
-      const hasWrongWord: boolean = currentAnswer.options.map((x) => x.correct).includes(false);
+      const hasWrongWord: boolean = currentAnswer.options.map((x: Answer) => x.correct).includes(false);
       if (hasWrongWord) {
         this.setState({
           correct: false,
@@ -156,7 +156,7 @@ class Lesson extends React.Component<IProps, IState> {
         progress = 0;
       } else {
         // check if the words are in the correct order
-        if (this.orderedAnswers(currentAnswer.options.map((x) => x.order))) {
+        if (this.orderedAnswers(currentAnswer.options.map((x: Answer) => x.order))) {
           this.setState({
             correct: true,
             disabledCheckButton: true,

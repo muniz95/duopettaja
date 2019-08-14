@@ -1,9 +1,9 @@
+import { AxiosResponse } from "axios";
 import React, { Component } from "react";
 import { RouteComponentProps } from "react-router";
 import LessonCard from "../components/LessonCard";
 import Loading from "../components/Loading";
 import Lesson from "../models/Lesson";
-import "../styles/Skill.css";
 import http from "../utils/http";
 
 interface IProps extends RouteComponentProps<never> {}
@@ -37,13 +37,14 @@ class Skill extends Component<IProps, IState> {
     const {id} = this.props.match.params;
     http
       .get(`${process.env.REACT_APP_API}/skills/${id}/lessons`)
-      .then((response) => this.setState({lessons: response.data, loading: false}))
+      .then((response: AxiosResponse<Lesson[]>) => this.setState({lessons: response.data, loading: false}))
       // tslint:disable-next-line: no-console
       .catch(console.error);
   }
 
   public render(): JSX.Element {
-    const button = (lesson: Lesson) => lesson.completed
+    // tslint:disable-next-line: typedef
+    const button = (lesson: Lesson): JSX.Element => lesson.completed
       ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
       : lesson.available
         ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
