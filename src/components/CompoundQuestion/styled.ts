@@ -24,10 +24,11 @@ export const SelectedWordsBox: StyledComponent<"div", any, {}> = styled.div`
 
 export const AvailableWordsContainer: StyledComponent<"div", any, {}> = styled.div`
   display: flex;
+  margin-top: 10px;
   padding: 0 10% 0 10%;
   align-items: center;
   justify-content: center;
-  height: 50px;
+  flex-wrap: wrap;
 `;
 
 export const WordBox: StyledComponent<"div", any, IWordBoxProps> = styled.div`
