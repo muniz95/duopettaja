@@ -1,11 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import Word from "../models/Word";
 import http from "../utils/http";
 
-interface IProps {
-  location: any;
-}
+interface IProps extends RouteComponentProps<any> {}
 
 interface IState {
   questions: Word[];
@@ -24,15 +22,15 @@ class FinishedLesson extends React.Component<IProps, IState> {
     const data: any = { completed: true };
     http
       .put(`${process.env.REACT_APP_API}/lessons/${this.state.lessonId}/complete`, data)
-      .then(console.log);
+      .then(() => this.props.history.push("/"));
   }
 
   public render(): JSX.Element {
     return (
       <div>
         <h2>Finished :)</h2>
-        <div>{this.state.questions.filter(a => a.correct).length} correct questions</div>
-        <div>{this.state.questions.filter(a => !a.correct).length} wrong questions</div>
+        <div>{this.state.questions.filter((a) => a.correct).length} correct questions</div>
+        <div>{this.state.questions.filter((a) => !a.correct).length} wrong questions</div>
         <Link to={"/"}>
           <button>Home</button>
         </Link>

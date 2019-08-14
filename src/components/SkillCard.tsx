@@ -50,13 +50,14 @@ const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
 `;
 
 const StyledLink = styled(Link)`
+  color: black;
   text-decoration: none;
 
   &:focus, &:hover, &:visited, &:link, &:active {
+    color: black;
     text-decoration: none;
   }
 `;
-
 
 const SkillCard: React.FC<IProps> = ({ name, id, active }: IProps): JSX.Element => {
   const body: JSX.Element =

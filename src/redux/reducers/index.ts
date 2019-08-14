@@ -1,5 +1,5 @@
-import { REACH_GOAL } from "../constants";
 import { combineReducers } from "redux";
+import { REACH_GOAL } from "../constants";
 
 interface IAction {
   type: string;
@@ -16,5 +16,5 @@ const goal = (state = "not finished", action: IAction) => {
 };
 
 export default combineReducers({
-  goal
+  goal,
 });

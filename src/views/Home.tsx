@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import React, { Component } from "react";
+import React from "react";
 import Loading from "../components/Loading";
 import SkillCard from "../components/SkillCard";
 import Skill from "../models/Skill";
@@ -14,7 +14,7 @@ interface IState {
   loading: boolean;
 }
 
-export default class Home extends Component<{}, IState> {
+export default class Home extends React.Component<{}, IState> {
   public whyDidYouRender = true;
 
   constructor(props: {}) {

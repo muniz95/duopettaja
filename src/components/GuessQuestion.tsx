@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
+import Word from "../models/Word";
 /* eslint-enable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 import "../styles/GuessQuestion.css";
-import Word from "../models/Word";
 
 interface IProps {
   options: Word[];
@@ -19,40 +19,40 @@ interface IState {
 }
 
 class GuessQuestion extends Component<IProps, IState> {
-  constructor (props: IProps) {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       answer: new Word(),
-      question: '',
-      options: []
+      options: [],
+      question: "",
     };
 
     this.getAnswer = this.getAnswer.bind(this);
   }
 
-  UNSAFE_componentWillMount () {
+  public UNSAFE_componentWillMount() {
     const { question, options } = this.props;
     this.setState({question, options});
   }
 
-  UNSAFE_componentWillReceiveProps (props: IProps) {
+  public UNSAFE_componentWillReceiveProps(props: IProps) {
     const { question, options } = props;
     this.setState({question, options});
   }
 
-  getAnswer (option: Word) {
+  public getAnswer(option: Word) {
     this.cleanSelectedAnswers();
     option.selected = true;
     this.props.onChange(option);
   }
 
-  cleanSelectedAnswers () {
-    this.props.options.forEach(option => {
+  public cleanSelectedAnswers() {
+    this.props.options.forEach((option) => {
       option.selected = false;
     });
   }
 
-  render () {
+  public render() {
     const { question, options } = this.state;
     return (
       <div>
@@ -60,12 +60,13 @@ class GuessQuestion extends Component<IProps, IState> {
           <h4>{question}</h4>
         </div>
         <div className="row">
-          {options.map(option =>
+          {options.map((option) =>
             <div key={option.id} className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-              <div className={"well well-sm" + (option.selected ? " selected" : "")} onClick={() => this.getAnswer(option)}>
+              <div className={"well well-sm" + (option.selected ? " selected" : "")}
+                onClick={() => this.getAnswer(option)}>
                 {option.text}
               </div>
-            </div>
+            </div>,
           )}
         </div>
       </div>
