@@ -1,1 +1,22 @@
+.skill-card {
+    height: 150px;
+    background-color: brown;
+}
 
+@media (max-width: 480px) {
+    .skill-card {
+        width: 50%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+    .skill-card {
+        width: 33%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .skill-card {
+        width: 25%;
+    }
+}

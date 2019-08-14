@@ -11,3 +11,9 @@
   background-image: none;
   background-color: white;
 }
+
+.link-main {
+  background-color: transparent;
+  border-style: none;
+  color: white;
+}

@@ -1,0 +1,25 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration"
+    ]
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "src/serviceWorker.ts",
+      "src/react-app-env.d.ts"
+    ]
+  }
+}
