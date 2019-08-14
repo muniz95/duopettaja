@@ -1,73 +1,64 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
+import { AxiosResponse } from "axios";
 import React, { Component } from "react";
-/* eslint-enable no-unused-vars */
-import http from "../utils/http";
+import { RouteComponentProps } from "react-router";
+import LessonCard from "../components/LessonCard";
 import Loading from "../components/Loading";
-import "../styles/Skill.css";
+import Lesson from "../models/Lesson";
+import http from "../utils/http";
 
-interface IProps {
-  history: any;
-  match: any;
-}
+interface IProps extends RouteComponentProps<never> {}
 
 interface IState {
-  lessons: any[];
+  lessons: Lesson[];
   loading: boolean;
 }
 
 class Skill extends Component<IProps, IState> {
-  constructor (props: IProps) {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       lessons: [],
-      loading: true
+      loading: true,
     };
 
     this.goToLesson = this.goToLesson.bind(this);
   }
 
-  goToLesson (lesson: any): void {
+  public goToLesson(lesson: Lesson): void {
     this.props.history.push({
       pathname: `/lesson/${lesson.id}`,
       state: {
-        questions: lesson.questions
-      }
+        questions: lesson.questions,
+      },
     });
   }
 
-  componentWillMount (): void {
+  public componentWillMount(): void {
     const {id} = this.props.match.params;
     http
       .get(`${process.env.REACT_APP_API}/skills/${id}/lessons`)
-      .then(response => this.setState({lessons: response.data, loading: false}))
+      .then((response: AxiosResponse<Lesson[]>) => this.setState({lessons: response.data, loading: false}))
+      // tslint:disable-next-line: no-console
       .catch(console.error);
   }
 
-  render (): JSX.Element {
+  public render(): JSX.Element {
+    // tslint:disable-next-line: typedef
+    const button = (lesson: Lesson): JSX.Element => lesson.completed
+      ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
+      : lesson.available
+        ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
+        : <button className="btn btn-default" disabled >Start</button>;
+
     const content: JSX.Element | JSX.Element[] = this.state.loading
       ? <Loading />
-      : this.state.lessons.map((lesson, index, array) =>
-        <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={lesson.id}>
-          <div className="well">
-            <p>
-              <b>Lesson { ++index } of {array.length}</b>
-            </p>
-            <p>
-              <span>{lesson.words}</span>
-            </p>
-            <p>
-              { lesson.completed
-                ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
-                : lesson.available
-                  ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
-                  : <button className="btn btn-default" disabled >Start</button>
-              }
-            </p>
-          </div>
-        </div>
-      );
+      : <div className="skills">
+          { this.state.lessons.map((lesson: Lesson, index: number, array: Lesson[]) =>
+            <LessonCard key={lesson.id} lesson={lesson} current={++index} total={array.length}>
+              {button(lesson)}
+            </LessonCard>,
+          )}
+        </div>;
     return (
       <div>
         <div className="row">

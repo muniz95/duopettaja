@@ -1,20 +1,19 @@
-/* eslint-disable react/jsx-no-undef */
-import React, { Component } from "react";
+import { AxiosResponse } from "axios";
+import React from "react";
+import { connect } from "react-redux";
+import { RouteComponentProps } from "react-router";
 import CompoundQuestion from "../components/CompoundQuestion";
 import GuessQuestion from "../components/GuessQuestion";
 import Loading from "../components/Loading";
 import ProgressBar from "../components/ProgressBar";
-import { reachGoal } from "../redux/actions";
-import { connect } from "react-redux";
-import http from "../utils/http";
-import "../styles/Lesson.css";
-import Word from "../models/Word";
 import Answer from "../models/Answer";
+import Word from "../models/Word";
+import { reachGoal } from "../redux/actions";
+import "../styles/Lesson.css";
+import http from "../utils/http";
 
-interface IProps {
-  match: any;
-  history: any;
-  dispatchReachGoal: Function;
+interface IProps extends RouteComponentProps<any> {
+  dispatchReachGoal: () => void;
 }
 
 interface IState {
@@ -27,17 +26,17 @@ interface IState {
   disabledCheckButton: boolean;
 }
 
-class Lesson extends Component<IProps, IState> {
-  constructor (props: IProps) {
+class Lesson extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
-      progress: 0,
-      currentQuestionIndex: 0,
-      questions: [],
       answers: [],
       correct: false,
+      currentQuestionIndex: 0,
+      disabledCheckButton: false,
+      progress: 0,
+      questions: [],
       visibleAnswerBox: false,
-      disabledCheckButton: false
     };
 
     this.nextQuestion = this.nextQuestion.bind(this);
@@ -45,16 +44,16 @@ class Lesson extends Component<IProps, IState> {
     this.getAnswer = this.getAnswer.bind(this);
   }
 
-  componentDidMount (): void {
+  public componentDidMount(): void {
     const { id } = this.props.match.params;
     http
       .get(`${process.env.REACT_APP_API}/lessons/${id}/questions`)
-      .then(response => {
+      .then((response: AxiosResponse) => {
         this.setState({questions: response.data});
       });
   }
 
-  getAnswer (answer: Answer): void {
+  public getAnswer(answer: Answer): void {
     const { questions, currentQuestionIndex, answers } = this.state;
     if (questions[currentQuestionIndex].category === "compound") {
       let currentAnswer: Answer = answers[currentQuestionIndex];
@@ -69,7 +68,7 @@ class Lesson extends Component<IProps, IState> {
     this.setState({answers});
   }
 
-  render (): JSX.Element {
+  public render(): JSX.Element {
     if (this.state.questions.length) {
       let question: JSX.Element;
 
@@ -95,15 +94,15 @@ class Lesson extends Component<IProps, IState> {
 
       const btnNextQuestion: JSX.Element = this.state.visibleAnswerBox
         ? <div className="row">
-          <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 success-box">
-            <span className="pull-left">Correct!</span>
-            <button
-              className="btn btn-primary pull-right"
-              onClick={this.nextQuestion}>
-              Next
-            </button>
+            <div>
+              <span className="pull-left">Correct!</span>
+              <button
+                className="btn btn-primary pull-right"
+                onClick={this.nextQuestion}>
+                Next
+              </button>
+            </div>
           </div>
-        </div>
         : <div></div>;
 
       return (
@@ -130,7 +129,7 @@ class Lesson extends Component<IProps, IState> {
     }
   }
 
-  checkAnswer (): void {
+  public checkAnswer(): void {
     const { currentQuestionIndex, questions, answers } = this.state;
     const currentQuestion: Word = questions[currentQuestionIndex];
     const currentAnswer: Answer = answers[currentQuestionIndex];
@@ -138,8 +137,8 @@ class Lesson extends Component<IProps, IState> {
     if (currentQuestion.category === "guess") {
       this.setState({
         correct: true,
+        disabledCheckButton: true,
         visibleAnswerBox: true,
-        disabledCheckButton: true
       });
       progress = (currentAnswer && currentAnswer.correct)
         ? questions[currentQuestionIndex].weight
@@ -147,29 +146,29 @@ class Lesson extends Component<IProps, IState> {
       questions[currentQuestionIndex].correct = currentAnswer.correct;
     } else {
       // check if there is any incorrect word
-      const hasWrongWord: boolean = currentAnswer.options.map(x => x.correct).includes(false);
+      const hasWrongWord: boolean = currentAnswer.options.map((x: Answer) => x.correct).includes(false);
       if (hasWrongWord) {
         this.setState({
           correct: false,
+          disabledCheckButton: true,
           visibleAnswerBox: true,
-          disabledCheckButton: true
         });
         progress = 0;
       } else {
         // check if the words are in the correct order
-        if (this.orderedAnswers(currentAnswer.options.map(x => x.order))) {
+        if (this.orderedAnswers(currentAnswer.options.map((x: Answer) => x.order))) {
           this.setState({
             correct: true,
+            disabledCheckButton: true,
             visibleAnswerBox: true,
-            disabledCheckButton: true
           });
           progress = currentQuestion.weight;
           questions[currentQuestionIndex].correct = true;
         } else {
           this.setState({
             correct: false,
+            disabledCheckButton: true,
             visibleAnswerBox: true,
-            disabledCheckButton: true
           });
           progress = 0;
           questions[currentQuestionIndex].correct = false;
@@ -177,19 +176,19 @@ class Lesson extends Component<IProps, IState> {
       }
     }
     this.setState({
-      progress: this.state.progress + progress
+      progress: this.state.progress + progress,
     });
   }
 
-  nextQuestion (): void {
+  public nextQuestion(): void {
     const { currentQuestionIndex, questions } = this.state;
     const { id } = this.props.match.params;
     const nextStep: number = currentQuestionIndex + 1;
     if (nextStep < questions.length) {
       this.setState({
         currentQuestionIndex: this.state.currentQuestionIndex + 1,
+        disabledCheckButton: false,
         visibleAnswerBox: false,
-        disabledCheckButton: false
       });
     } else {
       http.post(`${process.env.REACT_APP_API}/lessons/${id}`, {});
@@ -197,14 +196,14 @@ class Lesson extends Component<IProps, IState> {
       this.props.history.push({
         pathname: "/lesson/finished",
         state: {
+          lessonId: this.props.match.params.id,
           questions: this.state.questions,
-          lessonId: this.props.match.params.id
-        }
+        },
       });
     }
   }
 
-  orderedAnswers (a: any[], b: number = 0): boolean {
+  public orderedAnswers(a: any[], b: number = 0): boolean {
     let m: number = 0;
     let currentNum: number;
     let nextNum: number;
@@ -235,10 +234,8 @@ class Lesson extends Component<IProps, IState> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Function) => ({
-  dispatchReachGoal: () => {
-    dispatch(reachGoal());
-  }
-});
+const mapDispatchToProps = {
+  dispatchReachGoal: reachGoal,
+};
 
 export default connect(null, mapDispatchToProps)(Lesson);

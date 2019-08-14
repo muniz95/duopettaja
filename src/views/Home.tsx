@@ -1,20 +1,12 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-import React, { Component } from "react";
-/* eslint-enable no-unused-vars */
 import dotenv from "dotenv";
-import http from "../utils/http";
-import SkillBadge from "../components/SkillBadge";
+import React from "react";
 import Loading from "../components/Loading";
-import "../styles/Home.css";
+import SkillCard from "../components/SkillCard";
 import Skill from "../models/Skill";
+import "../styles/Home.css";
+import http from "../utils/http";
 
 dotenv.config();
-
-interface IProps {
-  
-}
 
 interface IState {
   skills: Skill[];
@@ -22,40 +14,36 @@ interface IState {
   loading: boolean;
 }
 
-export default class Home extends Component<IProps, IState> {
-  constructor (props: IProps) {
+export default class Home extends React.Component<{}, IState> {
+  public whyDidYouRender = true;
+
+  constructor(props: {}) {
     super(props);
     this.state = {
-      skills: [],
       errorMessage: "",
-      loading: true
+      loading: true,
+      skills: [],
     };
   }
 
-  componentDidMount () {
+  public componentDidMount(): void {
     http
       .get(`${process.env.REACT_APP_API}/skills`)
-      .then(response => this.setState({ skills: response.data, loading: false }))
-      .catch(error => {
-        console.log(error);
-        this.setState({ errorMessage: "An error occured. Refresh the page.", loading: false });
+      .then((response) => this.setState({ skills: response.data, loading: false }))
+      .catch((error) => {
+        this.setState({ errorMessage: `An error occured: ${error}. Refresh the page.`, loading: false });
       });
   }
 
-  render () {
-    const content = this.state.loading
-      ? <Loading />
-      : <div className="row">
-        <p className="text-left">
-          Home
-        </p>
-        <h2>{this.state.errorMessage}</h2>
-        { this.state.skills.map((skill, id) =>
-          <div className="col-lg-3 col-md-3 col-sm-4 col-xs-4" key={id}>
-            <SkillBadge {...skill} />
-          </div>
-          // <SkillBadge key={skill.id} name={skill.name} id={skill.id} active={skill.active} />
-        ) }
+  public render(): JSX.Element {
+    const content: JSX.Element = this.state.loading
+    ? <Loading />
+    : <div className="row">
+        <h2>Home</h2>
+        <h4>{this.state.errorMessage}</h4>
+        <div className="skills">
+          { this.state.skills.map((skill) => <SkillCard {...skill} key={skill.id} />) }
+        </div>
       </div>;
     return content;
   }

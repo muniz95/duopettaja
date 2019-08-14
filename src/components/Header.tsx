@@ -1,9 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-/* eslint-enable no-unused-vars */
-import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "../styles/Header.css";
 
 interface IProps {
@@ -15,39 +13,30 @@ interface IState {
 }
 
 class Header extends Component<IProps, IState> {
-  render (): JSX.Element {
+  public render(): JSX.Element {
     return (
-      <Navbar collapseOnSelect>
+      <nav>
         <header>
-          <Navbar.Brand>
-            <LinkContainer to={"/"}>
-              <button>Duopettaja</button>
-            </LinkContainer>
-          </Navbar.Brand>
-          <Navbar.Toggle/>
+          <span>
+            <Link to={"/"}>
+              <button className="link-main">Duopettaja</button>
+            </Link>
+          </span>
         </header>
-        <Navbar.Collapse>
-          <Nav>
-            {/*
-            <LinkContainer to={'/skill'}>
-              <NavItem eventKey={1}>Skill</NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/lesson'}>
-              <NavItem eventKey={2}>Lesson</NavItem>
-            </LinkContainer>
-            */}
-            <NavItem key={2}>Goal: {this.props.goal}</NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+        <div>
+          <div>
+            <span>Goal: {this.props.goal}</span>
+          </div>
+        </div>
+      </nav>
     );
   }
 }
 
-function mapStateToProps (state: IState): any {
+function mapStateToProps(state: IState): any {
   const { goal } = state;
   return {
-    goal
+    goal,
   };
 }
 
