@@ -49,7 +49,7 @@ const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
   justify-content: center;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink: StyledComponent<typeof Link, any, {}> = styled(Link)`
   color: black;
   text-decoration: none;
 
