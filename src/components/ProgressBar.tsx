@@ -1,22 +1,34 @@
-import PropTypes from "prop-types";
 import React from "react";
+import styled, { StyledComponent } from "styled-components";
 import "../styles/ProgressBar.css";
 
-const ProgressBar = ({progress = 0}) => {
-  return (
-    <div>
-      <div className="progress">
-        <div className="progress-bar bg-duopettaja" role="progressbar" style={{width: `${progress}%`}}
-          aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
-        </div>
-      </div>
-      <span>{progress}%</span>
-    </div>
-  );
-};
+interface IProps {
+  progress: number;
+}
 
-ProgressBar.propTypes = {
-  progress: PropTypes.number,
-};
+const ProgressBarContainer: StyledComponent<"div", any, {}> = styled.div`
+  span {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const Bar: StyledComponent<"div", any, IProps> = styled.div`
+  background-color: #20a8e9;
+  background-image: none;
+  width: ${(p: IProps) => `${p.progress}%`};
+  height: 20px;
+  transition: 0.4s ease-in-out;
+  transition-property: width, background-color;
+`;
+
+const ProgressBar: React.FC<IProps> = ({progress = 0}: IProps): JSX.Element =>
+  <ProgressBarContainer>
+    <span>{progress}%</span>
+    <Bar progress={progress} />
+  </ProgressBarContainer>;
 
 export default ProgressBar;

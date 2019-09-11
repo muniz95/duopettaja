@@ -6,7 +6,8 @@ interface IAction {
   payload: any;
 }
 
-const goal = (state = "not finished", action: IAction) => {
+// tslint:disable-next-line: typedef
+const goal = (state: string = "not finished", action: IAction) => {
   switch (action.type) {
     case REACH_GOAL:
       return "you have reached your daily goal!";
