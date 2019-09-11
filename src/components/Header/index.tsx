@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
+import "flag-icon-css/css/flag-icon.min.css";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import "../styles/Header.css";
+import "../../styles/Header.css";
+import S from "./styled";
 
 interface IProps {
   goal?: string;
@@ -15,20 +16,14 @@ interface IState {
 class Header extends Component<IProps, IState> {
   public render(): JSX.Element {
     return (
-      <nav>
-        <header>
-          <span>
-            <Link to={"/"}>
-              <button className="link-main">Duopettaja</button>
-            </Link>
-          </span>
-        </header>
-        <div>
-          <div>
-            <span>Goal: {this.props.goal}</span>
-          </div>
-        </div>
-      </nav>
+      <S.Nav>
+        <S.ItemsContainer>
+          <span className="flag-icon flag-icon-gr"></span>
+          <S.Crown>C</S.Crown>
+          <S.Streak>S</S.Streak>
+          <S.Lingots>L</S.Lingots>
+        </S.ItemsContainer>
+      </S.Nav>
     );
   }
 }
