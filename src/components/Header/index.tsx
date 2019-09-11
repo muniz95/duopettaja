@@ -19,9 +19,9 @@ class Header extends Component<IProps, IState> {
       <S.Nav>
         <S.ItemsContainer>
           <span className="flag-icon flag-icon-gr"></span>
-          <S.Crown>C</S.Crown>
-          <S.Streak>S</S.Streak>
-          <S.Lingots>L</S.Lingots>
+          <span className="fas fa-crown" style={{color: "gold"}}>58</span>
+          <span className="fas fa-fire" style={{color: "orange"}}>1</span>
+          <span className="fas fa-gem" style={{color: "red"}}>1500</span>
         </S.ItemsContainer>
       </S.Nav>
     );
