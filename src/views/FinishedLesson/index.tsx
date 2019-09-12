@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
-import Word from "../models/Word";
-import http from "../utils/http";
+import Word from "../../models/Word";
+import http from "../../utils/http";
 
 interface IProps extends RouteComponentProps<any> {}
 

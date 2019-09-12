@@ -1,10 +1,10 @@
 import { AxiosResponse } from "axios";
 import React, { Component } from "react";
 import { RouteComponentProps } from "react-router";
-import LessonCard from "../components/LessonCard";
-import Loading from "../components/Loading";
-import Lesson from "../models/Lesson";
-import http from "../utils/http";
+import LessonCard from "../../components/LessonCard";
+import Loading from "../../components/Loading";
+import Lesson from "../../models/Lesson";
+import http from "../../utils/http";
 
 interface IProps extends RouteComponentProps<never> {}
 

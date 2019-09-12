@@ -2,15 +2,15 @@ import { AxiosResponse } from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router";
-import CompoundQuestion from "../components/CompoundQuestion";
-import GuessQuestion from "../components/GuessQuestion";
-import Loading from "../components/Loading";
-import ProgressBar from "../components/ProgressBar";
-import Answer from "../models/Answer";
-import Word from "../models/Word";
-import { reachGoal } from "../redux/actions";
-import "../styles/Lesson.css";
-import http from "../utils/http";
+import CompoundQuestion from "../../components/CompoundQuestion";
+import GuessQuestion from "../../components/GuessQuestion";
+import Loading from "../../components/Loading";
+import ProgressBar from "../../components/ProgressBar";
+import Answer from "../../models/Answer";
+import Word from "../../models/Word";
+import { reachGoal } from "../../redux/actions";
+import "../../styles/Lesson.css";
+import http from "../../utils/http";
 
 interface IProps extends RouteComponentProps<any> {
   dispatchReachGoal: () => void;
