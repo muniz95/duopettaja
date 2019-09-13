@@ -5,6 +5,7 @@ import LessonCard from "../../components/LessonCard";
 import Loading from "../../components/Loading";
 import Lesson from "../../models/Lesson";
 import http from "../../utils/http";
+import S from "./styled";
 
 interface IProps extends RouteComponentProps<never> {}
 
@@ -45,10 +46,10 @@ class Skill extends Component<IProps, IState> {
   public render(): JSX.Element {
     // tslint:disable-next-line: typedef
     const button = (lesson: Lesson): JSX.Element => lesson.completed
-      ? <button className="btn btn-primary" onClick={() => this.goToLesson(lesson)}>REDO</button>
+      ? <S.Button state="finished" onClick={() => this.goToLesson(lesson)}>REDO</S.Button>
       : lesson.available
-        ? <button className="btn btn-success" onClick={() => this.goToLesson(lesson)}>Start</button>
-        : <button className="btn btn-default" disabled >Start</button>;
+        ? <S.Button state="unfinished" onClick={() => this.goToLesson(lesson)}>Start</S.Button>
+        : <S.Button state="locked" disabled >Start</S.Button>;
 
     const content: JSX.Element | JSX.Element[] = this.state.loading
       ? <Loading />
