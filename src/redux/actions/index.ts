@@ -6,3 +6,7 @@ export const reachGoal = () => {
   };
   return action;
 };
+
+export default {
+  reachGoal
+}
