@@ -15,6 +15,10 @@ const goal = (state = "not finished", action: IAction) => {
   }
 };
 
-export default combineReducers({
+const reducer = combineReducers({
   goal,
 });
+
+export type RootState = ReturnType<typeof reducer>;
+
+export default reducer;

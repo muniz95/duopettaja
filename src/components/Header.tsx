@@ -1,43 +1,28 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../styles/Header.css";
+import { RootState } from "../redux/reducers";
 
-interface IProps {
-  goal?: string;
-}
-
-interface IState {
-  goal: string;
-}
-
-class Header extends Component<IProps, IState> {
-  public render(): JSX.Element {
-    return (
-      <nav>
-        <header>
-          <span>
-            <Link to={"/"}>
-              <button className="link-main">Duopettaja</button>
-            </Link>
-          </span>
-        </header>
+const Header = () => {
+  const goal = useSelector((state: RootState) => state.goal);
+  return (
+    <nav>
+      <header>
+        <span>
+          <Link to={"/"}>
+            <button className="link-main">Duopettaja</button>
+          </Link>
+        </span>
+      </header>
+      <div>
         <div>
-          <div>
-            <span>Goal: {this.props.goal}</span>
-          </div>
+          <span>Goal: {goal}</span>
         </div>
-      </nav>
-    );
-  }
+      </div>
+    </nav>
+  );
 }
 
-function mapStateToProps(state: IState): any {
-  const { goal } = state;
-  return {
-    goal,
-  };
-}
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;
