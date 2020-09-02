@@ -41,61 +41,50 @@ const QuestionOption: StyledComponent<"div", any, IQuestionOptionProps> = styled
   margin: 5px;
 `;
 
-class GuessQuestion extends Component<IProps, IState> {
-  public whyDidYouRender: boolean = true;
+const GuessQuestion = ({question, options, onChange}: any) => {
+  const whyDidYouRender: boolean = true;
+  const [answer, setAnswer] = React.useState(new Word());
+  // const [options, setOptions] = React.useState([]);
+  // const [question, setQuestion] = React.useState("");
 
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      answer: new Word(),
-      options: [],
-      question: "",
-    };
+  // const componentWillMount(): void {
+  //   const { question, options } = this.props;
+  //   this.setState({question, options});
+  // }
 
-    this.getAnswer = this.getAnswer.bind(this);
-  }
+  // const componentWillReceiveProps(props: IProps): void {
+  //   const { question, options } = props;
+  //   this.setState({question, options});
+  // }
 
-  public componentWillMount(): void {
-    const { question, options } = this.props;
-    this.setState({question, options});
-  }
-
-  public componentWillReceiveProps(props: IProps): void {
-    const { question, options } = props;
-    this.setState({question, options});
-  }
-
-  public getAnswer(option: Word): void {
-    this.cleanSelectedAnswers();
+  const getAnswer = (option: Word) => {
+    cleanSelectedAnswers();
     option.selected = true;
-    this.props.onChange(option);
+    onChange(option);
   }
 
-  public cleanSelectedAnswers(): void {
-    this.props.options.forEach((option: Word) => {
+  const cleanSelectedAnswers = () => {
+    options.forEach((option: Word) => {
       option.selected = false;
     });
   }
 
-  public render(): JSX.Element {
-    const { question, options } = this.state;
-    return (
-      <div>
-        <div className="row">
-          <h4>{question}</h4>
-        </div>
-        <QuestionsContainer>
-          {options.map((option: Word) =>
-          <QuestionContainer key={option.id}>
-            <QuestionOption selected={option.selected} onClick={() => this.getAnswer(option)}>
-              {option.text}
-            </QuestionOption>
-          </QuestionContainer>,
-          )}
-        </QuestionsContainer>
+  return (
+    <div>
+      <div className="row">
+        <h4>{question}</h4>
       </div>
-    );
-  }
+      <QuestionsContainer>
+        {options.map((option: any) =>
+        <QuestionContainer key={option.id}>
+          <QuestionOption selected={option.selected} onClick={() => getAnswer(option)}>
+            {option.text}
+          </QuestionOption>
+        </QuestionContainer>,
+        )}
+      </QuestionsContainer>
+    </div>
+  );
 }
 
 export default GuessQuestion;

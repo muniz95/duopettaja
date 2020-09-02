@@ -35,7 +35,7 @@ const Lesson = (props: RouteComponentProps) => {
       });
   }, []);
 
-  const getAnswer = (answer: Answer) => {
+  const getAnswer = (answer: any) => {
     if (questions[currentQuestionIndex].category === "compound") {
       let currentAnswer: Answer = answers[currentQuestionIndex];
       if (currentAnswer === undefined) {
