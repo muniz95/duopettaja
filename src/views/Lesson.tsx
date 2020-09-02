@@ -26,34 +26,34 @@ interface IState {
   disabledCheckButton: boolean;
 }
 
-class Lesson extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      answers: [],
-      correct: false,
-      currentQuestionIndex: 0,
-      disabledCheckButton: false,
-      progress: 0,
-      questions: [],
-      visibleAnswerBox: false,
-    };
+const Lesson = (props: RouteComponentProps) => {
+  // constructor(props: IProps) {
+  //   super(props);
+  //   this.state = {
+  //     answers: [],
+  //     correct: false,
+  //     currentQuestionIndex: 0,
+  //     disabledCheckButton: false,
+  //     progress: 0,
+  //     questions: [],
+  //     visibleAnswerBox: false,
+  //   };
 
-    this.nextQuestion = this.nextQuestion.bind(this);
-    this.checkAnswer = this.checkAnswer.bind(this);
-    this.getAnswer = this.getAnswer.bind(this);
-  }
+  //   this.nextQuestion = this.nextQuestion.bind(this);
+  //   this.checkAnswer = this.checkAnswer.bind(this);
+  //   this.getAnswer = this.getAnswer.bind(this);
+  // }
 
-  public componentDidMount(): void {
-    const { id } = this.props.match.params;
+  React.useEffect(() => {
+    const { id } = props.match.params as any;
     http
       .get(`${process.env.REACT_APP_API}/lessons/${id}/questions`)
       .then((response: AxiosResponse) => {
         this.setState({questions: response.data});
       });
-  }
+  }, [])
 
-  public getAnswer(answer: Answer): void {
+  const getAnswer = (answer: Answer) => {
     const { questions, currentQuestionIndex, answers } = this.state;
     if (questions[currentQuestionIndex].category === "compound") {
       let currentAnswer: Answer = answers[currentQuestionIndex];
@@ -129,7 +129,7 @@ class Lesson extends React.Component<IProps, IState> {
     }
   }
 
-  public checkAnswer(): void {
+  public checkAnswer() => {
     const { currentQuestionIndex, questions, answers } = this.state;
     const currentQuestion: Word = questions[currentQuestionIndex];
     const currentAnswer: Answer = answers[currentQuestionIndex];
@@ -180,7 +180,7 @@ class Lesson extends React.Component<IProps, IState> {
     });
   }
 
-  public nextQuestion(): void {
+  public nextQuestion() => {
     const { currentQuestionIndex, questions } = this.state;
     const { id } = this.props.match.params;
     const nextStep: number = currentQuestionIndex + 1;
@@ -238,4 +238,4 @@ const mapDispatchToProps = {
   dispatchReachGoal: reachGoal,
 };
 
-export default connect(null, mapDispatchToProps)(Lesson);
+export default Lesson;
