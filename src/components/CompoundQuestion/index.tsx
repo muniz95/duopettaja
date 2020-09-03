@@ -17,7 +17,7 @@ interface IState {
 const byIdAscending: (a: Word, b: Word) => number = (a: Word, b: Word) => a.id - b.id;
 
 const CompoundQuestion = ({question, options, onChange}: IProps) => {
-  const [availableWords, setAvailableWords] = React.useState<Word[]>([]);
+  const [availableWords, setAvailableWords] = React.useState<Word[]>([...options]);
   const [selectedWords, setSelectedWords] = React.useState<Word[]>([]);
 
   const selectWord = (option: Word): void => {
