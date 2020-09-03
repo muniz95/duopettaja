@@ -42,8 +42,10 @@ const QuestionOption: StyledComponent<"div", any, IQuestionOptionProps> = styled
 `;
 
 const GuessQuestion = ({question, options, onChange}: any) => {
-  const whyDidYouRender: boolean = true;
   const [answer, setAnswer] = React.useState(new Word());
+  const [localQuestion, setLocalQuestion] = React.useState(question);
+  const [localOptions, setLocalOptions] = React.useState([...options]);
+
   // const [options, setOptions] = React.useState([]);
   // const [question, setQuestion] = React.useState("");
 
@@ -59,6 +61,11 @@ const GuessQuestion = ({question, options, onChange}: any) => {
 
   const getAnswer = (option: Word) => {
     cleanSelectedAnswers();
+    const newOptions = [
+      ...localOptions.filter((o) => o.id != option.id),
+      option
+    ].sort((a, b) => a.id - b.id);
+    setLocalOptions(newOptions);
     option.selected = true;
     onChange(option);
   }
@@ -72,10 +79,10 @@ const GuessQuestion = ({question, options, onChange}: any) => {
   return (
     <div>
       <div className="row">
-        <h4>{question}</h4>
+        <h4>{localQuestion}</h4>
       </div>
       <QuestionsContainer>
-        {options.map((option: any) =>
+        {localOptions.map((option: any) =>
         <QuestionContainer key={option.id}>
           <QuestionOption selected={option.selected} onClick={() => getAnswer(option)}>
             {option.text}
@@ -86,5 +93,7 @@ const GuessQuestion = ({question, options, onChange}: any) => {
     </div>
   );
 }
+
+(GuessQuestion as any).whyDidYouRender = true;
 
 export default GuessQuestion;

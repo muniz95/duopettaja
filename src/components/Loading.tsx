@@ -2,7 +2,7 @@
 import React from "react";
 /* eslint-enable no-unused-vars */
 
-export default function Loading() {
+export default () => {
   return (
     <div className="row loading">
       <i className="fa fa-spinner fa-spin" style={{fontSize: "100px", color: "#20a8e9"}}></i>

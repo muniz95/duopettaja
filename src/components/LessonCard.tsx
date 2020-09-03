@@ -50,6 +50,7 @@ const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
 `;
 
 const LessonCard: React.FC<IProps> = ({ lesson, current, total, children }: IProps) => {
+  console.log(lesson);
   const body: JSX.Element =
     <SkillCardContainer>
       <SkillCardBody>
@@ -57,7 +58,7 @@ const LessonCard: React.FC<IProps> = ({ lesson, current, total, children }: IPro
           {current}/{total}
         </SkillCardHealthBar>
         <SkillCardLabel>
-          {lesson.words.join(", ")}
+          {lesson.words.split('*').join(", ")}
         </SkillCardLabel>
         {children}
       </SkillCardBody>

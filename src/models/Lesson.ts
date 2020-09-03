@@ -1,7 +1,7 @@
 class Lesson {
   public id?: number;
   public completed?: boolean;
-  public words: string[];
+  public words: string;
   public questions: string[];
   public skillId?: number;
   public order?: number;
@@ -10,7 +10,7 @@ class Lesson {
   public updatedAt?: Date;
 
   constructor() {
-    this.words = [];
+    this.words = '';
     this.questions = [];
   }
 }
