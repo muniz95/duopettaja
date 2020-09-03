@@ -52,13 +52,12 @@ const Lesson = (props: RouteComponentProps) => {
   const checkAnswer = () => {
     const currentQuestion: Word = questions[currentQuestionIndex];
     const currentAnswer: Answer = answers[currentQuestionIndex];
-    let progress: number;
+    let currentProgress: number;
     if (currentQuestion.category === "guess") {
       setCorrect(true);
       setDisabledCheckButton(true);
       setVisibleAnswerBox(true);
-      progress =
-        currentAnswer && currentAnswer.correct
+      currentProgress = currentAnswer.correct
           ? questions[currentQuestionIndex].weight
           : -questions[currentQuestionIndex].weight;
       questions[currentQuestionIndex].correct = currentAnswer.correct;
@@ -71,25 +70,25 @@ const Lesson = (props: RouteComponentProps) => {
         setCorrect(false);
         setDisabledCheckButton(true);
         setVisibleAnswerBox(true);
-        progress = 0;
+        currentProgress = 0;
       } else {
         // check if the words are in the correct order
         if (orderedAnswers(currentAnswer.options.map((x: Answer) => x.order))) {
           setCorrect(true);
           setDisabledCheckButton(true);
           setVisibleAnswerBox(true);
-          progress = currentQuestion.weight;
+          currentProgress = currentQuestion.weight;
           questions[currentQuestionIndex].correct = true;
         } else {
           setCorrect(false);
           setDisabledCheckButton(true);
           setVisibleAnswerBox(true);
-          progress = 0;
+          currentProgress = 0;
           questions[currentQuestionIndex].correct = false;
         }
       }
     }
-    setProgress(progress + progress);
+    setProgress(progress + currentProgress);
   };
 
   const nextQuestion = () => {
