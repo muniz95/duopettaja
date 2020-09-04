@@ -12,7 +12,6 @@ interface IState {
 }
 
 const Home = () => {
-  const whyDidYouRender = true;
   const [errorMessage, setErrorMessage] = React.useState("")
   const [loading, setLoading] = React.useState(true)
   const [skills, setSkills] = React.useState([])
@@ -49,5 +48,7 @@ const Home = () => {
     </div>;
   return content;
 }
+
+(Home as any).whyDidYouRender = true
 
 export default Home

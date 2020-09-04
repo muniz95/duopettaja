@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, RouteComponentProps, withRouter } from "react-router-dom";
-import Word from "../models/Word";
 import http from "../utils/http";
 
 const FinishedLesson = ({history, location}: RouteComponentProps) => {
@@ -9,7 +8,7 @@ const FinishedLesson = ({history, location}: RouteComponentProps) => {
     http
       .put(`${process.env.REACT_APP_API}/lessons/${(location as any).lessonId}/complete`, data)
       .then(() => history.push("/"));
-  }, [])
+  }, [history, location])
   // constructor(props: IProps) {
   //   super(props);
 

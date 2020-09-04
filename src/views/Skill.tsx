@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import React, { Component } from "react";
+import React from "react";
 import { RouteComponentProps } from "react-router";
 import LessonCard from "../components/LessonCard";
 import Loading from "../components/Loading";
@@ -20,7 +20,7 @@ const Skill = (props: RouteComponentProps) => {
       })
       // tslint:disable-next-line: no-console
       .catch(console.error);
-  }, []);
+  }, [props.match.params]);
 
   const goToLesson = (lesson: Lesson) => {
     props.history.push({

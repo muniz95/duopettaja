@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { StyledComponent } from "styled-components";
 import Word from "../models/Word";
 
@@ -42,27 +42,13 @@ const QuestionOption: StyledComponent<"div", any, IQuestionOptionProps> = styled
 `;
 
 const GuessQuestion = ({question, options, onChange}: any) => {
-  const [answer, setAnswer] = React.useState(new Word());
-  const [localQuestion, setLocalQuestion] = React.useState(question);
+  const [localQuestion,] = React.useState(question);
   const [localOptions, setLocalOptions] = React.useState([...options]);
-
-  // const [options, setOptions] = React.useState([]);
-  // const [question, setQuestion] = React.useState("");
-
-  // const componentWillMount(): void {
-  //   const { question, options } = this.props;
-  //   this.setState({question, options});
-  // }
-
-  // const componentWillReceiveProps(props: IProps): void {
-  //   const { question, options } = props;
-  //   this.setState({question, options});
-  // }
 
   const getAnswer = (option: Word) => {
     cleanSelectedAnswers();
     const newOptions = [
-      ...localOptions.filter((o) => o.id != option.id),
+      ...localOptions.filter((o) => o.id !== option.id),
       option
     ].sort((a, b) => a.id - b.id);
     setLocalOptions(newOptions);

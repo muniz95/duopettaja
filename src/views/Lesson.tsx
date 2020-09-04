@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import React from "react";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import CompoundQuestion from "../components/CompoundQuestion";
 import GuessQuestion from "../components/GuessQuestion";
@@ -14,7 +14,7 @@ import http from "../utils/http";
 
 const Lesson = (props: RouteComponentProps) => {
   const [answers, setAnswers] = React.useState<Answer[]>([]);
-  const [correct, setCorrect] = React.useState(false);
+  const [, setCorrect] = React.useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [disabledCheckButton, setDisabledCheckButton] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
@@ -33,7 +33,7 @@ const Lesson = (props: RouteComponentProps) => {
       .then((response: AxiosResponse) => {
         setQuestions(response.data);
       });
-  }, []);
+  }, [props.match.params]);
 
   const getAnswer = (answer: any) => {
     if (questions[currentQuestionIndex].category === "compound") {

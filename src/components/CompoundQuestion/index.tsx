@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Word from "../../models/Word";
 import * as S from "./styled";
 
