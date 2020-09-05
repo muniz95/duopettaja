@@ -1,26 +1,29 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import Header from "./components/Header";
-import FinishedLesson from "./views/FinishedLesson";
-import Home from "./views/Home";
-import Lesson from "./views/Lesson";
-import Skill from "./views/Skill";
+
+const FinishedLesson = React.lazy(() => import("./views/FinishedLesson"));
+const Home = React.lazy(() => import("./views/Home"));
+const Lesson = React.lazy(() => import("./views/Lesson"));
+const Skill = React.lazy(() => import("./views/Skill"));
 
 const App = () => {
   return (
     <Router>
       <Header />
       <div className="container">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/skill/:id" component={Skill} />
-          <Route path="/lesson/finished" component={FinishedLesson} />
-          <Route path="/lesson/:id" component={Lesson} />
-        </Switch>
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/skill/:id" component={Skill} />
+            <Route path="/lesson/finished" component={FinishedLesson} />
+            <Route path="/lesson/:id" component={Lesson} />
+          </Switch>
+        </React.Suspense>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
