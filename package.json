@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@welldone-software/why-did-you-render": "^3.6.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "react-dev-utils": "^10.2.1",
     "react-router-dom": "^5.2.0",
     "sass-loader": "7.1.0",
