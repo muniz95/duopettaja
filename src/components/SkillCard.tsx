@@ -21,6 +21,7 @@ const SkillCardBody: StyledComponent<"div", any, {}> = styled.div`
   flex-flow: row;
   width: 90%;
   border-style: solid;
+  border-radius: 15px;
 `;
 
 const SkillCardContainer: StyledComponent<"div", any, {}> = styled.div`
@@ -40,6 +41,8 @@ const SkillCardHealthBar: StyledComponent<"div", any, IHealthBarProps> = styled.
   background-color: ${(props: IHealthBarProps) => props.active ? "blue" : "gray"};
   width: 20%;
   height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 `;
 
 const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`

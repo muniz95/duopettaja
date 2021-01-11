@@ -17,6 +17,7 @@ const SkillCardBody: StyledComponent<"div", any, {}> = styled.div`
   flex-flow: row;
   width: 90%;
   border-style: solid;
+  border-radius: 15px;
 `;
 
 const SkillCardContainer: StyledComponent<"div", any, {}> = styled.div`
@@ -40,6 +41,17 @@ const SkillCardHealthBar: StyledComponent<"div", any, {}> = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+`;
+
+const SkillCardLabelContainer: StyledComponent<"div", any, {}> = styled.div`
+  height: 100%  
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
 `;
 
 const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
@@ -57,10 +69,12 @@ const LessonCard: React.FC<IProps> = ({ lesson, current, total, children }: IPro
         <SkillCardHealthBar>
           {current}/{total}
         </SkillCardHealthBar>
-        <SkillCardLabel>
-          {lesson.words.split('*').join(", ")}
-        </SkillCardLabel>
-        {children}
+        <SkillCardLabelContainer>
+          <SkillCardLabel>
+            {lesson.words.split('*').join(", ")}
+          </SkillCardLabel>
+          {children}
+        </SkillCardLabelContainer>
       </SkillCardBody>
     </SkillCardContainer>;
 

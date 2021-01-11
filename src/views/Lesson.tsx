@@ -2,6 +2,7 @@ import { AxiosResponse } from "axios";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { RouteComponentProps } from "react-router";
+import styled from "styled-components";
 import CompoundQuestion from "../components/CompoundQuestion";
 import GuessQuestion from "../components/GuessQuestion";
 import Loading from "../components/Loading";
@@ -11,6 +12,11 @@ import Word from "../models/Word";
 import actions from "../redux/actions";
 import "../styles/Lesson.css";
 import http from "../utils/http";
+
+const LessonContainer = styled.div`
+  margin: 0 10px;
+  height: 100%;
+`;
 
 const Lesson = (props: RouteComponentProps) => {
   const [answers, setAnswers] = React.useState<Answer[]>([]);
@@ -182,9 +188,8 @@ const Lesson = (props: RouteComponentProps) => {
     );
 
     return (
-      <div>
+      <LessonContainer>
         <ProgressBar progress={progress} />
-        <h2>Lesson</h2>
         {question}
         <button
           disabled={disabledCheckButton}
@@ -194,7 +199,7 @@ const Lesson = (props: RouteComponentProps) => {
           Check
         </button>
         {btnNextQuestion}
-      </div>
+      </LessonContainer>
     );
   } else {
     // props.history.goBack()

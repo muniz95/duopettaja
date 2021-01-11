@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../styles/Header.scss";
-import { RootState } from "../redux/reducers";
+// import { RootState } from "../redux/reducers";
 
 const Header = () => {
-  const goal = useSelector((state: RootState) => state.goal);
+  // const goal = useSelector((state: RootState) => state.goal);
   const [visible, setVisible] = React.useState(false);
 
   const switchMenu = () => {

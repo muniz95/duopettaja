@@ -40,7 +40,6 @@ const Home = () => {
   const content: JSX.Element = loading
   ? <Loading />
   : <div className="row">
-      <h2>Home</h2>
       <h4>{errorMessage}</h4>
       <div className="skills">
         { skills.map((skill: Skill) => <SkillCard {...skill} key={skill.id} />) }
