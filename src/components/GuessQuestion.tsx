@@ -28,7 +28,7 @@ const QuestionsContainer: StyledComponent<"div", any, {}, never> = styled.div`
 
 const QuestionContainer: StyledComponent<"div", any, {}, never> = styled.div`
   width: 50%;
-  height: 30px;
+  height: 50px;
 `;
 
 const QuestionOption: StyledComponent<"div", any, IQuestionOptionProps> = styled.div`
@@ -39,6 +39,8 @@ const QuestionOption: StyledComponent<"div", any, IQuestionOptionProps> = styled
   border-style: solid;
   border-color: gray;
   margin: 5px;
+  height: 40px;
+  border-radius: 15px;
 `;
 
 const GuessQuestion = ({question, options, onChange}: any) => {

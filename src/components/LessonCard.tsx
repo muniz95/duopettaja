@@ -22,15 +22,10 @@ const SkillCardBody: StyledComponent<"div", any, {}> = styled.div`
 
 const SkillCardContainer: StyledComponent<"div", any, {}> = styled.div`
   height: 150px;
-  @media (max-width: 767px) {
-    width: 100%;
+  @media (max-width: 768px) {
+    width: 50%;
   }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    width: 33%;
-  }
-  @media (min-width: 1024px) {
-    width: 25%;
-  }
+  width: 25%;
 `;
 
 const SkillCardHealthBar: StyledComponent<"div", any, {}> = styled.div`
@@ -50,8 +45,8 @@ const SkillCardLabelContainer: StyledComponent<"div", any, {}> = styled.div`
   width: 80%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-flow: wrap;
+  justify-content: space-evenly;
+  flex-flow: column;
 `;
 
 const SkillCardLabel: StyledComponent<"div", any, {}> = styled.div`
