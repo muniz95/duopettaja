@@ -1,8 +1,20 @@
 .success-box {
-  background-color: #20a8e9;
-  margin-top: 20px;
-  color: white;
-  /*color: #003ba3;*/
+  position: fixed;
+  bottom: -230px;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 230px;
+  justify-content: flex-start;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: limegreen;
+  transition: bottom .3s ease;
+}
+
+.visible {
+  bottom: 0;
 }
 
 .vcenter {

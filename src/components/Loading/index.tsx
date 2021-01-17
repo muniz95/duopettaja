@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import * as S from "./styled";
 /* eslint-enable no-unused-vars */
 
 export default () => {
   return (
-    <div className="row loading">
+    <S.Loading>
       <i className="fa fa-spinner fa-spin" style={{fontSize: "100px", color: "#20a8e9"}}></i>
-    </div>
+    </S.Loading>
   );
 }

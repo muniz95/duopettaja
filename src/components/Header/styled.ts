@@ -1,4 +1,10 @@
-nav {
+import styled from "styled-components";
+
+interface IVisibilityProps {
+  visible: boolean;
+}
+
+export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,9 +32,9 @@ nav {
       }
     }
   }
-}
+`;
 
-i {
+export const Icon = styled.i`
   color: #b9b8b8;
 
   &.fa-crown {
@@ -48,16 +54,18 @@ i {
       color: red;
     }
   }
-}
+`;
 
-.arrow {
+export const Arrow = styled.div`
+  visibility: ${(p: IVisibilityProps) => p.visible ? "visible" : "hidden"};
+  opacity: ${(p: IVisibilityProps) => p.visible ? "1" : "0"};
   bottom: -15px;
   height: 10px;
   left: 0;
   overflow: hidden;
   position: absolute;
   width: 100%;
-
+  
   &::after {
     background-color: #fff;
     border: 2px solid #e5e5e5;
@@ -71,14 +79,11 @@ i {
     transform-origin: top left;
     width: 30px;
   }
-}
-
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.menu {
+`;
+  
+export const Menu = styled.div`
+  visibility: ${(p: IVisibilityProps) => p.visible ? "visible" : "hidden"};
+  opacity: ${(p: IVisibilityProps) => p.visible ? "1" : "0"};
   bottom: 0;
   left: 0;
   position: fixed;
@@ -89,29 +94,29 @@ i {
   user-select: none;
   
   transition: visibility 0s, opacity 0.5s ease-in;
-}
 
-.menu__options {
-  background-color: #fff;
-  padding-top: 15px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  
-  .menu__options_container {
-    flex-direction: column;
+  .menu__options {
+    background-color: ghostwhite;
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     
-    .option {
-      align-items: center;
-      border-bottom: 2px solid #e5e5e5;
-      padding: 10px;
-      display: flex;
-      width: 100%;
-    }
-  } 
-}
+    .menu__options_container {
+      flex-direction: column;
+      
+      .option {
+        align-items: center;
+        border-bottom: 2px solid #e5e5e5;
+        padding: 10px;
+        display: flex;
+        width: 100%;
+      }
+    } 
+  }
+`;
 
-.backdrop {
+export const Backdrop = styled.div`
   height: 100%;
   box-sizing: inherit;
   font-family: din-round,sans-serif;
@@ -122,5 +127,4 @@ i {
   user-select: none;
   background-color: #afafafbb;
   font-size: 17px;
-}
-
+`;

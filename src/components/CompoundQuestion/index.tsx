@@ -52,9 +52,9 @@ const CompoundQuestion = ({question, options, onChange}: IProps) => {
 
   return (
     <div>
-      <div className="row">
-        <h4>{question}</h4>
-      </div>
+      <S.QuestionRow>
+        <h2>{question}</h2>
+      </S.QuestionRow>
       <div className="row">
         <S.SelectedWordsContainer>
           <S.SelectedWordsBox>
