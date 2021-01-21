@@ -15,6 +15,7 @@ export const Nav = styled.nav`
   left: 0;
   right: 0;
   border-bottom: groove;
+  background-color: ghostwhite;
 
   header {
     width: 100%;

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.scss";
 import Header from "./components/Header";
+import Loading from './components/Loading';
 
 const FinishedLesson = React.lazy(() => import("./views/FinishedLesson"));
 const Home = React.lazy(() => import("./views/Home"));
@@ -13,7 +13,7 @@ const App = () => {
     <Router>
       <Header />
       <div className="container">
-        <React.Suspense fallback={<div>Loading...</div>}>
+        <React.Suspense fallback={<Loading />}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/skill/:id" component={Skill} />

@@ -4,65 +4,15 @@ import { useDispatch } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import styled from "styled-components";
 import { isIdentifier } from "typescript";
-import CompoundQuestion from "../components/CompoundQuestion";
-import GuessQuestion from "../components/GuessQuestion";
-import Loading from "../components/Loading";
-import ProgressBar from "../components/ProgressBar";
-import Answer from "../models/Answer";
-import Word from "../models/Word";
-import actions from "../redux/actions";
-import "../styles/Lesson.css";
-import http from "../utils/http";
-
-interface ICheckButtonProps {
-  isCorrect: boolean;
-  isVisible?: boolean;
-};
-
-const LessonContainer = styled.div`
-  // margin: 0 10px;
-  height: 100%;
-  justify-content: center;
-`;
-
-const CheckButtonRow = styled.div`
-  height: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  // margin: 20px;
-  position: fixed;
-  bottom: 80px;
-  z-index: 1;
-
-  button {
-    width: 25%;
-    background-color: ${({isCorrect}: ICheckButtonProps) => isCorrect ? 'green' : 'red'}
-    color: white;
-    font-weight: bold;
-  }
-`;
-
-const SuccessBox = styled.div`
-  position: fixed;
-  bottom: ${({isVisible}) => isVisible ? '0px' : '-230px'};
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  height: 230px;
-  justify-content: flex-start;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  background-color: ${({isCorrect}: ICheckButtonProps) => isCorrect ? 'limegreen' : '#cd3232'};
-  transition: bottom .3s ease;
-`;
-
-const ProgressBarRow = styled.div`
-  display: flex;
-  flex-flow: column;
-  margin: 20px;
-`;
+import CompoundQuestion from "../../components/CompoundQuestion";
+import GuessQuestion from "../../components/GuessQuestion";
+import Loading from "../../components/Loading";
+import ProgressBar from "../../components/ProgressBar";
+import Answer from "../../models/Answer";
+import Word from "../../models/Word";
+import actions from "../../redux/actions";
+import http from "../../utils/http";
+import * as S from './styled';
 
 const Lesson = (props: RouteComponentProps) => {
   const [answers, setAnswers] = React.useState<Answer[]>([]);
@@ -244,33 +194,27 @@ const Lesson = (props: RouteComponentProps) => {
     }
 
     const nextStepBox: JSX.Element = (
-      <SuccessBox isCorrect={isCorrect} isVisible={visibleAnswerBox} >
-      {/* <div className={`success-box ${visibleAnswerBox && 'visible'}`}> */}
+      <S.SuccessBox isCorrect={isCorrect} isVisible={visibleAnswerBox} >
         <h2>{isCorrect ? 'Correct' : 'Incorrect'}!</h2>
-        {/* <button className="btn btn-primary" onClick={nextQuestion}>
-          Next
-        </button> */}
-      {/* </div> */}
-      </SuccessBox>
+      </S.SuccessBox>
     );
 
     return (
-      <LessonContainer>
-        <ProgressBarRow>
+      <S.LessonContainer>
+        <S.ProgressBarRow>
           <ProgressBar progress={progress} />
-        </ProgressBarRow>
+        </S.ProgressBarRow>
         {question}
-        <CheckButtonRow isCorrect={isCorrect}>
+        <S.CheckButtonRow isCorrect={isCorrect}>
           <button
             disabled={isButtonDisabled()}
-            className="btn-default"
             onClick={handleCheckNextButton}
           >
             { visibleAnswerBox ? 'Next' : 'Check'}
           </button>
-        </CheckButtonRow>
+        </S.CheckButtonRow>
         {nextStepBox}
-      </LessonContainer>
+      </S.LessonContainer>
     );
   } else {
     // props.history.goBack()

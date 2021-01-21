@@ -1,10 +1,11 @@
 import { AxiosResponse } from "axios";
 import React from "react";
 import { RouteComponentProps } from "react-router";
-import LessonCard from "../components/LessonCard";
-import Loading from "../components/Loading";
-import Lesson from "../models/Lesson";
-import http from "../utils/http";
+import LessonCard from "../../components/LessonCard";
+import Loading from "../../components/Loading";
+import Lesson from "../../models/Lesson";
+import http from "../../utils/http";
+import * as S from "./styled";
 
 const Skill = (props: RouteComponentProps) => {
   const [lessons, setLessons] = React.useState<Lesson[]>([]);
@@ -39,19 +40,19 @@ const Skill = (props: RouteComponentProps) => {
 
   const content: JSX.Element | JSX.Element[] = loading
     ? <Loading />
-    : <div className="skills">
+    : <S.LessonsContainer>
         { lessons.map((lesson: Lesson, index: number, array: Lesson[]) =>
           <LessonCard key={lesson.id} lesson={lesson} current={++index} total={array.length}>
             {button(lesson)}
           </LessonCard>,
         )}
-      </div>;
+      </S.LessonsContainer>;
   return (
     <div>
-      <div className="row">
+      <div>
         <h2>Skill page</h2>
       </div>
-      <div className="row">
+      <div>
         { content }
       </div>
     </div>

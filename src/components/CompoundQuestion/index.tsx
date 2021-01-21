@@ -50,7 +50,7 @@ const CompoundQuestion = ({question, options, onChange}: IProps) => {
       <S.QuestionRow>
         <h2>{question}</h2>
       </S.QuestionRow>
-      <div className="row">
+      <div>
         <S.SelectedWordsContainer>
           <S.SelectedWordsBox>
             {selectedWords.map((option: Word) =>
@@ -61,7 +61,7 @@ const CompoundQuestion = ({question, options, onChange}: IProps) => {
           </S.SelectedWordsBox>
         </S.SelectedWordsContainer>
       </div>
-      <div className="row">
+      <div>
         <S.AvailableWordsContainer>
           {availableWords.map((option: Word) =>
             <S.WordBox key={option.id} selected={option.selected} onClick={() => selectWord(option)}>

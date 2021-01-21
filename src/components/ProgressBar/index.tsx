@@ -1,12 +1,12 @@
 import React from "react";
-import "../../styles/ProgressBar.css";
+import * as S from './styled';
 
 const ProgressBar = ({progress = 0}) => {
   return (
     <React.Fragment>
-      <div className="progress-bar bg-duopettaja" role="progressbar" style={{width: `${progress}%`}}
-        aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
-      </div>
+      <S.ProgressBar role="progressbar" aria-valuenow={progress}
+        aria-valuemin={0} aria-valuemax={100} width={progress}>
+      </S.ProgressBar>
       <div>
         <span>{progress}%</span>
       </div>

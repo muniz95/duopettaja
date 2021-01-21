@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, RouteComponentProps, withRouter } from "react-router-dom";
-import http from "../utils/http";
+import http from "../../utils/http";
 
 const FinishedLesson = ({history, location}: RouteComponentProps) => {
   React.useEffect(() => {
