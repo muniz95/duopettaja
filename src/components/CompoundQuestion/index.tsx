@@ -8,12 +8,6 @@ interface IProps {
   onChange: Function;
 }
 
-interface IState {
-  question: string;
-  selectedWords: Word[];
-  availableWords: Word[];
-}
-
 const byIdAscending: (a: Word, b: Word) => number = (a: Word, b: Word) => a.id - b.id;
 
 const CompoundQuestion = ({question, options, onChange}: IProps) => {
@@ -34,16 +28,17 @@ const CompoundQuestion = ({question, options, onChange}: IProps) => {
     setSelectedWords(chosenWords);
     getAnswer(chosenWords);
   }
-
+  
   const deselectWord = (option: Word): void => {
     option.selected = false;
     const chosenWords: Word[] = selectedWords.filter((el: Word) => el.id !== option.id);
     const availableWords: Word[] = [
       option,
-      ...options.filter((el: Word) => el.id !== option.id)]
-    .sort(byIdAscending);
+      ...options.filter((el: Word) => el.id !== option.id)
+    ].sort(byIdAscending);
     setAvailableWords(availableWords);
     setSelectedWords(chosenWords);
+    getAnswer(chosenWords);
   }
 
   const getAnswer = (selectedWords: Word[]): void => {

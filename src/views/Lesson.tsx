@@ -16,6 +16,7 @@ import http from "../utils/http";
 
 interface ICheckButtonProps {
   isCorrect: boolean;
+  isVisible?: boolean;
 };
 
 const LessonContainer = styled.div`
@@ -37,7 +38,24 @@ const CheckButtonRow = styled.div`
   button {
     width: 25%;
     background-color: ${({isCorrect}: ICheckButtonProps) => isCorrect ? 'green' : 'red'}
+    color: white;
+    font-weight: bold;
   }
+`;
+
+const SuccessBox = styled.div`
+  position: fixed;
+  bottom: ${({isVisible}) => isVisible ? '0px' : '-230px'};
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 230px;
+  justify-content: flex-start;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: ${({isCorrect}: ICheckButtonProps) => isCorrect ? 'limegreen' : '#cd3232'};
+  transition: bottom .3s ease;
 `;
 
 const ProgressBarRow = styled.div`
@@ -48,7 +66,7 @@ const ProgressBarRow = styled.div`
 
 const Lesson = (props: RouteComponentProps) => {
   const [answers, setAnswers] = React.useState<Answer[]>([]);
-  const [isCorrect, setCorrect] = React.useState(false);
+  const [isCorrect, setCorrect] = React.useState(true);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
   const [disabledCheckButton, setDisabledCheckButton] = React.useState(true);
   const [progress, setProgress] = React.useState(0);
@@ -76,7 +94,7 @@ const Lesson = (props: RouteComponentProps) => {
       if (currentAnswer === undefined) {
         currentAnswer = new Answer();
       }
-      currentAnswer.options.push(answer);
+      currentAnswer.options = [...answer];
       answers[currentQuestionIndex] = currentAnswer;
     } else {
       answers[currentQuestionIndex] = answer;
@@ -91,12 +109,12 @@ const Lesson = (props: RouteComponentProps) => {
     const currentAnswer: Answer = answers[currentQuestionIndex];
     let currentProgress: number;
     if (currentQuestion.category === "guess") {
-      setCorrect(true);
+      setCorrect(currentAnswer.correct);
       setDisabledCheckButton(true);
       setVisibleAnswerBox(true);
       currentProgress = currentAnswer.correct
-          ? questions[currentQuestionIndex].weight
-          : -questions[currentQuestionIndex].weight;
+        ? questions[currentQuestionIndex].weight
+        : -questions[currentQuestionIndex].weight;
       questions[currentQuestionIndex].correct = currentAnswer.correct;
     } else {
       // check if there is any incorrect word
@@ -110,7 +128,8 @@ const Lesson = (props: RouteComponentProps) => {
         currentProgress = 0;
       } else {
         // check if the words are in the correct order
-        if (orderedAnswers(currentAnswer.options.map((x: Answer) => x.order))) {
+        const areWordsOrdered = orderedAnswers(currentAnswer.options.map((x) => x.order))
+        if (areWordsOrdered && isSentenceComplete(currentAnswer.options)) {
           setCorrect(true);
           setDisabledCheckButton(true);
           setVisibleAnswerBox(true);
@@ -149,7 +168,7 @@ const Lesson = (props: RouteComponentProps) => {
     
     setAnswers([]);
     setDisabledCheckButton(true);
-
+    setCorrect(true);
   };
 
   const handleCheckNextButton = () => answers.length && disabledCheckButton
@@ -186,6 +205,16 @@ const Lesson = (props: RouteComponentProps) => {
     return result;
   };
 
+  const isSentenceComplete = (options: Answer[]) => {
+    const requiredOptions = questions[currentQuestionIndex].options.filter(x => x.order > 0);
+    for (const x of requiredOptions) {
+      if (!options.includes(x)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   if (questions.length) {
     let question: JSX.Element;
     const currentQuestion = questions[currentQuestionIndex]
@@ -215,12 +244,14 @@ const Lesson = (props: RouteComponentProps) => {
     }
 
     const nextStepBox: JSX.Element = (
-      <div className={`success-box ${visibleAnswerBox && 'visible'}`}>
+      <SuccessBox isCorrect={isCorrect} isVisible={visibleAnswerBox} >
+      {/* <div className={`success-box ${visibleAnswerBox && 'visible'}`}> */}
         <h2>{isCorrect ? 'Correct' : 'Incorrect'}!</h2>
         {/* <button className="btn btn-primary" onClick={nextQuestion}>
           Next
         </button> */}
-      </div>
+      {/* </div> */}
+      </SuccessBox>
     );
 
     return (
@@ -229,7 +260,7 @@ const Lesson = (props: RouteComponentProps) => {
           <ProgressBar progress={progress} />
         </ProgressBarRow>
         {question}
-        <CheckButtonRow isCorrect>
+        <CheckButtonRow isCorrect={isCorrect}>
           <button
             disabled={isButtonDisabled()}
             className="btn-default"
