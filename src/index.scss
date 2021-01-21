@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "Oswald";
+  src: local("Oswald"), url(./fonts/Oswald-Light.ttf) format("truetype");
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Oswald";
+  // font-family: sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+  background-color: ghostwhite;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+.btn-primary {
+  background-image: none;
+  background-color: #1caff6;
+  border-color: #1caff6;
+}
+
+.btn-success {
+  background-image: none;
+  background-color: #7eb530;
+  border-color: #7eb530;
+}
+
+.container {
+  margin-top: 50px;
+}

@@ -43,3 +43,7 @@ export const WordBox: StyledComponent<"div", any, IWordBoxProps> = styled.div`
   color: ${(p: IWordBoxProps) => p.selected ? "grey" : "black"};
   cursor: pointer;
 `;
+
+export const QuestionRow = styled.div`
+  margin: 20px;
+`;

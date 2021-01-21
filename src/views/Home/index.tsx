@@ -1,29 +1,15 @@
 import React from "react";
-import Loading from "../components/Loading";
-import SkillCard from "../components/SkillCard";
-import Skill from "../models/Skill";
-import "../styles/Home.css";
-import http from "../utils/http";
-
-interface IState {
-  skills: Skill[];
-  errorMessage: string;
-  loading: boolean;
-}
+import Loading from "../../components/Loading";
+import SkillCard from "../../components/SkillCard";
+import Skill from "../../models/Skill";
+import http from "../../utils/http";
+import * as S from './styled';
 
 const Home = () => {
   const [errorMessage, setErrorMessage] = React.useState("")
   const [loading, setLoading] = React.useState(true)
   const [skills, setSkills] = React.useState([])
 
-  // constructor(props: {}) {
-  //   super(props);
-  //   this.state = {
-  //     errorMessage: "",
-  //     loading: true,
-  //     skills: [],
-  //   };
-  // }
   React.useEffect(() => {
     http
       .get(`${process.env.REACT_APP_API}/skills`)
@@ -39,12 +25,11 @@ const Home = () => {
 
   const content: JSX.Element = loading
   ? <Loading />
-  : <div className="row">
-      <h2>Home</h2>
+  : <div>
       <h4>{errorMessage}</h4>
-      <div className="skills">
+      <S.SkillsContainer>
         { skills.map((skill: Skill) => <SkillCard {...skill} key={skill.id} />) }
-      </div>
+      </S.SkillsContainer>
     </div>;
   return content;
 }
