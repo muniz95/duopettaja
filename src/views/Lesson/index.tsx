@@ -2,8 +2,6 @@ import { AxiosResponse } from "axios";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { RouteComponentProps } from "react-router";
-import styled from "styled-components";
-import { isIdentifier } from "typescript";
 import CompoundQuestion from "../../components/CompoundQuestion";
 import GuessQuestion from "../../components/GuessQuestion";
 import Loading from "../../components/Loading";
