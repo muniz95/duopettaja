@@ -48,7 +48,6 @@ const Lesson = (props: RouteComponentProps) => {
       answers[currentQuestionIndex] = answer;
     }
     setAnswers(answers);
-    console.log(answers.length);
     setDisabledCheckButton(false);
   };
 

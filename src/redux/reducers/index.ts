@@ -15,8 +15,20 @@ const goal = (state = "not finished", action: IAction) => {
   }
 };
 
+const isAuthenticated = (state = false, action: IAction) => {
+  switch (action.type) {
+    case "LOGIN":
+      return true;
+    case "LOGOUT":
+      return false;
+    default:
+      return state;
+  }
+};
+
 const reducer = combineReducers({
   goal,
+  isAuthenticated,
 });
 
 export type RootState = ReturnType<typeof reducer>;

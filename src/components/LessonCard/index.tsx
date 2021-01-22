@@ -10,7 +10,6 @@ interface IProps {
 }
 
 const LessonCard: React.FC<IProps> = ({ lesson, current, total, children }: IProps) => {
-  console.log(lesson);
   const body: JSX.Element =
     <S.SkillCardContainer>
       <S.SkillCardBody>
