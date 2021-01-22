@@ -9,8 +9,10 @@ export const get = (url: string) => axios.get(url, header);
 export const post = (url: string, data: any) => axios.post(url, data, header);
 export const put = (url: string, data: any) => axios.post(url, data, header);
 
-export default {
+const http = {
   get,
   post,
   put,
 };
+
+export default http;

@@ -7,6 +7,8 @@ export const reachGoal = () => {
   return action;
 };
 
-export default {
+const actions = {
   reachGoal
-}
+};
+
+export default actions;
