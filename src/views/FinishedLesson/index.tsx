@@ -6,7 +6,7 @@ const FinishedLesson = ({history, location}: RouteComponentProps) => {
   React.useEffect(() => {
     const data: any = { completed: true };
     http
-      .put(`${process.env.REACT_APP_API}/lessons/${(location as any).lessonId}/complete`, data)
+      .put(`${import.meta.env.VITE_API}/lessons/${(location as any).lessonId}/complete`, data)
       .then(() => history.push("/"));
   }, [history, location])
   // constructor(props: IProps) {
@@ -19,7 +19,7 @@ const FinishedLesson = ({history, location}: RouteComponentProps) => {
   // public componentDidMount(): void {
   //   const data: any = { completed: true };
   //   http
-  //     .put(`${process.env.REACT_APP_API}/lessons/${this.state.lessonId}/complete`, data)
+  //     .put(`${import.meta.env.VITE_API}/lessons/${this.state.lessonId}/complete`, data)
   //     .then(() => history.push("/"));
   // }
 
