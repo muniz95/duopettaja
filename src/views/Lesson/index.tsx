@@ -30,7 +30,7 @@ const Lesson = (props: RouteComponentProps) => {
   React.useEffect(() => {
     const { id } = props.match.params as any;
     http
-      .get(`${process.env.REACT_APP_API}/lessons/${id}/questions`)
+      .get(`${import.meta.env.VITE_API}/lessons/${id}/questions`)
       .then((response: AxiosResponse) => {
         setQuestions(response.data);
       });
@@ -103,7 +103,7 @@ const Lesson = (props: RouteComponentProps) => {
       setDisabledCheckButton(false);
       setVisibleAnswerBox(false);
     } else {
-      http.post(`${process.env.REACT_APP_API}/lessons/${id}`, {});
+      http.post(`${import.meta.env.VITE_API}/lessons/${id}`, {});
       dispatchReachGoal();
       props.history.push({
         pathname: "/lesson/finished",

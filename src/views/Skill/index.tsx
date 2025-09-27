@@ -1,31 +1,31 @@
 import { AxiosResponse } from "axios";
 import React from "react";
-import { RouteComponentProps } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import LessonCard from "../../components/LessonCard";
 import Loading from "../../components/Loading";
 import Lesson from "../../models/Lesson";
 import http from "../../utils/http";
 import * as S from "./styled";
 
-const Skill = (props: RouteComponentProps) => {
+const Skill = () => {
   const [lessons, setLessons] = React.useState<Lesson[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    const {id} = props.match.params as any;
     http
-      .get(`${process.env.REACT_APP_API}/skills/${id}/lessons`)
+      .get(`${import.meta.env.VITE_API}/skills/${id}/lessons`)
       .then((response: AxiosResponse<Lesson[]>) => {
         setLessons(response.data);
         setLoading(false);
       })
       // tslint:disable-next-line: no-console
       .catch(console.error);
-  }, [props.match.params]);
+  }, [id]);
 
   const goToLesson = (lesson: Lesson) => {
-    props.history.push({
-      pathname: `/lesson/${lesson.id}`,
+    navigate(`/lesson/${lesson.id}`, {
       state: {
         questions: lesson.questions,
       },

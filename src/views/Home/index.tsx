@@ -12,7 +12,7 @@ const Home = () => {
 
   React.useEffect(() => {
     http
-      .get(`${process.env.REACT_APP_API}/skills`)
+      .get(`${import.meta.env.VITE_API}/skills`)
       .then((response) => {
         setSkills(response.data)
         setLoading(false)
