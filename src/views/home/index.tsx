@@ -1,7 +1,7 @@
 import React from "react";
-import Loading from "../../components/Loading";
-import SkillCard from "../../components/SkillCard";
-import Skill from "../../models/Skill";
+import Loading from "../../components/loading";
+import SkillCard from "../../components/skill-card";
+import Skill from "../../models/skill";
 import http from "../../utils/http";
 import * as S from './styled';
 

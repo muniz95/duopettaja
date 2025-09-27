@@ -25,7 +25,8 @@
     "lint": "eslint src/**/*.{ts,tsx}",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "knip": "knip"
   },
   "browserslist": {
     "production": [
@@ -48,6 +49,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "json-server": "^0.17.4",
+    "knip": "^5.64.1",
     "vite": "^5.0.7",
     "vite-tsconfig-paths": "^4.2.2"
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import Word from "../../models/Word";
+import Word from "../../models/word";
 import * as S from './styled';
 
 interface IProps {

@@ -1,5 +1,5 @@
 import React from "react";
-import Lesson from "../../models/Lesson";
+import Lesson from "../../models/lesson";
 import * as S from "./styled";
 
 interface IProps {

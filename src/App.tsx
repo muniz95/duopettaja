@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Loading from './components/Loading';
+import Header from "./components/header";
+import Loading from './components/loading';
 
-const FinishedLesson = React.lazy(() => import("./views/FinishedLesson"));
-const Home = React.lazy(() => import("./views/Home"));
-const Lesson = React.lazy(() => import("./views/Lesson"));
-const Skill = React.lazy(() => import("./views/Skill"));
+const FinishedLesson = React.lazy(() => import("./views/finished-lesson"));
+const Home = React.lazy(() => import("./views/home"));
+const Lesson = React.lazy(() => import("./views/lesson"));
+const Skill = React.lazy(() => import("./views/skill"));
 
 const App = () => {
   return (

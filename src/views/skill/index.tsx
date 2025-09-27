@@ -1,9 +1,9 @@
 import { AxiosResponse } from "axios";
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import LessonCard from "../../components/LessonCard";
-import Loading from "../../components/Loading";
-import Lesson from "../../models/Lesson";
+import LessonCard from "../../components/lesson-card";
+import Loading from "../../components/loading";
+import Lesson from "../../models/lesson";
 import http from "../../utils/http";
 import * as S from "./styled";
 
